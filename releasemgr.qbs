@@ -1,16 +1,23 @@
 import qbs
 
-CppApplication {
-    type: "application" // To suppress bundle generation on Mac
-    consoleApplication: true
-    files: [
-        "application.h",
-        "main.cpp",
-    ]
-
-    Group {     // Properties for the produced executable
-        fileTagsFilter: product.type
-        qbs.install: true
-    }
+Project
+{
+   minimumQbsVersion: "1.4"
+   qbsSearchPaths:["qbs-resources"]
+   property bool enableUnitTests: false
+   property bool enableRPath: true
+   property bool installApiHeaders: true
+   property string libDirName: "lib"
+   property string appInstallDir: "bin"
+   property string libInstallDir: libDirName
+   property stringList libRPaths: {
+      if (!enableRPath){
+         return undefined;
+      }else{
+         return ["$ORIGIN/../" + libDirName];
+      }
+   }
+   references: [
+      "src/src.qbs"
+   ]
 }
-

@@ -1,0 +1,5 @@
+#ifndef ABSTRACT_COMMAND
+#define ABSTRACT_COMMAND
+
+#endif // ABSTRACT_COMMAND
+
