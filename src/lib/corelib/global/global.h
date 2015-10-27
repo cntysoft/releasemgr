@@ -2,13 +2,13 @@
 #define GLOBAL_H
 
 #include <qglobal.h>
-#ifdef RM_STATIC_LIB
-   #define RM_EXPORT 
+#ifdef RMGR_STATIC_LIB
+   #define RMGR_EXPORT 
 #else
-   #ifdef RM_LIBRARY
-      #define RM_EXPORT Q_DECL_EXPORT
+   #ifdef RMGR_LIBRARY
+      #define RMGR_EXPORT Q_DECL_EXPORT
    #else
-      #define RM_EXPORT Q_DECL_IMPORT
+      #define RMGR_EXPORT Q_DECL_IMPORT
    #endif
 #endif
 

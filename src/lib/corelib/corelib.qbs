@@ -36,4 +36,13 @@ ReleaseMgrLibrary
          "global.cpp"
       ]
    }
+   
+   Group {
+      name : "internal"
+      prefix : name + '/'
+      files : [
+           "assert.cpp",
+           "assert.h",
+       ]
+   }
 }
