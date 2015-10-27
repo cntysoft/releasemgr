@@ -21,10 +21,10 @@ ReleaseMgrLibrary
       files : [
            "code_location.cpp",
            "code_location.h",
-           "errortype.cpp",
+           "errorinfo.cpp",
+           "errorinfo.h",
            "erroritem.cpp",
            "erroritem.h",
-           "errortype.h",
        ]
    }
 

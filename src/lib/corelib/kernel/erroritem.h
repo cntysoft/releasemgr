@@ -1,26 +1,34 @@
 #ifndef ERRORITEM
 #define ERRORITEM
+
 #include "global/global.h"
+#include <QExplicitlySharedDataPointer>
 
 QT_BEGIN_NAMESPACE
-#include <QString>
+class QString;
 QT_END_NAMESPACE
 
 namespace releasemgr 
 {
+
+class CodeLocation;
+
 class ErrorItem
 {
 public:
    ErrorItem();
    ErrorItem(const ErrorItem &rhs);
-   ErrorItem &operator=(const ErrorItem &rhs);
-   ~ErrorItem();
+   ErrorItem& operator=(const ErrorItem &rhs);
+   ~ErrorItem() = default;
    
-   QString description() const;
+   QString getDescription() const;
+   CodeLocation getCodeLocation()const;
    QString toString() const;
    
 private:
-//   ErrorItem(const QString &description, const )
+   ErrorItem(const QString &description, const CodeLocation &codeLocation);
+   class ErrorItemPrivate;
+   QExplicitlySharedDataPointer<ErrorItemPrivate> d;
 };
 }
 

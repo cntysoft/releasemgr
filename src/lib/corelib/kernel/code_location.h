@@ -14,9 +14,9 @@ QT_END_NAMESPACE
 namespace releasemgr
 {
 
-class RM_EXPORT CodeLocation
+class RMGR_EXPORT CodeLocation
 {
-   friend RM_EXPORT bool operator==(const CodeLocation &cl1, const CodeLocation &cl2);
+   friend RMGR_EXPORT bool operator==(const CodeLocation &cl1, const CodeLocation &cl2);
 public:
    CodeLocation() = default;
    CodeLocation(const QString &filePath, int line = -1, int column = -1, bool checkPath = true);
@@ -36,8 +36,8 @@ private:
    
 };
 
-RM_EXPORT bool operator==(const CodeLocation &cl1, const CodeLocation &cl2);
-RM_EXPORT bool operator!=(const CodeLocation &cl1, const CodeLocation &cl2);
+RMGR_EXPORT bool operator==(const CodeLocation &cl1, const CodeLocation &cl2);
+RMGR_EXPORT bool operator!=(const CodeLocation &cl1, const CodeLocation &cl2);
 
 QDebug operator<<(QDebug debug, const CodeLocation &location);
 
