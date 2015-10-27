@@ -22,10 +22,10 @@ public:
    ErrorInfo(const ErrorInfo &rhs);
    ErrorInfo(const QString &description, const CodeLocation &codeLocation = CodeLocation(), bool internalError = false);
    ErrorInfo &operator=(const ErrorInfo &other);
-   ~ErrorInfo();
+   ~ErrorInfo() = default;
    
    void append(const QString &description, const CodeLocation &codeLocation = CodeLocation());
-   void prepend(const QString &description, const CodeLocation &location = CodeLocation());
+   void prepend(const QString &description, const CodeLocation &codeLocation = CodeLocation());
    QList<ErrorItem> getItems() const;
    bool hasError() const 
    {
