@@ -4,16 +4,16 @@ ReleaseMgrApplication
    name : "releasemgr"
    targetName : "releasemgr"
    files : [
-        "application.cpp",
-        "application.h",
-        "command_type.h",
-        "main.cpp",
-    ]
+      "application.cpp",
+      "application.h",
+      "main.cpp"
+   ]
    Group {
       name : "parser"
-      prefix : "parser/"
+      prefix : name + '/'
       files : [
-         "command.h"
+         "option_pool.cpp",
+         "option_pool.h",
       ]
    }
 }
