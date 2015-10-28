@@ -1,9 +1,6 @@
-#include <QString>
 #include <QList>
-#include <QSharedData>
 #include "errorinfo.h"
 #include "erroritem.h"
-
 namespace releasemgr 
 {
 
@@ -36,6 +33,9 @@ ErrorInfo::ErrorInfo(const QString &description, const CodeLocation &codeLocatio
    d->internalError = internalError;
 }
 
+ErrorInfo::~ErrorInfo()
+{}
+
 ErrorInfo& ErrorInfo::operator=(const ErrorInfo &other)
 {
    d = other.d;
@@ -49,7 +49,7 @@ void ErrorInfo::append(const QString &description, const CodeLocation &codeLocat
 
 void ErrorInfo::prepend(const QString &description, const CodeLocation &codeLocation)
 {
-   d->items.prepend(description, location);
+   d->items.prepend(ErrorItem(description, codeLocation));
 }
 
 QList<ErrorItem> ErrorInfo::getItems() const

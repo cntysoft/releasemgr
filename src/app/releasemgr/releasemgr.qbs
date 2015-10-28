@@ -12,8 +12,17 @@ ReleaseMgrApplication
       name : "parser"
       prefix : name + '/'
       files : [
-         "option_pool.cpp",
-         "option_pool.h",
+//           "command_runner.h",
+//           "option_pool.cpp",
+//           "option_pool.h",
+       ]
+   }
+   Group {
+      name : "command"
+      prefix : name + '/'
+      files : [
+//         "command_fhzc.h",
+//         "command_fhzc.cpp"
       ]
    }
 }

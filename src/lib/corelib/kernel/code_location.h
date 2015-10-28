@@ -18,8 +18,8 @@ class RMGR_EXPORT CodeLocation
 {
    friend RMGR_EXPORT bool operator==(const CodeLocation &cl1, const CodeLocation &cl2);
 public:
-   CodeLocation() = default;
-   CodeLocation(const QString &filePath, int line = -1, int column = -1, bool checkPath = true);
+   CodeLocation();
+   CodeLocation(const QString &filePath, int line = -1, int column = -1);
    CodeLocation(const CodeLocation &other);
    CodeLocation &operator=(const CodeLocation &other);
    ~CodeLocation();

@@ -19,15 +19,15 @@ ReleaseMgrLibrary
       name : "kernel"
       prefix : name + '/'
       files : [
-           "code_location.cpp",
-           "code_location.h",
-           "errorinfo.cpp",
-           "errorinfo.h",
-           "erroritem.cpp",
-           "erroritem.h",
-       ]
+         "erroritem.cpp",
+         "erroritem.h",
+         "errorinfo.h",
+         "errorinfo.cpp",
+         "code_location.h",
+         "code_location.cpp"
+      ]
    }
-
+   
    Group {
       name : "global"
       prefix : name + '/'
@@ -41,8 +41,8 @@ ReleaseMgrLibrary
       name : "internal"
       prefix : name + '/'
       files : [
-           "assert.cpp",
-           "assert.h",
-       ]
+         //         "assert.cpp",
+         //         "assert.h",
+      ]
    }
 }

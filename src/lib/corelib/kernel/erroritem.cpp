@@ -4,7 +4,6 @@
 
 namespace releasemgr 
 {
-
 class ErrorItem::ErrorItemPrivate : public QSharedData
 {
 public:
@@ -16,6 +15,9 @@ ErrorItem::ErrorItem()
    :d(new ErrorItemPrivate)
 {
 }
+
+ErrorItem::~ErrorItem()
+{}
 
 ErrorItem::ErrorItem(const QString &description, const CodeLocation &codeLocation)
    :d(new ErrorItemPrivate)
