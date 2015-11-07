@@ -4,6 +4,7 @@
 #include <QSharedDataPointer>
 #include "global/global.h"
 #include "code_location.h"
+#include "erroritem.h"
 QT_BEGIN_NAMESPACE
 class QString;
 QT_END_NAMESPACE
@@ -11,7 +12,6 @@ QT_END_NAMESPACE
 namespace releasemgr 
 {
 
-class ErrorItem;
 class RMGR_EXPORT ErrorInfo
 {
 public:
@@ -39,6 +39,6 @@ private:
 
 }//releasemgr
 
-//Q_DECLARE_METATYPE(releasemgr::ErrorInfo);
+Q_DECLARE_METATYPE(releasemgr::ErrorInfo)
 #endif // ERRORINFO
 

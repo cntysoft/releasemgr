@@ -1,6 +1,6 @@
 #include <QList>
 #include "errorinfo.h"
-#include "erroritem.h"
+
 namespace releasemgr 
 {
 

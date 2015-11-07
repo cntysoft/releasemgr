@@ -13,17 +13,20 @@ class Application;
 
 class CommandRunner
 {
+   Q_DISABLE_COPY(CommandRunner)
 public:
    CommandRunner(const Application &app);
+   QString getUsage()const;
    ~CommandRunner();
-   void run();
+   void run() const;
+protected:
+   void setupCmdParser();
 private:
    QCommandParser *cmdParser;
-   Application app;
+   const Application &app;
 };
 
 }//releasemgr
 
 
 #endif // COMMAND_RUNNER
-

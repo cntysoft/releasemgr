@@ -32,9 +32,11 @@ ReleaseMgrLibrary
       name : "global"
       prefix : name + '/'
       files : [
-         "global.h",
-         "global.cpp"
-      ]
+           "common_funcs.cpp",
+           "common_funcs.h",
+           "global.h",
+           "global.cpp",
+       ]
    }
    
    Group {

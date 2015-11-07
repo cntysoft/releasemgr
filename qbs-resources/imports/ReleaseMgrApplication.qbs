@@ -6,7 +6,7 @@ ReleaseMgrProduct
    type : "application"
    consoleApplication: true
    destinationDirectory: "bin"
-   cpp.cxxLanguageVersion: "c++11"
+   cpp.cxxLanguageVersion: "c++14"
    Group {
       fileTagsFilter: product.type
       qbs.install: true

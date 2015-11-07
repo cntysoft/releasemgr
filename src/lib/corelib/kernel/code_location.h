@@ -30,6 +30,7 @@ public:
    
    bool isValid() const;
    QString toString() const;
+   
 private:
    class CodeLocationPrivate;
    QExplicitlySharedDataPointer<CodeLocationPrivate> d;

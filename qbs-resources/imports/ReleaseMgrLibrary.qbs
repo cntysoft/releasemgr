@@ -6,7 +6,7 @@ ReleaseMgrProduct
    destinationDirectory: project.libDirName
    cpp.defines: base.concat(type == "staticlibrary" ? ["RM_STATIC_LIB"] : ["RM_LIBRARY"])
    cpp.visibility: "minimal"
-   cpp.cxxLanguageVersion: "c++11"
+   cpp.cxxLanguageVersion: "c++14"
    Group {
       fileTagsFilter: product.type.concat("dynamiclibrary_symlink")
       qbs.install: true

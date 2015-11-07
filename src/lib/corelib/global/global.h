@@ -13,4 +13,3 @@
 #endif
 
 #endif // GLOBAL_H
-

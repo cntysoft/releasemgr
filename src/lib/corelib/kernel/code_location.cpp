@@ -24,7 +24,6 @@ CodeLocation::CodeLocation(const QString &filepath, int line, int column)
    d->filepath = filepath;
    d->line = line;
    d->column = column;
-  
 }
 
 CodeLocation::~CodeLocation()
@@ -36,7 +35,7 @@ CodeLocation::CodeLocation(const CodeLocation &other)
    
 }
 
-CodeLocation &CodeLocation::operator=(const CodeLocation &other)
+CodeLocation& CodeLocation::operator=(const CodeLocation &other)
 {
    d = other.d;
    return *this;
