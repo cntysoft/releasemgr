@@ -2,7 +2,6 @@
 #define COMMAND_RUNNER
 
 #include "global/global.h"
-
 QT_BEGIN_NAMESPACE
 class QCommandLineParser;
 QT_END_NAMESPACE
@@ -11,7 +10,6 @@ namespace releasemgr
 {
 
 class Application;
-class OptionPool;
 
 class CommandRunner
 {
@@ -20,6 +18,7 @@ public:
    CommandRunner(const Application &app);
    QString getUsage()const;
    ~CommandRunner();
+ 
    void run() const;
 private:
    OptionPool optionPool;
