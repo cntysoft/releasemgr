@@ -7,6 +7,7 @@ namespace releasemgr
 
 RMGR_EXPORT QCoreApplication* get_core_application();
 
+
 }//releasemgr
 
 #endif // COMMON_FUNCS_H

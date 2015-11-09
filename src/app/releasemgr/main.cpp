@@ -2,10 +2,13 @@
 #include <QDebug>
 #include "global/global.h"
 #include "application.h"
+#include "io/terminal.h"
 #include "kernel/errorinfo.h"
 #include "parser/command_runner.h"
-#include <cstdlib>
-
+#include <QMap>
+#include <QLatin1String>
+#include <iostream>
+#include <cstring>
 using namespace std;
 using namespace releasemgr;
 
@@ -15,6 +18,9 @@ int main(int argc, char *argv[])
       Application app(argc, argv);
       CommandRunner cmdrunner(app);
       QTimer::singleShot(0, Qt::PreciseTimer, [&cmdrunner]{
+         Terminal::writeText("xiuxiu", TerminalColor::Red);
+         Terminal::writeText("xiuxiu", TerminalColor::Blue);
+         Terminal::writeText("xiuxiu", TerminalColor::Green);
          cmdrunner.run();
       });
       return app.exec();
@@ -22,4 +28,4 @@ int main(int argc, char *argv[])
       qDebug() << errorInfo.toString();
       return EXIT_FAILURE;
    }
-} 
+}

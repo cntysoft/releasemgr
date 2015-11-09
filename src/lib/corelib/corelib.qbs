@@ -47,4 +47,12 @@ ReleaseMgrLibrary
          //         "assert.h",
       ]
    }
+   Group {
+      name : "io"
+      prefix : name + '/'
+      files : [
+           "terminal.cpp",
+           "terminal.h",
+       ]
+   }
 }
