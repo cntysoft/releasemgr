@@ -4,12 +4,14 @@
 #include "global/global.h"
 
 QT_BEGIN_NAMESPACE
-class QCommandParser;
+class QCommandLineParser;
 QT_END_NAMESPACE
 
 namespace releasemgr
 {
+
 class Application;
+class OptionPool;
 
 class CommandRunner
 {
@@ -19,14 +21,11 @@ public:
    QString getUsage()const;
    ~CommandRunner();
    void run() const;
-protected:
-   void setupCmdParser();
 private:
-   QCommandParser *cmdParser;
+   OptionPool optionPool;
    const Application &app;
 };
 
 }//releasemgr
-
 
 #endif // COMMAND_RUNNER

@@ -4,12 +4,12 @@
 namespace releasemgr 
 {
 
-Application::Application(int &argc, char **argv)\
+Application::Application(int &argc, char **argv)
    :QCoreApplication(argc, argv)
 {
    setApplicationName(QLatin1String("releasemgr"));
    setOrganizationName(QLatin1String("sheneninfo technology"));
-   setOrganizationDomain(QLatin1String("www.fhzc.com"));
+   setOrganizationDomain(QLatin1String("www.sheneninfo.com"));
 }
 
 Application *Application::instance()

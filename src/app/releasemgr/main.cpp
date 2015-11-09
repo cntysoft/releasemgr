@@ -18,9 +18,6 @@ int main(int argc, char *argv[])
       Application app(argc, argv);
       CommandRunner cmdrunner(app);
       QTimer::singleShot(0, Qt::PreciseTimer, [&cmdrunner]{
-         Terminal::writeText("xiuxiu", TerminalColor::Red);
-         Terminal::writeText("xiuxiu", TerminalColor::Blue);
-         Terminal::writeText("xiuxiu", TerminalColor::Green);
          cmdrunner.run();
       });
       return app.exec();

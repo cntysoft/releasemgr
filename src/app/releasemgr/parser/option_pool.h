@@ -12,17 +12,17 @@ class OptionPool
 {
 public:
    OptionPool();
-//   QCommandLineOption& getFhzcOption() const;
-//   QCommandLineOption& getFhShopOption() const;
-//   QCommandLineOption& getDeployOption() const;
-//   QCommandLineOption& getReleaseMgrOption() const;
-//   QCommandLineOption& getConfigOption() const;
-//private:
-//   QCommandLineOption *fhzcOption;
-//   QCommandLineOption *fhShopOption;
-//   QCommandLineOption *deployOption;
-//   QCommandLineOption *releaseMgrOption;
-//   QCommandLineOption *configOption;
+   QCommandLineOption& getFhzcOptions() const;
+   QCommandLineOption& getFhShopOptions() const;
+   QCommandLineOption& getDeployOptions() const;
+   QCommandLineOption& getReleaseMgrOptions() const;
+   QCommandLineOption& getConfigOptions() const;
+private:
+   QCommandLineOption* fhzcOptions;
+   QCommandLineOption* fhShopOptions;
+   QCommandLineOption* deployOptions;
+   QCommandLineOption* releaseMgrOptions;
+   QCommandLineOption* configOptions;
 };
 
 }
