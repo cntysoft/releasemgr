@@ -7,8 +7,7 @@
 #include "parser/command_runner.h"
 #include <QMap>
 #include <QLatin1String>
-#include <iostream>
-#include <cstring>
+#include "global/const.h"
 using namespace std;
 using namespace releasemgr;
 

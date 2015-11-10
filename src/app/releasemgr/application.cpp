@@ -22,7 +22,10 @@ bool Application::notify(QObject *receiver, QEvent *event)
    try{
       return QCoreApplication::notify(receiver, event);
    }catch(const ErrorInfo& errorInfo){
-      qDebug() << errorInfo.toString();
+      QString str(errorInfo.toString());
+      if(str.size() > 0){
+         qDebug() << str;
+      }
       QCoreApplication* app = get_core_application();
       app->exit(EXIT_FAILURE);
       return false;

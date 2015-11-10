@@ -14,11 +14,6 @@ public:
    bool internalError;
 };
 
-ErrorInfo::ErrorInfo()
-   : d(new ErrorInfoPrivate)
-{
-   
-}
 
 ErrorInfo::ErrorInfo(const ErrorInfo &rhs)
    :d(rhs.d)

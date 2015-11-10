@@ -15,9 +15,8 @@ namespace releasemgr
 class RMGR_EXPORT ErrorInfo
 {
 public:
-   ErrorInfo();
    ErrorInfo(const ErrorInfo &rhs);
-   ErrorInfo(const QString &description, const CodeLocation &codeLocation = CodeLocation(), bool internalError = false);
+   ErrorInfo(const QString &description = QString(), const CodeLocation &codeLocation = CodeLocation(), bool internalError = false);
    ErrorInfo &operator=(const ErrorInfo &other);
    ~ErrorInfo();
    

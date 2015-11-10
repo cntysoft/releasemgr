@@ -34,6 +34,7 @@ ReleaseMgrLibrary
       files : [
            "common_funcs.cpp",
            "common_funcs.h",
+           "const.h",
            "global.h",
            "global.cpp",
        ]
