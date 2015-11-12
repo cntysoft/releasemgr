@@ -1,6 +1,7 @@
-#include "command_runner.h"
+#include "Command_runner.h"
 #include "application.h"
 #include "kernel/errorinfo.h"
+#include "Command/Command_category.h"
 #include <QCommandLineParser>
 #include <QLatin1String>
 
@@ -12,7 +13,7 @@ CommandRunner::CommandRunner(const Application &app)
 {
 }
 
-void CommandRunner::run() const
+void CommandRunner::run()
 {
    //检查子命令的类型
    QStringList args = app.arguments();
@@ -20,7 +21,34 @@ void CommandRunner::run() const
       printUsage();
       throw ErrorInfo();
    }
-   QString subcommand = args.at(1);
+   QStringList targetArgs{args.at(0)};
+   QString first = args.at(1);
+   QCommandLineParser* parser = nullptr;
+   CommandCategory cmdCategory = CommandCategory::Unknow;
+   CommandName cmdName = CommandName::Unknow;
+   if(first.startsWith(QLatin1String("--"))){
+      //匹配顶层Commandparser
+      targetArgs.append(first);
+      parser = optionPool.getEntryCmdParser();
+      cmdCategory = CommandCategory::Global;
+      OptionPool::OptionMapType opts = optionPool.getEntryOptions();
+      if(parser->isSet(opts["version"])){
+         cmdName = CommandName::Global_Version;
+      }else if(parser->isSet(opts["help"])){
+         cmdName = CommandName::Global_Help;
+      }
+   }else{
+      //匹配子命令的Commandparser
+      //查看子命令类型
+         
+   }
+   
+   qDebug() << first;
+   
+}
+
+void CommandRunner::runCmd(const CommandMeta &meta)
+{
    
 }
 
@@ -40,7 +68,7 @@ void CommandRunner::printUsage()const
                   "releasemgr --help \t print help document\n");
 }
 
-QCommandLineParser& CommandRunner::getCmdParserByType(const char* t)
+QCommandLineParser* CommandRunner::getCmdParserByType(const char* t)
 {
    QLatin1String type(t);
    if(type == "fhzc"){

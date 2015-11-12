@@ -1,5 +1,6 @@
 #include "option_pool.h"
 #include <QCommandLineParser>
+#include <QDebug>
 namespace releasemgr
 {
 
@@ -30,12 +31,21 @@ OptionPool::OptionMapType& OptionPool::getEntryOptions()
    return *entryOptions;
 }
 
-//QCommandLineParser& OptionPool::getEntryCmdParser()
-//{
-   
-//}
+QCommandLineParser* OptionPool::getEntryCmdParser()
+{
+   if(nullptr == entryCmdParser){
+      entryCmdParser = new QCommandLineParser();
+      OptionMapType map = getEntryOptions();
+      OptionMapType::const_iterator iterator = map.cbegin();
+      while(iterator != map.cend()){
+         entryCmdParser->addOption(iterator.value());
+         iterator++;
+      }
+   }
+   return entryCmdParser;
+}
 
-QCommandLineParser& OptionPool::getFhzcCmdParser()
+QCommandLineParser* OptionPool::getFhzcCmdParser()
 {
    if(nullptr == fhzcCmdParser){
       fhzcCmdParser = new QCommandLineParser();
@@ -44,14 +54,11 @@ QCommandLineParser& OptionPool::getFhzcCmdParser()
       OptionMapType::const_iterator iterator = map.cbegin();
       while(iterator != map.cend()){
          fhzcCmdParser->addOption(iterator.value());
+         iterator++;
       }
    }
-   return *fhzcCmdParser;
+   return fhzcCmdParser;
 }
 
-QCommandLineParser& OptionPool::getEntryCmdParser()
-{
-   
-}
  
 }//releasemgr

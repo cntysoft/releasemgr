@@ -1,5 +1,5 @@
-#ifndef COMMAND_META_H
-#define COMMAND_META_H
+#ifndef Command_META_H
+#define Command_META_H
 
 #include <QMap>
 #include <QLatin1String>
@@ -7,20 +7,24 @@
 
 namespace releasemgr
 {
-enum class CommandType;
+enum class CommandCategory;
+enum class CommandName;
 
 class CommandMeta
 {
 public:
-   CommandMeta(CommandType cmdType, const QMap<QLatin1String, QString> args);
-   inline CommandType getCommandType()const;
+   CommandMeta(CommandCategory category, CommandName commandName, const QMap<QLatin1String, QString>& args);
+   inline CommandCategory getCommandCategory()const;
+   inline CommandName getCommandName()const;
    inline const QMap<QLatin1String, QString>& getCmdArgs()const;
 private:
-   CommandType commandType;
+   CommandCategory CommandCategory;
+   CommandName Command;
    QMap<QLatin1String, QString> args;
+   
 };
 
 }//releasemgr
 
-#endif // COMMAND_META_H
+#endif // Command_META_H
 

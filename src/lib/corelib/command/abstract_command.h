@@ -1,5 +1,5 @@
-#ifndef ABSTRACT_COMMAND
-#define ABSTRACT_COMMAND
+#ifndef ABSTRACT_Command
+#define ABSTRACT_Command
 
 namespace releasemgr
 {
@@ -12,5 +12,5 @@ public:
 
 }//releasemgr
 
-#endif // ABSTRACT_COMMAND
+#endif // ABSTRACT_Command
 

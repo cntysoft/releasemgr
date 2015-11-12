@@ -1,8 +1,9 @@
-#ifndef COMMAND_RUNNER
-#define COMMAND_RUNNER
+#ifndef Command_RUNNER
+#define Command_RUNNER
 
 #include "global/global.h"
 #include "option_pool.h"
+#include "Command/Command_meta.h"
 #include <QStringList>
 
 QT_BEGIN_NAMESPACE
@@ -21,10 +22,11 @@ public:
    CommandRunner(const Application &app);
    void printUsage()const;
    ~CommandRunner();
-   void run() const;
+   void run();
 protected:
-   QCommandLineParser& getCmdParserByType(const char* type);
+   QCommandLineParser* getCmdParserByType(const char* type);
    QStringList getSupportSubCommands() const;
+   void runCmd(const CommandMeta& meta);
 private:
    OptionPool optionPool;
    const Application &app;
@@ -32,4 +34,4 @@ private:
 
 }//releasemgr
 
-#endif // COMMAND_RUNNER
+#endif // Command_RUNNER

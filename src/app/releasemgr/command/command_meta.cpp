@@ -3,15 +3,15 @@
 namespace releasemgr
 {
 
-CommandMeta::CommandMeta(CommandType cmdType, const QMap<QLatin1String, QString> args)
-   : commandType(cmdType), args(args)
+CommandMeta::CommandMeta(CommandCategory commandCategory, CommandName commandName, const QMap<QLatin1String, QString>& args)
+   : commandCategory(commandCategory), commandName(commandName), args(args)
 {
    
 }
 
-CommandType CommandMeta::getCommandType()const
+CommandCategory CommandMeta::getCommandCategory()const
 {
-   return commandType;
+   return CommandCategory;
 }
 
 const QMap<QLatin1String, QString>& CommandMeta::getCmdArgs()const

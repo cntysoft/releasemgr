@@ -3,6 +3,7 @@
 #include "global/global.h"
 #include <QMap>
 #include <QCommandLineOption>
+
 QT_BEGIN_NAMESPACE
 class QCommandLineParser;
 class QLatin1String;
@@ -23,12 +24,12 @@ public:
 //   OptionMapType& getReleaseMgrOptions() const;
 //   OptionMapType& getConfigOptions() const;
    
-   QCommandLineParser& getFhzcCmdParser();
-   QCommandLineParser& getEntryCmdParser();
-//   QCommandLineParser& getFhShopCmdParser() const;
-//   QCommandLineParser& getDeployCmdParser() const;
-//   QCommandLineParser& getReleaseCmdParser() const;
-//   QCommandLineParser& getConfigCmdParser() const;
+   QCommandLineParser* getFhzcCmdParser();
+   QCommandLineParser* getEntryCmdParser();
+//   QCommandLineParser* getFhShopCmdParser() const;
+//   QCommandLineParser* getDeployCmdParser() const;
+//   QCommandLineParser* getReleaseCmdParser() const;
+//   QCommandLineParser* getConfigCmdParser() const;
 private:
    //   void initFhzcOptions() const;
    //   void initFhShopOptions() const;

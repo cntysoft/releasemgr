@@ -25,9 +25,9 @@ ReleaseMgrApplication
       name : "command"
       prefix : name + '/'
       files : [
-         "command_meta.cpp",
-         "command_meta.h",
-         "command_type.h",
-      ]
+           "command_category.h",
+           "command_meta.cpp",
+           "command_meta.h",
+       ]
    }
 }
