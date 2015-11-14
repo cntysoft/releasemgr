@@ -5,7 +5,7 @@ namespace releasemgr
    
 void GlobalHelpCommand::exec()
 {
-   
+   cmdRunner->printUsage();
    exit(EXIT_SUCCESS);
 }
 

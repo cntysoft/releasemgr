@@ -61,7 +61,6 @@ void CommandRunner::run()
       
    }
    runCmd(CommandMeta(cmdCategory, cmdName, cmdArgs));
-   
 }
 
 void CommandRunner::runCmd(const CommandMeta &meta)

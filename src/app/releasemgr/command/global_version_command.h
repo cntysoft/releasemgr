@@ -8,6 +8,7 @@ namespace releasemgr
 
 class GlobalVersionCommand : public AbstractCommand
 {
+public:
    virtual void exec();
    virtual ~GlobalVersionCommand();
 };

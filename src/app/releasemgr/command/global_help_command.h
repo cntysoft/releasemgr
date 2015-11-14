@@ -7,6 +7,7 @@ namespace releasemgr
 
 class GlobalHelpCommand : public AbstractCommand
 {
+public:
    virtual void exec();
    virtual ~GlobalHelpCommand(); 
 };

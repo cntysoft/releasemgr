@@ -1,7 +1,6 @@
 #include "abstract_command.h"
 #include "global/common_funcs.h"
 #include <QCoreApplication>
-#include "parser/command_runner.h"
 namespace releasemgr 
 {
 

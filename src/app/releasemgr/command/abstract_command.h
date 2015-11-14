@@ -3,11 +3,9 @@
 
 #include "global/global.h"
 #include "io/terminal.h"
-
+#include "parser/command_runner.h"
 namespace releasemgr
 {
-
-class CommandRunner;
 
 class AbstractCommand
 {
