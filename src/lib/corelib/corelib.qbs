@@ -12,8 +12,7 @@ ReleaseMgrLibrary
       name : "command"
       prefix: name + '/'
       files : [
-         "abstract_command.h"
-      ]
+       ]
    }
    Group {
       name : "kernel"

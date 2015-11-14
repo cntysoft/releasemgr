@@ -3,7 +3,8 @@
 
 #include "global/global.h"
 #include "option_pool.h"
-#include "Command/Command_meta.h"
+#include "command/command_meta.h"
+#include "command/command_category.h"
 #include <QStringList>
 
 QT_BEGIN_NAMESPACE
@@ -14,6 +15,7 @@ namespace releasemgr
 {
 
 class Application;
+class AbstractCommand;
 
 class CommandRunner
 {
@@ -24,12 +26,14 @@ public:
    ~CommandRunner();
    void run();
 protected:
+   using CmdPoolType = QMap<CommandName, AbstractCommand* (*)(CommandRunner*)>;
    QCommandLineParser* getCmdParserByType(const char* type);
    QStringList getSupportSubCommands() const;
    void runCmd(const CommandMeta& meta);
 private:
    OptionPool optionPool;
    const Application &app;
+   static const CmdPoolType cmdRegisterPool;
 };
 
 }//releasemgr

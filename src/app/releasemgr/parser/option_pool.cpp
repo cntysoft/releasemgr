@@ -1,6 +1,7 @@
 #include "option_pool.h"
 #include <QCommandLineParser>
 #include <QDebug>
+#include <QString>
 namespace releasemgr
 {
 
@@ -12,8 +13,8 @@ OptionPool::OptionMapType& OptionPool::getFhzcOptions()
 {
    if(nullptr == fhzcOptions){
       fhzcOptions = new OptionMapType{
-         {QLatin1String("version"), QCommandLineOption("version", "the target version to build", "version")},
-         {QLatin1String("targetdeploytype"), QCommandLineOption("targetdeploytype", "the target deploy type code", "targetdeploytype")},
+         {"version", new QCommandLineOption("version", "the target version to build", "version")},
+         {"targetdeploytype", new QCommandLineOption("targetdeploytype", "the target deploy type code", "targetdeploytype")},
       };
    }
    return *fhzcOptions;
@@ -24,8 +25,8 @@ OptionPool::OptionMapType& OptionPool::getEntryOptions()
    if(nullptr == entryOptions){
       entryOptions = new OptionMapType
       {
-         {QLatin1String("version"), QCommandLineOption("version", "the target version to build", "version")},
-         {QLatin1String("help"), QCommandLineOption("help", "print the help info")}
+         {"version", new QCommandLineOption("version", "the target version to build", "version")},
+         {"help", new QCommandLineOption("help", "print the help info")}
       };
    }
    return *entryOptions;
@@ -38,7 +39,7 @@ QCommandLineParser* OptionPool::getEntryCmdParser()
       OptionMapType map = getEntryOptions();
       OptionMapType::const_iterator iterator = map.cbegin();
       while(iterator != map.cend()){
-         entryCmdParser->addOption(iterator.value());
+         entryCmdParser->addOption(*iterator.value());
          iterator++;
       }
    }
@@ -53,7 +54,7 @@ QCommandLineParser* OptionPool::getFhzcCmdParser()
       OptionMapType map = getFhzcOptions();
       OptionMapType::const_iterator iterator = map.cbegin();
       while(iterator != map.cend()){
-         fhzcCmdParser->addOption(iterator.value());
+         fhzcCmdParser->addOption(*iterator.value());
          iterator++;
       }
    }

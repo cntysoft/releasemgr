@@ -4,7 +4,7 @@
 #include "application.h"
 #include "io/terminal.h"
 #include "kernel/errorinfo.h"
-#include "parser/Command_runner.h"
+#include "parser/command_runner.h"
 #include <QMap>
 #include <QLatin1String>
 #include "global/const.h"

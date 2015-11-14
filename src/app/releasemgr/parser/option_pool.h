@@ -6,7 +6,7 @@
 
 QT_BEGIN_NAMESPACE
 class QCommandLineParser;
-class QLatin1String;
+class QString;
 QT_END_NAMESPACE
 
 namespace releasemgr
@@ -14,8 +14,8 @@ namespace releasemgr
 
 class OptionPool
 {
-   using OptionMapType = QMap<QLatin1String, QCommandLineOption>;
 public:
+   using OptionMapType = QMap<QString, QCommandLineOption*>;
    OptionPool();
    OptionMapType& getFhzcOptions();
    OptionMapType& getEntryOptions();

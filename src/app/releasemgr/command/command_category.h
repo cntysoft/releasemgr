@@ -21,7 +21,6 @@ enum class CommandName
    Fhzc_Build,
    Fhzc_DiffBuild,
    Fhzc_DocBuild
-   
 };
 
 }//releasemgr
