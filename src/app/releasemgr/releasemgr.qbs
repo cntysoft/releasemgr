@@ -10,6 +10,7 @@ ReleaseMgrApplication
         "application.cpp",
         "application.h",
         "main.cpp",
+        "types.h",
     ]
     Group {
         name : "parser"
@@ -36,5 +37,23 @@ ReleaseMgrApplication
             "global_version_command.cpp",
             "global_version_command.h",
         ]
+    }
+    Group {
+        files: [
+            "abstract_task.cpp",
+            "abstract_task.h",
+            "abstract_taskmgr.cpp",
+            "abstract_taskmgr.h",
+        ]
+        name : "task"
+        prefix : name + '/'
+    }
+    Group {
+        files : [
+            "diff/clear.h",
+            "full/clear.h",
+        ]
+        name : "fhzc_task"
+        prefix : "task/fhzc/"
     }
 }

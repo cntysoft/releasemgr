@@ -92,7 +92,7 @@ QCommandLineParser* CommandRunner::getCmdParserByType(const char* t)
    if(type == "fhzc"){
       return optionPool.getFhzcCmdParser();
    }else{
-      return optionPool.getFhzcCmdParser();
+      return optionPool.getFhzcCmdParser(); 
    }
 }
 

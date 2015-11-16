@@ -9,12 +9,6 @@ ReleaseMgrLibrary
                                     "."
                                  ])
    Group {
-      name : "command"
-      prefix: name + '/'
-      files : [
-       ]
-   }
-   Group {
       name : "kernel"
       prefix : name + '/'
       files : [
