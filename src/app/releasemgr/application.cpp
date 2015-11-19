@@ -1,6 +1,8 @@
 #include "application.h"
 #include "kernel/errorinfo.h"
-#include "global/common_funcs.h"
+#include "utils/funcs.h"
+
+
 namespace releasemgr 
 {
 
@@ -17,6 +19,7 @@ Application *Application::instance()
    return qobject_cast<Application *>(QCoreApplication::instance());
 }
 
+
 bool Application::notify(QObject *receiver, QEvent *event)
 {
    try{
@@ -26,10 +29,15 @@ bool Application::notify(QObject *receiver, QEvent *event)
       if(str.size() > 0){
          qDebug() << str;
       }
-      QCoreApplication* app = get_core_application();
-      app->exit(EXIT_FAILURE);
+      const Application& app = get_app_ref();
+      app.exit(EXIT_FAILURE);
       return false;
    }
+}
+
+const Settings& Application::getSettings() const
+{
+   return m_settings;
 }
 
 }//releasemgr

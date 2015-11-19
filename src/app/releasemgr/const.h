@@ -1,11 +1,14 @@
-#ifndef CONST_H
-#define CONST_H
+#ifndef RELEASEMGR_CONST_H
+#define RELEASEMGR_CONST_H
 
 namespace releasemgr 
 {
 
-const char* CFG_FILE_NAME = "sheneninfo/releasemgr/releasemgr.ini";
+extern const char* CFG_FILE_NAME;
+extern const char* CFG_GROUP_GLOABL;
+extern const char* CFG_GROUP_FHZC;
+extern const char* CFG_GROUP_FHSHOP;
 
 }//releasemgr
 
-#endif // CONST_H
+#endif // RELEASEMGR_CONST_H

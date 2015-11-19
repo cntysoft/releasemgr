@@ -9,7 +9,9 @@ ReleaseMgrApplication
     files : [
         "application.cpp",
         "application.h",
+        "const.cpp",
         "const.h",
+        
         "main.cpp",
         "settings.cpp",
         "settings.h",
@@ -42,21 +44,32 @@ ReleaseMgrApplication
         ]
     }
     Group {
+        name : "task"
+        prefix : name + '/'
         files: [
             "abstract_task.cpp",
             "abstract_task.h",
             "abstract_taskmgr.cpp",
             "abstract_taskmgr.h",
         ]
-        name : "task"
-        prefix : name + '/'
     }
     Group {
+        name : "fhzc_task"
+        prefix : "task/fhzc/"
         files : [
             "diff/clear.h",
             "full/clear.h",
         ]
-        name : "fhzc_task"
-        prefix : "task/fhzc/"
     }
+    Group {
+        name : "utils"
+        prefix : name + '/'
+        files : [
+            "funcs.cpp",
+            "funcs.h",
+            "env_detecter.cpp",
+            "default_cfg_initializer.cpp",
+            "env_detecter.h",
+        ]
+    }   
 }

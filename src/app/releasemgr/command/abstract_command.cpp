@@ -1,6 +1,7 @@
 #include "abstract_command.h"
-#include "global/common_funcs.h"
-#include <QCoreApplication>
+#include "utils/funcs.h"
+#include "application.h"
+
 namespace releasemgr 
 {
 
@@ -15,8 +16,8 @@ AbstractCommand::~AbstractCommand()
 
 void AbstractCommand::exit(int exitCode) const
 {
-   QCoreApplication* app = get_core_application();
-   app->exit(exitCode);
+   const Application& app = get_app_ref();
+   app.exit(exitCode);
 }
 
 void AbstractCommand::printConsoleMsg(const char *str, TerminalColor color, bool underline, bool blink) const

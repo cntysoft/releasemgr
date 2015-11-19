@@ -7,11 +7,6 @@
 namespace releasemgr 
 {
 
-QCoreApplication* get_core_application()
-{
-   return QCoreApplication::instance();
-}
-
 QString get_current_user_home_dir()
 {
    passwd* pwd = getpwuid(getuid());
