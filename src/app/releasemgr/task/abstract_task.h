@@ -3,11 +3,12 @@
 
 
 
-namespace relasemgr 
+namespace releasemgr 
 {
 
 class AbstractTask
 {
+public:
    virtual ~AbstractTask();
 };
 

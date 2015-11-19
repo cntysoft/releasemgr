@@ -10,6 +10,7 @@ namespace relasemgr
 
 using TaskParamType = QMap<QLatin1String, QString>;
 
+
 }//relasemgr
 
 #endif // TYPES_H

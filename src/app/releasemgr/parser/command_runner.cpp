@@ -5,6 +5,7 @@
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 #include <QLatin1String>
+#include <QScopedPointer>
 #include "command/abstract_command.h"
 #include "command/command_repo.h"
 
@@ -66,7 +67,7 @@ void CommandRunner::run()
 void CommandRunner::runCmd(const CommandMeta &meta)
 {
    AbstractCommand* (*initializer)(CommandRunner*) = cmdRegisterPool[meta.getCommandName()];
-   AbstractCommand* cmd = initializer(this);
+   QScopedPointer<AbstractCommand> cmd(initializer(this));
    cmd->exec();
 }
 

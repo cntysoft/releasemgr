@@ -9,7 +9,10 @@ ReleaseMgrApplication
     files : [
         "application.cpp",
         "application.h",
+        "const.h",
         "main.cpp",
+        "settings.cpp",
+        "settings.h",
         "types.h",
     ]
     Group {
