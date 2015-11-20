@@ -3,6 +3,11 @@
 namespace releasemgr 
 {
 
+AbstractTask::AbstractTask(AbstractTaskMgr &taskmgr)
+   : m_taskmgr(taskmgr), m_settings(taskmgr.getSysSettings())
+{
+}
+
 AbstractTask::~AbstractTask()
 {}
 
