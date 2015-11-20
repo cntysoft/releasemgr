@@ -43,7 +43,8 @@ void EnvDetecter::detect()
       throw ErrorInfo("build enviroment tools not satisfy, please install them and try again");
    }
    //将探测结果写入配置文件
-   m_settings.setValue(IS_DETECT_KEY, true);
+//   m_settings.setValue(IS_DETECT_KEY, true);
+//   m_settings.sync();
 }
 
 bool EnvDetecter::detectGit()

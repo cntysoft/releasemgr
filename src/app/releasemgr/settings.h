@@ -30,8 +30,6 @@ public:
 private:
    QSettings* createQSettings();
    void initDefaultConf();
-   QString internalKeyRepresentation(const QString& key) const;
-   QString externalKeyRepresentation(const QString& key) const;
    friend void init_defualt_cfg(Settings& Settings);
 private:  
    QSettings* const m_settings;

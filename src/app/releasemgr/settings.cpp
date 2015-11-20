@@ -15,9 +15,10 @@ Settings::Settings()
    :m_settings(createQSettings())
 {
    QFile cfgFilename(getCfgFilename());
-   if(!cfgFilename.exists()){
-      initDefaultConf();
-   }
+//   if(!cfgFilename.exists()){
+//      initDefaultConf();
+//   }
+   initDefaultConf();
 }
 
 const QString& Settings::getCfgDir()
@@ -42,17 +43,6 @@ void Settings::initDefaultConf()
    init_defualt_cfg(*this);
 }
 
-QString Settings::internalKeyRepresentation(const QString &key) const
-{
-   QString internalKey = key;
-   return internalKey.replace(QLatin1Char('.'), QLatin1Char('/'));
-}
-
-QString Settings::externalKeyRepresentation(const QString &key) const
-{
-   QString externalKey = key;
-   return externalKey.replace(QLatin1Char('/'), QLatin1Char('.'));
-}
 
 Settings::Status Settings::getStatus()const
 {
@@ -61,16 +51,16 @@ Settings::Status Settings::getStatus()const
 
 QVariant Settings::getValue(const QString &key, const QString &group, const QVariant &defaultValue) const
 {
-   m_settings->beginGroup(internalKeyRepresentation(group));
-   QVariant value = m_settings->value(internalKeyRepresentation(key), defaultValue);
+   m_settings->beginGroup(group);
+   QVariant value = m_settings->value(key, defaultValue);
    m_settings->endGroup();
    return value;
 }
 
 void Settings::setValue(const QString &key, const QVariant &value, const QString &group)
 {
-   m_settings->beginGroup(internalKeyRepresentation(group));
-   m_settings->setValue(internalKeyRepresentation(key),value);
+   m_settings->beginGroup(group);
+   m_settings->setValue(key,value);
    m_settings->endGroup();
 }
 
