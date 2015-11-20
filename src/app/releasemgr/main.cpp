@@ -1,5 +1,4 @@
 #include <QTimer>
-#include <QDebug>
 #include <QMap>
 #include <QLatin1String>
 
@@ -12,8 +11,8 @@
 #include "global/common_funcs.h"
 #include "settings.h"
 #include "utils/env_detecter.h"
+#include "io/terminal.h"
 
-using namespace std;
 using namespace releasemgr;
 
 int main(int argc, char *argv[])
@@ -31,7 +30,8 @@ int main(int argc, char *argv[])
    }catch(const ErrorInfo& errorInfo){
       QString str(errorInfo.toString());
       if(str.size() > 0){
-         qDebug() << str;
+         str += '\n';
+         Terminal::writeText(str.toLatin1(), TerminalColor::Red);
       }
       return EXIT_FAILURE;
    }

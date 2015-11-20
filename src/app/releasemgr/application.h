@@ -19,7 +19,7 @@ public:
    Application(int &argc, char **argv);
    bool notify(QObject * receiver, QEvent * event);
    static Application *instance();
-   const Settings& getSettings() const;
+   Settings& getSettings();
 private:
    Settings m_settings;
 };

@@ -1,7 +1,7 @@
 #include "application.h"
 #include "kernel/errorinfo.h"
 #include "utils/funcs.h"
-
+#include "io/terminal.h"
 
 namespace releasemgr 
 {
@@ -27,7 +27,8 @@ bool Application::notify(QObject *receiver, QEvent *event)
    }catch(const ErrorInfo& errorInfo){
       QString str(errorInfo.toString());
       if(str.size() > 0){
-         qDebug() << str;
+         str += '\n';
+         Terminal::writeText(str.toLatin1(), TerminalColor::Red);
       }
       const Application& app = get_app_ref();
       app.exit(EXIT_FAILURE);
@@ -35,7 +36,7 @@ bool Application::notify(QObject *receiver, QEvent *event)
    }
 }
 
-const Settings& Application::getSettings() const
+Settings& Application::getSettings()
 {
    return m_settings;
 }
