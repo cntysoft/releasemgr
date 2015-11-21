@@ -13,8 +13,7 @@ OptionPool::OptionMapType& OptionPool::getFhzcOptions()
 {
    if(nullptr == m_fhzcOptions){
       m_fhzcOptions = new OptionMapType{
-         {"version", new QCommandLineOption("version", "the target version to build", "version")},
-         {"targetdeploytype", new QCommandLineOption("targetdeploytype", "the target deploy type code", "targetdeploytype")},
+         {"version", new QCommandLineOption("version", "the target version to build", "version")}
       };
    }
    return *m_fhzcOptions;
@@ -76,7 +75,7 @@ OptionPool::~OptionPool()
    }
    delete m_entryOptions;
    it = m_fhzcOptions->cbegin();
-   while(it != m_fhzcOptions){
+   while(it != m_fhzcOptions->cend()){
       delete it.value();
       it++;
    }

@@ -97,8 +97,25 @@ CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandName command, cons
       parser->process(invokeArgs);
       OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
       QStringList positionArgs = parser->positionalArguments();
+      bool syntaxOk = true;
       if(1 != positionArgs.count()){
-         
+         syntaxOk = false;
+      }
+      QString action = positionArgs.takeFirst();
+      QStringList supportActions{
+         "fullbuild", "diffbuild", "docbuild"
+      };
+      if(!supportActions.contains(action)){
+         syntaxOk = false;
+      }
+      QCommandLineOption* versionOpt = opts["version"];
+      QString version = parser->value(versionOpt);
+      if(0 == version.size()){
+         syntaxOk = false;
+      }
+      if(!syntaxOk){
+         printUsage();
+         throw ErrorInfo();
       }
       break;
    }
