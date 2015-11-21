@@ -2,13 +2,13 @@
 #define TYPES_H
 
 #include <QMap>
-#include <QString>
+#include <QVariant>
 #include <QLatin1String>
 
-namespace relasemgr
+namespace releasemgr
 {
 
-using TaskParamType = QMap<QLatin1String, QString>;
+using TaskParamsType = QMap<QLatin1String, QVariant>;
 
 
 }//relasemgr

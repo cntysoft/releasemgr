@@ -11,55 +11,76 @@ OptionPool::OptionPool()
 
 OptionPool::OptionMapType& OptionPool::getFhzcOptions()
 {
-   if(nullptr == fhzcOptions){
-      fhzcOptions = new OptionMapType{
+   if(nullptr == m_fhzcOptions){
+      m_fhzcOptions = new OptionMapType{
          {"version", new QCommandLineOption("version", "the target version to build", "version")},
          {"targetdeploytype", new QCommandLineOption("targetdeploytype", "the target deploy type code", "targetdeploytype")},
       };
    }
-   return *fhzcOptions;
+   return *m_fhzcOptions;
 }
 
 OptionPool::OptionMapType& OptionPool::getEntryOptions()
 {
-   if(nullptr == entryOptions){
-      entryOptions = new OptionMapType
+   if(nullptr == m_entryOptions){
+      m_entryOptions = new OptionMapType
       {
          {"version", new QCommandLineOption("version", "the target version to build", "version")},
          {"help", new QCommandLineOption("help", "print the help info")}
       };
    }
-   return *entryOptions;
+   return *m_entryOptions;
 }
 
 QCommandLineParser* OptionPool::getEntryCmdParser()
 {
-   if(nullptr == entryCmdParser){
-      entryCmdParser = new QCommandLineParser();
+   if(nullptr == m_entryCmdParser){
+      m_entryCmdParser = new QCommandLineParser();
       OptionMapType map = getEntryOptions();
       OptionMapType::const_iterator iterator = map.cbegin();
       while(iterator != map.cend()){
-         entryCmdParser->addOption(*iterator.value());
+         m_entryCmdParser->addOption(*iterator.value());
          iterator++;
       }
    }
-   return entryCmdParser;
+   return m_entryCmdParser;
 }
 
 QCommandLineParser* OptionPool::getFhzcCmdParser()
 {
-   if(nullptr == fhzcCmdParser){
-      fhzcCmdParser = new QCommandLineParser();
-      fhzcCmdParser->addPositionalArgument("action", "the build action type");
+   if(nullptr == m_fhzcCmdParser){
+      m_fhzcCmdParser = new QCommandLineParser();
+      m_fhzcCmdParser->addPositionalArgument("action", "the build action type");
       OptionMapType map = getFhzcOptions();
       OptionMapType::const_iterator iterator = map.cbegin();
       while(iterator != map.cend()){
-         fhzcCmdParser->addOption(*iterator.value());
+         m_fhzcCmdParser->addOption(*iterator.value());
          iterator++;
       }
    }
-   return fhzcCmdParser;
+   return m_fhzcCmdParser;
 }
 
- 
+OptionPool::~OptionPool()
+{
+   if(nullptr != m_fhzcCmdParser){
+      delete m_fhzcCmdParser;
+   }
+   if(nullptr != m_entryCmdParser){
+      delete m_entryCmdParser;
+   }
+   OptionMapType::const_iterator it = m_entryOptions->cbegin();
+   while(it != m_entryOptions->cend()){
+      delete it.value();
+      it++;
+   }
+   delete m_entryOptions;
+   it = m_fhzcOptions->cbegin();
+   while(it != m_fhzcOptions){
+      delete it.value();
+      it++;
+   }
+   delete m_fhzcOptions;
+}
+
 }//releasemgr

@@ -18,9 +18,7 @@ enum class CommandName
    Unknow,
    Global_Version,
    Global_Help,
-   Fhzc_Build,
-   Fhzc_DiffBuild,
-   Fhzc_DocBuild
+   Fhzc_Build
 };
 
 }//releasemgr

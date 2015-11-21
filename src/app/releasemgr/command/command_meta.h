@@ -3,6 +3,7 @@
 
 #include <QMap>
 #include <QString>
+#include <QVariant>
 
 namespace releasemgr
 {
@@ -12,7 +13,8 @@ enum class CommandName;
 class CommandMeta
 {
 public:
-   using CmdArgType = QMap<QString, QString>;
+   using CmdArgType = QMap<QLatin1String, QVariant>;
+public:
    CommandMeta(CommandCategory category, CommandName commandName, const CmdArgType& args);
    CommandCategory getCommandCategory()const;
    CommandName getCommandName()const;
@@ -26,4 +28,3 @@ private:
 }//releasemgr
 
 #endif // Command_META_H
-

@@ -1,14 +1,16 @@
 #ifndef Command_RUNNER
 #define Command_RUNNER
 
+#include <QList>
+
 #include "global/global.h"
 #include "option_pool.h"
 #include "command/command_meta.h"
 #include "command/command_category.h"
-#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 class QCommandLineParser;
+class QString;
 QT_END_NAMESPACE
 
 namespace releasemgr
@@ -27,13 +29,17 @@ public:
    void run();
 protected:
    using CmdPoolType = QMap<CommandName, AbstractCommand* (*)(CommandRunner*)>;
-   QCommandLineParser* getCmdParserByType(const char* type);
-   QStringList getSupportSubCommands() const;
+   using CmdNameRepoType = QMap<QString, CommandName>;
+   QCommandLineParser* getCmdParserByCmdName(CommandName cmdName);
+   QList<QString> getSupportSubCommands() const;
    void runCmd(const CommandMeta& meta);
+   bool isSubCmdSupported(const QString& cmd) const;
+   CommandMeta::CmdArgType parseSubCmdArgs(CommandName cmd, const QStringList& invokeArgs);
 private:
-   OptionPool optionPool;
-   const Application &app;
-   static const CmdPoolType cmdRegisterPool;
+   OptionPool m_optionPool;
+   const Application& m_app;
+   static const CmdPoolType m_cmdRegisterPool;
+   static const CmdNameRepoType m_subCmdNameMap;
 };
 
 }//releasemgr

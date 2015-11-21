@@ -37,6 +37,8 @@ ReleaseMgrApplication
             "command_meta.cpp",
             "command_meta.h",
             "command_repo.h",
+            "fhzc_build_command.cpp",
+            "fhzc_build_command.h",
             "global_help_command.cpp",
             "global_help_command.h",
             "global_version_command.cpp",

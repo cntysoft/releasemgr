@@ -17,6 +17,7 @@ class OptionPool
 public:
    using OptionMapType = QMap<QString, QCommandLineOption*>;
    OptionPool();
+   ~OptionPool();
    OptionMapType& getFhzcOptions();
    OptionMapType& getEntryOptions();
 //   OptionMapType& getFhShopOptions() const;
@@ -36,11 +37,11 @@ private:
    //   void initDeployOptions() const;
    //   void initReleaseMgrOptions() const;
    //   void initConfigOptions() const;
-   OptionMapType* fhzcOptions = nullptr;
-   OptionMapType* entryOptions = nullptr;
+   OptionMapType* m_fhzcOptions = nullptr;
+   OptionMapType* m_entryOptions = nullptr;
    
-   QCommandLineParser* fhzcCmdParser = nullptr;
-   QCommandLineParser* entryCmdParser = nullptr;
+   QCommandLineParser* m_fhzcCmdParser = nullptr;
+   QCommandLineParser* m_entryCmdParser = nullptr;
 //   OptionMapType* fhShopOptions = nullptr;
 //   OptionMapType* deployOptions = nullptr;
 //   OptionMapType* releaseMgrOptions = nullptr;
