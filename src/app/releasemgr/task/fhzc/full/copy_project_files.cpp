@@ -21,18 +21,8 @@ void CopyProjectFiles::exec()
    if(!buildDir.exists()){
       buildDir.mkpath(".");
    }
-   QStringList files = collectProjectFilenames();
-   writeDoneMsg();
-}
-
-QStringList CopyProjectFiles::collectProjectFilenames()
-{
-   QDir projectDir(m_projectDir);
-   if(!projectDir.exists()){
-      throw ErrorInfo("project directory not exist");
-   }
    //获取核心程序的文件集合
-   QDir kernelLibDir(m_projectDir+QDir.separator()+"Library");
+//   QDir kernelLibDir(m_projectDir+QDir.separator()+"Library");
    
 }
 
