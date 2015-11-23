@@ -8,6 +8,7 @@
 
 #include "global/global.h"
 #include "types.h"
+#include "io/terminal.h"
 
 namespace releasemgr 
 {
@@ -28,6 +29,9 @@ public:
 public:
    virtual void run(const TaskParamsType& args);
    virtual ~AbstractTaskMgr();
+protected:
+   void writeLine(const char* msg, TerminalColor color = TerminalColor::Default);
+   void writeMsg(const char* msg, TerminalColor color = TerminalColor::Default);
 protected:
    virtual void beforeRun(const TaskParamsType& args);
    virtual void afterRun(const TaskParamsType& args);

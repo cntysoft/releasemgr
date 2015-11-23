@@ -26,7 +26,9 @@ void AbstractTaskMgr::run(const TaskParamsType& args)
    beforeRun(args);
    QList<AbstractTask*>::const_iterator it = m_tasks.cbegin();
    while(it != m_tasks.cend()){
+      beforeRunCycle(*(*it));
       (*it)->exec();
+      afterRunCycle(*(*it));
       it++;
    }
    afterRun(args);
@@ -40,6 +42,18 @@ const QLatin1String& AbstractTaskMgr::getModuleName() const
 Settings& AbstractTaskMgr::getSysSettings() const
 {
    return m_settings;
+}
+
+void AbstractTaskMgr::writeLine(const char *msg, TerminalColor color)
+{
+   Terminal::writeText(">> ", TerminalColor::Green);
+   Terminal::writeText(msg, color);
+   Terminal::writeText("\n");
+}
+
+void AbstractTaskMgr::writeMsg(const char *msg, TerminalColor color)
+{
+   Terminal::writeText(msg, color);
 }
 
 void AbstractTaskMgr::beforeRun(const TaskParamsType&)
