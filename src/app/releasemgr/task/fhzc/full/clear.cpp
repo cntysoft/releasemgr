@@ -1,7 +1,9 @@
+#include <QDir>
+#include <QDebug>
+
 #include "clear.h"
 #include "task/abstract_taskmgr.h"
-
-#include <QDebug>
+#include "kernel/errorinfo.h"
 
 namespace releasemgr{
 namespace task{
@@ -14,7 +16,13 @@ Clear::Clear(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
 
 void Clear::exec()
 {
-   writeLine("clear project directory");
+   writeLine("清除相关打包文件夹内容 ... ");
+   QDir buildDir(m_buildDir);
+   if(buildDir.exists()){
+      buildDir.removeRecursively();
+   }else{
+      throw ErrorInfo("delete build directory failure");
+   }
 }
 
 Clear::~Clear()
