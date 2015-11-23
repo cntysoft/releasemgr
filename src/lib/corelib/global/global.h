@@ -1,5 +1,5 @@
-#ifndef GLOBAL_H
-#define GLOBAL_H
+#ifndef RMGR_CORE_GLOBAL_H
+#define RMGR_CORE_GLOBAL_H
 
 #include <qglobal.h>
 #ifdef RMGR_STATIC_LIB
@@ -12,4 +12,4 @@
    #endif
 #endif
 
-#endif // GLOBAL_H
+#endif // RMGR_CORE_GLOBAL_H

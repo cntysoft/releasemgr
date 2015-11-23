@@ -1,5 +1,4 @@
 #include <QDir>
-#include <QDebug>
 
 #include "clear.h"
 #include "task/abstract_taskmgr.h"
@@ -16,13 +15,14 @@ Clear::Clear(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
 
 void Clear::exec()
 {
-   writeLine("清除相关打包文件夹内容 ... ");
+   writeBeginMsg("清除相关打包文件夹内容 ... ");
    QDir buildDir(m_buildDir);
    if(buildDir.exists()){
       if(!buildDir.removeRecursively()){
          throw ErrorInfo("delete build directory failure");
       }
    }
+   writeDoneMsg();
 }
 
 Clear::~Clear()

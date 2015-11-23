@@ -30,7 +30,10 @@ public:
    virtual ~AbstractTask();
 protected:
    void runCmd(const QLatin1String& cmd, const TaskParamsType& args, const QString& cwd);
-   void writeLine(const char* msg, TerminalColor color = TerminalColor::Default);
+   void writeLine(const char* msg, TerminalColor color = TerminalColor::Default, bool withNewLine = true);
+   void writeMsg(const char* msg, TerminalColor color = TerminalColor::Default);
+   void writeBeginMsg(const char* msg);
+   void writeDoneMsg();
 protected:
    const AbstractTaskMgr& m_taskmgr;
    Settings& m_settings;

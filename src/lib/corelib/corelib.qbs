@@ -45,6 +45,7 @@ ReleaseMgrLibrary
       name : "io"
       prefix : name + '/'
       files : [
+           "filesystem.h",
            "terminal.cpp",
            "terminal.h",
        ]

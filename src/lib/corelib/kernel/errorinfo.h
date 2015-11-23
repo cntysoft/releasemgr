@@ -1,5 +1,5 @@
-#ifndef ERRORINFO
-#define ERRORINFO
+#ifndef RMGR_CORE_KERNEL_CODE_ERRORINFO_H
+#define RMGR_CORE_KERNEL_CODE_ERRORINFO_H
 
 #include <QSharedDataPointer>
 #include "global/global.h"
@@ -39,5 +39,5 @@ private:
 }//releasemgr
 
 Q_DECLARE_METATYPE(releasemgr::ErrorInfo)
-#endif // ERRORINFO
+#endif // RMGR_CORE_KERNEL_CODE_ERRORINFO_H
 

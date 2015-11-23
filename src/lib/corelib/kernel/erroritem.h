@@ -1,5 +1,5 @@
-#ifndef ERRORITEM
-#define ERRORITEM
+#ifndef RMGR_CORE_KERNEL_CODE_ERRORITEM_H
+#define RMGR_CORE_KERNEL_CODE_ERRORITEM_H
 
 #include "global/global.h"
 #include <QExplicitlySharedDataPointer>
@@ -31,5 +31,5 @@ private:
 };
 }
 
-#endif // ERRORITEM
+#endif // RMGR_CORE_KERNEL_CODE_ERRORITEM_H
 

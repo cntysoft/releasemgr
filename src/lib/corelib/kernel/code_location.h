@@ -1,5 +1,5 @@
-#ifndef CODE_LOCATION
-#define CODE_LOCATION
+#ifndef RMGR_CORE_KERNEL_CODE_LOCATION_H
+#define RMGR_CORE_KERNEL_CODE_LOCATION_H
 
 #include "global/global.h"
 
@@ -44,5 +44,5 @@ QDebug operator<<(QDebug debug, const CodeLocation &location);
 
 }//releasemgr
 
-#endif // CODE_LOCATION
+#endif // RMGR_CORE_KERNEL_CODE_LOCATION_H
 

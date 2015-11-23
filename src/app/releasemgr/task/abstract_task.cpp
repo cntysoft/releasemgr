@@ -17,12 +17,30 @@ QVariant AbstractTask::getSysCfgValue(const QString &key, const QVariant &defaul
    return m_settings.getValue(key, m_taskmgr.getModuleName(), defaultValue);
 }
 
-void AbstractTask::writeLine(const char *msg, TerminalColor color)
+void AbstractTask::writeLine(const char *msg, TerminalColor color, bool withNewLine)
 {
    Terminal::writeText("> ", TerminalColor::Green);
    Terminal::writeText(msg, color);
-   Terminal::writeText("\n");
+   if(withNewLine){
+      Terminal::writeText("\n");
+   }
 }
+
+void AbstractTask::writeMsg(const char *msg, TerminalColor color)
+{
+   Terminal::writeText(msg, color);
+}
+
+void AbstractTask::writeBeginMsg(const char *msg)
+{
+   writeLine(msg, TerminalColor::Default, false);
+}
+
+void AbstractTask::writeDoneMsg()
+{
+   Terminal::writeText("done\n", TerminalColor::Green);
+}
+
 
 AbstractTask::~AbstractTask()
 {}

@@ -1,5 +1,5 @@
-#ifndef CONST_H
-#define CONST_H
+#ifndef RMGR_CORE_GLOBAL_CONST_H
+#define RMGR_CORE_GLOBAL_CONST_H
 
 namespace releasemgr 
 {
@@ -12,5 +12,5 @@ const int DEPLOY_TYPE_PUBLIC_DEBUG = 5;
 }//releasemgr
 
 
-#endif // CONST_H
+#endif // RMGR_CORE_GLOBAL_CONST_H
 

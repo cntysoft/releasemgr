@@ -5,6 +5,7 @@
 #include "settings.h"
 
 #include "task/fhzc/full/clear.h"
+#include "task/fhzc/full/copy_project_files.h"
 
 namespace releasemgr{
 namespace task{
@@ -14,8 +15,11 @@ namespace fullbuild{
 TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    :AbstractTaskMgr(moduleName, settings)
 {
-   m_taskInitializers.insert("clear", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+   m_taskInitializers.insert("Clear", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new Clear(taskmgr, args);
+   });
+   m_taskInitializers.insert("CopyProjectFiles", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new CopyProjectFiles(taskmgr, args);
    });
 }
 

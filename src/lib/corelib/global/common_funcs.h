@@ -1,5 +1,5 @@
-#ifndef COMMON_FUNCS_H
-#define COMMON_FUNCS_H
+#ifndef RMGR_CORE_GLOBAL_COMMON_FUNCS_H
+#define RMGR_CORE_GLOBAL_COMMON_FUNCS_H
 #include "global.h"
 
 QT_BEGIN_NAMESPACE
@@ -13,4 +13,4 @@ RMGR_EXPORT QString get_current_user_home_dir();
 
 }//releasemgr
 
-#endif // COMMON_FUNCS_H
+#endif // RMGR_CORE_GLOBAL_COMMON_FUNCS_H

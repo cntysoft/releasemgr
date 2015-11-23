@@ -61,12 +61,14 @@ ReleaseMgrApplication
       name : "fhzc_task"
       prefix : "task/fhzc/"
       files : [
-         "diff/clear.h",
-         "full/clear.cpp",
-         "full/clear.h",
-         "full/taskmgr.cpp",
-         "full/taskmgr.h",
-      ]
+           "diff/clear.h",
+           "full/clear.cpp",
+           "full/clear.h",
+           "full/copy_project_files.cpp",
+           "full/copy_project_files.h",
+           "full/taskmgr.cpp",
+           "full/taskmgr.h",
+       ]
    }
    Group {
       name : "utils"

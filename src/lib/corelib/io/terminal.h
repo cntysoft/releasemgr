@@ -1,5 +1,5 @@
-#ifndef TERMINAL
-#define TERMINAL
+#ifndef RMGR_CORE_IO_TERMINAL_H
+#define RMGR_CORE_IO_TERMINAL_H
 
 #include <QMap>
 #include "global/global.h"
@@ -45,5 +45,5 @@ protected:
 
 }//releasemgr
 
-#endif // TERMINAL
+#endif // RMGR_CORE_IO_TERMINAL_H
 
