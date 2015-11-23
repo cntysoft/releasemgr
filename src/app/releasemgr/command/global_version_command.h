@@ -9,6 +9,8 @@ namespace releasemgr
 class GlobalVersionCommand : public AbstractCommand
 {
 public:
+   GlobalVersionCommand(CommandRunner* runner, const CommandMeta& invokeMeta);
+public:
    virtual void exec();
    virtual ~GlobalVersionCommand();
 };

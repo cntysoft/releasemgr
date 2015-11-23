@@ -18,26 +18,30 @@ namespace releasemgr
 
 class Application;
 class AbstractCommand;
+class Settings;
 
 class CommandRunner
 {
    Q_DISABLE_COPY(CommandRunner)
 public:
-   CommandRunner(const Application &app);
+   CommandRunner(Application &app);
    void printUsage()const;
+   Settings& getSysSettings();
    ~CommandRunner();
    void run();
 protected:
-   using CmdPoolType = QMap<CommandName, AbstractCommand* (*)(CommandRunner*)>;
+   using CmdPoolType = QMap<CommandName, AbstractCommand* (*)(CommandRunner*, const CommandMeta& meta)>;
    using CmdNameRepoType = QMap<QString, CommandName>;
    QCommandLineParser* getCmdParserByCmdName(CommandName cmdName);
    QList<QString> getSupportSubCommands() const;
    void runCmd(const CommandMeta& meta);
    bool isSubCmdSupported(const QString& cmd) const;
-   CommandMeta::CmdArgType parseSubCmdArgs(CommandName cmd, const QStringList& invokeArgs);
+private:
+   CommandMeta::CmdArgType parseSubCmdArgs(CommandCategory& category, CommandName cmd, const QStringList& invokeArgs);
+   void parseFhzcFullBuildCmdArgs(const QStringList& invokeArgs, CommandMeta::CmdArgType& args);
 private:
    OptionPool m_optionPool;
-   const Application& m_app;
+   Application& m_app;
    static const CmdPoolType m_cmdRegisterPool;
    static const CmdNameRepoType m_subCmdNameMap;
 };

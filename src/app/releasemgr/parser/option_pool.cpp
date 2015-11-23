@@ -13,8 +13,8 @@ OptionPool::OptionMapType& OptionPool::getFhzcOptions()
 {
    if(nullptr == m_fhzcOptions){
       m_fhzcOptions = new OptionMapType{
-         {"version", new QCommandLineOption("version", "the target version to build", "version")}
-      };
+      {"version", new QCommandLineOption("version", "the target version to build", "version")}
+   };
    }
    return *m_fhzcOptions;
 }
@@ -24,9 +24,9 @@ OptionPool::OptionMapType& OptionPool::getEntryOptions()
    if(nullptr == m_entryOptions){
       m_entryOptions = new OptionMapType
       {
-         {"version", new QCommandLineOption("version", "the target version to build", "version")},
-         {"help", new QCommandLineOption("help", "print the help info")}
-      };
+      {"version", new QCommandLineOption("version", "the target version to build", "version")},
+      {"help", new QCommandLineOption("help", "print the help info")}
+   };
    }
    return *m_entryOptions;
 }
@@ -68,18 +68,22 @@ OptionPool::~OptionPool()
    if(nullptr != m_entryCmdParser){
       delete m_entryCmdParser;
    }
-   OptionMapType::const_iterator it = m_entryOptions->cbegin();
-   while(it != m_entryOptions->cend()){
-      delete it.value();
-      it++;
+   if(nullptr != m_entryOptions){
+      OptionMapType::const_iterator it = m_entryOptions->cbegin();
+      while(it != m_entryOptions->cend()){
+         delete it.value();
+         it++;
+      }
+      delete m_entryOptions;
    }
-   delete m_entryOptions;
-   it = m_fhzcOptions->cbegin();
-   while(it != m_fhzcOptions->cend()){
-      delete it.value();
-      it++;
+   if(nullptr != m_fhzcOptions){
+      OptionMapType::const_iterator it = m_fhzcOptions->cbegin();
+      while(it != m_fhzcOptions->cend()){
+         delete it.value();
+         it++;
+      }
+      delete m_fhzcOptions;
    }
-   delete m_fhzcOptions;
 }
 
 }//releasemgr

@@ -1,4 +1,6 @@
-#ifndef CLEAR_H
-#define CLEAR_H
+#ifndef TASK_FHZC_FULLBUILD_CLEAR_H
+#define TASK_FHZC_FULLBUILD_CLEAR_H
 
-#endif // CLEAR_H
+
+
+#endif // TASK_FHZC_FULLBUILD_CLEAR_H

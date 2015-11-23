@@ -8,6 +8,8 @@ namespace releasemgr
 class GlobalHelpCommand : public AbstractCommand
 {
 public:
+   GlobalHelpCommand(CommandRunner* runner, const CommandMeta& invokeMeta);
+public:
    virtual void exec();
    virtual ~GlobalHelpCommand(); 
 };

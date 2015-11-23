@@ -61,6 +61,8 @@ ReleaseMgrApplication
         files : [
             "diff/clear.h",
             "full/clear.h",
+            "full/taskmgr.cpp",
+            "full/taskmgr.h",
         ]
     }
     Group {

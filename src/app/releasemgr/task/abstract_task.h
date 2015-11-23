@@ -4,6 +4,7 @@
 #include <QVariant>
 
 #include "task/abstract_taskmgr.h"
+#include "types.h"
 
 QT_BEGIN_NAMESPACE
 class QString;
@@ -19,15 +20,16 @@ class Settings;
 class AbstractTask
 {
 public:
-   AbstractTask(AbstractTaskMgr& taskmgr);
+   AbstractTask(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);
    QVariant getSysCfgValue(const QString& key, const QVariant & defaultValue = QVariant());
 public:
    virtual ~AbstractTask();
 protected:
-   void runCmd(const QLatin1String& cmd, const QStringList& args, const QString& cwd);
+   void runCmd(const QLatin1String& cmd, const TaskParamsType& args, const QString& cwd);
 protected:
-   AbstractTaskMgr& m_taskmgr;
+   const AbstractTaskMgr& m_taskmgr;
    Settings& m_settings;
+   const TaskParamsType& m_invokeArgs;
 };
 
 }//relasemgr

@@ -9,14 +9,17 @@ namespace releasemgr
 
 class AbstractCommand
 {
+   Q_DISABLE_COPY(AbstractCommand)
+public:
+   AbstractCommand(CommandRunner* runner, const CommandMeta& invokeMeta);
+   void exit(int exitCode = 0) const;
+   void printConsoleMsg(const char* str, TerminalColor color = TerminalColor::Default, bool underline = false, bool blink = false) const;
 public:
    virtual void exec() = 0;
    virtual ~AbstractCommand();
-   void exit(int exitCode = 0) const;
-   void setCommandRunner(CommandRunner* runner);
-   void printConsoleMsg(const char* str, TerminalColor color = TerminalColor::Default, bool underline = false, bool blink = false) const;
 protected:
-   CommandRunner* cmdRunner;
+   CommandRunner* const m_cmdRunner;
+   CommandMeta m_invokeMeta;
 };
 
 }//releasemgr

@@ -10,29 +10,27 @@
 #include <QScopedPointer>
 #include "command/abstract_command.h"
 #include "command/command_repo.h"
+#include "settings.h"
 
 namespace releasemgr
 {
 
-CommandRunner::CommandRunner(const Application &app)
+CommandRunner::CommandRunner(Application &app)
    :m_app(app)
 {
 }
 
 const CommandRunner::CmdPoolType CommandRunner::m_cmdRegisterPool{
-   {CommandName::Global_Help,[](CommandRunner* runner)->AbstractCommand*{
-         GlobalHelpCommand* cmd = new GlobalHelpCommand();
-         cmd->setCommandRunner(runner);
+   {CommandName::Global_Help,[](CommandRunner* runner, const CommandMeta& meta)->AbstractCommand*{
+         GlobalHelpCommand* cmd = new GlobalHelpCommand(runner, meta);
          return cmd;
       }},
-   {CommandName::Global_Version, [](CommandRunner* runner)->AbstractCommand*{
-         GlobalVersionCommand* cmd = new GlobalVersionCommand();
-         cmd->setCommandRunner(runner);
+   {CommandName::Global_Version, [](CommandRunner* runner, const CommandMeta& meta)->AbstractCommand*{
+         GlobalVersionCommand* cmd = new GlobalVersionCommand(runner, meta);
          return cmd;
       }},
-   {CommandName::Fhzc_Build, [](CommandRunner* runner)->AbstractCommand*{
-         FhzcBuildCommand* cmd = new FhzcBuildCommand();
-         cmd->setCommandRunner(runner);
+   {CommandName::Fhzc_Build, [](CommandRunner* runner, const CommandMeta& meta)->AbstractCommand*{
+         FhzcBuildCommand* cmd = new FhzcBuildCommand(runner, meta);
          return cmd;
       }}
 };
@@ -40,6 +38,11 @@ const CommandRunner::CmdPoolType CommandRunner::m_cmdRegisterPool{
 const CommandRunner::CmdNameRepoType CommandRunner::m_subCmdNameMap{
    {"fhzc", CommandName::Fhzc_Build}
 };
+
+Settings& CommandRunner::getSysSettings()
+{
+   return m_app.getSettings();
+}
 
 void CommandRunner::run()
 {
@@ -81,42 +84,20 @@ void CommandRunner::run()
          it++;
       }
       cmdName = m_subCmdNameMap[first];
-      cmdArgs = parseSubCmdArgs(cmdName, targetArgs);
+      cmdArgs = parseSubCmdArgs(cmdCategory, cmdName, targetArgs);
    }
    runCmd(CommandMeta(cmdCategory, cmdName, cmdArgs));
 }
 
-CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandName command, const QStringList& invokeArgs)
+CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandCategory& category, CommandName command, const QStringList& invokeArgs)
 {
-   QCommandLineParser* parser = nullptr;
+   
    CommandMeta::CmdArgType args;
    switch (command) {
    case CommandName::Fhzc_Build:
    {
-      parser = m_optionPool.getFhzcCmdParser();
-      parser->process(invokeArgs);
-      OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
-      QStringList positionArgs = parser->positionalArguments();
-      bool syntaxOk = true;
-      if(1 != positionArgs.count()){
-         syntaxOk = false;
-      }
-      QString action = positionArgs.takeFirst();
-      QStringList supportActions{
-         "fullbuild", "diffbuild", "docbuild"
-      };
-      if(!supportActions.contains(action)){
-         syntaxOk = false;
-      }
-      QCommandLineOption* versionOpt = opts["version"];
-      QString version = parser->value(versionOpt);
-      if(0 == version.size()){
-         syntaxOk = false;
-      }
-      if(!syntaxOk){
-         printUsage();
-         throw ErrorInfo();
-      }
+      parseFhzcFullBuildCmdArgs(invokeArgs, args);
+      category = CommandCategory::Fhzc;
       break;
    }
    default:
@@ -125,11 +106,40 @@ CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandName command, cons
    return args;
 }
 
-
-void CommandRunner::runCmd(const CommandMeta &meta)
+void CommandRunner::parseFhzcFullBuildCmdArgs(const QStringList &invokeArgs, CommandMeta::CmdArgType &args)
 {
-   AbstractCommand* (*initializer)(CommandRunner*) = m_cmdRegisterPool[meta.getCommandName()];
-   QScopedPointer<AbstractCommand> cmd(initializer(this));
+   QCommandLineParser* parser = m_optionPool.getFhzcCmdParser();
+   parser->process(invokeArgs);
+   OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
+   QStringList positionArgs = parser->positionalArguments();
+   bool syntaxOk = true;
+   if(1 != positionArgs.count()){
+      syntaxOk = false;
+   }
+   QString action = positionArgs.takeFirst();
+   QStringList supportActions{
+      "fullbuild", "diffbuild", "docbuild"
+   };
+   if(!supportActions.contains(action)){
+      syntaxOk = false;
+   }
+   QCommandLineOption* versionOpt = opts["version"];
+   QString version = parser->value(*versionOpt);
+   if(0 == version.size()){
+      syntaxOk = false;
+   }
+   if(!syntaxOk){
+      printUsage();
+      throw ErrorInfo();
+   }
+   args[QLatin1String("action")] = action;
+   args[QLatin1String("version")] = version;
+}
+
+void CommandRunner::runCmd(const CommandMeta& meta)
+{
+   AbstractCommand* (*initializer)(CommandRunner*, const CommandMeta&) = m_cmdRegisterPool[meta.getCommandName()];
+   QScopedPointer<AbstractCommand> cmd(initializer(this, meta));
    cmd->exec();
 }
 

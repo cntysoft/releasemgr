@@ -5,8 +5,8 @@
 namespace releasemgr 
 {
 
-AbstractTask::AbstractTask(AbstractTaskMgr &taskmgr)
-   : m_taskmgr(taskmgr), m_settings(taskmgr.getSysSettings())
+AbstractTask::AbstractTask(const AbstractTaskMgr &taskmgr, const TaskParamsType& invokeArgs)
+   : m_taskmgr(taskmgr), m_settings(taskmgr.getSysSettings()), m_invokeArgs(invokeArgs)
 {
 }
 

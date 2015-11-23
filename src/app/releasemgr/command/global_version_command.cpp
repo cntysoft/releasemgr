@@ -3,6 +3,11 @@
 namespace releasemgr 
 {
 
+GlobalVersionCommand::GlobalVersionCommand(CommandRunner *runner, const CommandMeta &invokeMeta)
+   : AbstractCommand(runner, invokeMeta)
+{
+}
+
 void GlobalVersionCommand::exec()
 {
    printConsoleMsg("releasemgr version ");

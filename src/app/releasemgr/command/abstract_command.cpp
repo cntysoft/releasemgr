@@ -1,13 +1,14 @@
 #include "abstract_command.h"
 #include "utils/funcs.h"
 #include "application.h"
+#include "settings.h"
 
 namespace releasemgr 
 {
 
-void AbstractCommand::setCommandRunner(CommandRunner *runner)
+AbstractCommand::AbstractCommand(CommandRunner* runner, const CommandMeta& invokeMeta)
+   : m_cmdRunner(runner), m_invokeMeta(invokeMeta)
 {
-   cmdRunner = runner;
 }
 
 AbstractCommand::~AbstractCommand()
