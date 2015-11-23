@@ -10,6 +10,7 @@ Project
    property string libDirName: "lib"
    property string appInstallDir: "bin"
    property string libInstallDir: libDirName
+   property string resourcesInstallDir: "share"
    property stringList libRPaths: {
       if (!enableRPath){
          return undefined;
@@ -18,6 +19,7 @@ Project
       }
    }
    references: [
-      "src/src.qbs"
+      "src/src.qbs",
+      "share/share.qbs"
    ]
 }

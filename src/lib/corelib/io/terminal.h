@@ -33,8 +33,8 @@ class RMGR_EXPORT Terminal
 {
    
 public:
-   static QByteArray getColorText(const char* str, TerminalColor color, bool underline = false, bool blink = false);
-   static void writeText(const char* str, TerminalColor color, bool underline = false, bool blink = false);
+   static QByteArray getColorText(const char* str, TerminalColor color = TerminalColor::Default, bool underline = false, bool blink = false);
+   static void writeText(const char* str, TerminalColor color = TerminalColor::Default, bool underline = false, bool blink = false);
 protected:
    const static QMap<TerminalColor, int> colorMap;
    const static int BOLD_CODE = 1;

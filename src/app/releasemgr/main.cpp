@@ -1,6 +1,7 @@
 #include <QTimer>
 #include <QMap>
 #include <QLatin1String>
+#include <QDebug>
 
 #include "global/const.h"
 #include "global/global.h"

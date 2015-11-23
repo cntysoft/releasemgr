@@ -25,7 +25,7 @@ const QMap<TerminalColor, int> Terminal::colorMap{
    {TerminalColor::White, 97}
 };
 
-QByteArray Terminal::getColorText(const char* str, TerminalColor color = TerminalColor::Default, bool underline, bool blink)
+QByteArray Terminal::getColorText(const char* str, TerminalColor color, bool underline, bool blink)
 {
    QByteArray ret("\e[");
    QStringList codesList;

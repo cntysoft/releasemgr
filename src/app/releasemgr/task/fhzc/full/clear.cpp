@@ -14,7 +14,7 @@ Clear::Clear(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
 
 void Clear::exec()
 {
-
+   writeLine("clear project directory");
 }
 
 Clear::~Clear()
