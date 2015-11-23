@@ -19,9 +19,9 @@ void Clear::exec()
    writeLine("清除相关打包文件夹内容 ... ");
    QDir buildDir(m_buildDir);
    if(buildDir.exists()){
-      buildDir.removeRecursively();
-   }else{
-      throw ErrorInfo("delete build directory failure");
+      if(!buildDir.removeRecursively()){
+         throw ErrorInfo("delete build directory failure");
+      }
    }
 }
 
