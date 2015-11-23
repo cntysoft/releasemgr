@@ -19,7 +19,7 @@ class RMGR_EXPORT AbstractTaskMgr
 {
    Q_DISABLE_COPY(AbstractTaskMgr)
 public:
-   using TaskInitializerFnPtrType = AbstractTask* (*)(AbstractTaskMgr*, const TaskParamsType& args);
+   using TaskInitializerFnPtrType = AbstractTask* (*)(const AbstractTaskMgr& taskmgr, const TaskParamsType& args);
    using TaskPoolType = QMap<QString, TaskInitializerFnPtrType>;
 public:
    AbstractTaskMgr(const QLatin1String& moduleName, Settings& settings);
@@ -36,9 +36,9 @@ protected:
 protected:
    TaskPoolType m_taskInitializers;
 private:
-   QList<AbstractTask*> tasks;
    void initTaskRepo(const TaskParamsType& args);
 private:
+   QList<AbstractTask*> m_tasks;
    QLatin1String m_moduleName;
    Settings& m_settings;
 };

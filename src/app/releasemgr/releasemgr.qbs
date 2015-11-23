@@ -60,6 +60,7 @@ ReleaseMgrApplication
         prefix : "task/fhzc/"
         files : [
             "diff/clear.h",
+            "full/clear.cpp",
             "full/clear.h",
             "full/taskmgr.cpp",
             "full/taskmgr.h",

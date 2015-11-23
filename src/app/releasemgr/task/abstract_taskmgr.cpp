@@ -15,7 +15,7 @@ void AbstractTaskMgr::initTaskRepo(const TaskParamsType& args)
    TaskPoolType::const_iterator iterator = m_taskInitializers.cbegin();
    while(iterator != m_taskInitializers.cend()){
       TaskInitializerFnPtrType initializer = iterator.value();
-      tasks.append(initializer(this, args));
+      m_tasks.append(initializer(*this, args));
       iterator++;
    }
 }
@@ -23,6 +23,13 @@ void AbstractTaskMgr::initTaskRepo(const TaskParamsType& args)
 void AbstractTaskMgr::run(const TaskParamsType& args)
 {
    initTaskRepo(args);
+   beforeRun(args);
+   QList<AbstractTask*>::const_iterator it = m_tasks.cbegin();
+   while(it != m_tasks.cend()){
+      (*it)->exec();
+      it++;
+   }
+   afterRun(args);
 }
 
 const QLatin1String& AbstractTaskMgr::getModuleName() const
@@ -49,8 +56,8 @@ void AbstractTaskMgr::afterRunCycle(const AbstractTask&)
 
 AbstractTaskMgr::~AbstractTaskMgr()
 {
-   while(!tasks.empty()){
-      delete tasks.takeFirst();
+   while(!m_tasks.empty()){
+      delete m_tasks.takeFirst();
    }
 }
 

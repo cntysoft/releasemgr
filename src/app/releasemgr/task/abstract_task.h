@@ -5,6 +5,7 @@
 
 #include "task/abstract_taskmgr.h"
 #include "types.h"
+#include "global/global.h"
 
 QT_BEGIN_NAMESPACE
 class QString;
@@ -19,10 +20,12 @@ class Settings;
 
 class AbstractTask
 {
+   Q_DISABLE_COPY(AbstractTask)
 public:
    AbstractTask(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);
    QVariant getSysCfgValue(const QString& key, const QVariant & defaultValue = QVariant());
 public:
+   virtual void exec() = 0;
    virtual ~AbstractTask();
 protected:
    void runCmd(const QLatin1String& cmd, const TaskParamsType& args, const QString& cwd);
