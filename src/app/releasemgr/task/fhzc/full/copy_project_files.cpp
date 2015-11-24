@@ -1,9 +1,12 @@
 #include <QDir>
 #include <QStringList>
+#include <QFileInfo>
+#include <QDebug>
 
 #include "copy_project_files.h"
 #include "task/abstract_taskmgr.h"
 #include "kernel/errorinfo.h"
+#include "io/filesystem.h"
 
 namespace releasemgr{
 namespace task{
@@ -21,6 +24,9 @@ void CopyProjectFiles::exec()
    if(!buildDir.exists()){
       buildDir.mkpath(".");
    }
+   Filesystem::traverseFs(m_projectDir, 1, [](QFileInfo& fileInfo, int)->void{
+      qDebug() << fileInfo.absoluteFilePath();
+   });
    //获取核心程序的文件集合
 //   QDir kernelLibDir(m_projectDir+QDir.separator()+"Library");
    

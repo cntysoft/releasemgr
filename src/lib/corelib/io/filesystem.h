@@ -11,7 +11,7 @@ QT_END_NAMESPACE
 namespace releasemgr 
 {
 
-class Filesystem
+class RMGR_EXPORT Filesystem
 {
 public:
    enum class FsTraverFlag{
@@ -21,7 +21,9 @@ public:
    using FsTraverFnType = void (*)(QFileInfo& fileInfo, int depth);
 public:
    static bool deleteDirRecusive(const QString& dir);
-   static bool traverseFs(const QString& path, int level = 1, FsTraverFnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);
+   static bool traverseFs(const QString& path, int level = 0, FsTraverFnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);
+private:
+   static void doTraverseFs(const QString& path, bool limitDepth = true, int level = 0, int depth = 0, FsTraverFnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);
 };
 
 }//releasemgr
