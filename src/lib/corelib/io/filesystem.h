@@ -20,12 +20,12 @@ public:
       SelfFirst,
       ChildFirst
    };
-   using FsTraverFnType = void (*)(QFileInfo& fileInfo, int depth);
 public:
    static bool deleteDirRecusive(const QString& dir);
    static QFileInfoList ls(const QString& path, int level = 1);
    template <typename FnType>
    static bool traverseFs(const QString& path, int level = 0, FnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);
+   static bool copyFile(const QString& source, const QString& destination, bool overwrite = false);
 private:
    template <typename FnType>
    static void doTraverseFs(const QString& path, bool limitDepth = true, int level = 0, int depth = 0, FnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);

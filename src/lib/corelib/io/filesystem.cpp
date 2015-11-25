@@ -1,6 +1,7 @@
 #include <QString>
 #include <QFileInfo>
 #include <QDir>
+#include <QFile>
 
 #include "io/filesystem.h"
 
@@ -21,6 +22,29 @@ QFileInfoList Filesystem::ls(const QString &path, int level)
       ret.append(fileInfo);
    });
    return ret;
+}
+
+bool Filesystem::copyFile(const QString &source, const QString &destination, bool overwrite)
+{
+   if(source == destination){
+      return true;
+   }
+   QFile sourceFile(source);
+   if(!sourceFile.exists()){
+      return false;
+   }
+   QFileInfo destinationInfo(destination);
+   QDir targetDir = destinationInfo.absoluteDir();
+   if(!targetDir.exists()){
+      targetDir.mkpath(".");
+   }
+   if(destinationInfo.exists() && overwrite){
+      QFile::remove(destination);
+   }
+   if(!QFile::copy(source, destination)){
+      return false;
+   }
+   return true;
 }
 
 }//releasemgr

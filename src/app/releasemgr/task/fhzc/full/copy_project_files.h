@@ -23,6 +23,7 @@ public:
    virtual ~CopyProjectFiles();
 private:
    QStringList collectProjectFilenames();
+   void collectSpecialFilenames(QStringList& filenames);
 };
 
 }//fullbuild

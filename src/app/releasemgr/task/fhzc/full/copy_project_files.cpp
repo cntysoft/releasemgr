@@ -24,14 +24,50 @@ void CopyProjectFiles::exec()
    if(!buildDir.exists()){
       buildDir.mkpath(".");
    }
-   QFileInfoList list = Filesystem::ls(m_projectDir, 1);
-   
-   Filesystem::traverseFs(m_projectDir, 1, [](QFileInfo& fileInfo, int)->void{
-      qDebug() << fileInfo.absoluteFilePath();
-   });
+   QStringList filenames;
+   QChar ds = QDir::separator();
    //获取核心程序的文件集合
-//   QDir kernelLibDir(m_projectDir+QDir.separator()+"Library");
-   
+   Filesystem::traverseFs(m_projectDir+ds+"Library", 0, [&filenames](QFileInfo& fileInfo, int)->void{
+      QString filename = fileInfo.absoluteFilePath();
+      if(fileInfo.isFile() && !filename.contains("ReleaseTools")){
+         filenames.append(filename);
+      }
+   });
+   //获取指定的文件夹的文件集合
+   QStringList specifyDirs{
+            m_projectDir+ds+"Modules",
+            m_projectDir+ds+"Apps",
+            m_projectDir+ds+"Config",
+            m_projectDir+ds+"SysApiHandler",
+            m_projectDir+ds+"JsLibraray",
+            m_projectDir+ds+"Data"+ds+"Framework",
+            m_projectDir+ds+"Statics",
+            m_projectDir+ds+"TagLibrary"
+   };
+   QStringList::const_iterator it = specifyDirs.cbegin();
+   while(it != specifyDirs.cend()){
+      Filesystem::traverseFs(*it, 0, [&filenames](QFileInfo& fileInfo, int)->void{
+         if(fileInfo.isFile()){
+            filenames.append(fileInfo.absoluteFilePath());
+         }
+      });
+      it++;
+   }
+   collectSpecialFilenames(filenames);
+   it = filenames.cbegin();
+   while(it != filenames.cend()){
+      QString sourceFilename(*it);
+      QString destinationFilename(sourceFilename);
+      destinationFilename.replace(m_projectDir, m_buildDir);
+      Filesystem::copyFile(sourceFilename, destinationFilename);
+      it++;
+   }
+}
+
+void CopyProjectFiles::collectSpecialFilenames(QStringList& filenames)
+{
+   QChar ds = QDir::separator();
+   filenames.append(m_projectDir+ds+"index.php");
 }
 
 CopyProjectFiles::~CopyProjectFiles()
