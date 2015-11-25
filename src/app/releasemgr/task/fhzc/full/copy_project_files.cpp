@@ -24,6 +24,8 @@ void CopyProjectFiles::exec()
    if(!buildDir.exists()){
       buildDir.mkpath(".");
    }
+   QFileInfoList list = Filesystem::ls(m_projectDir, 1);
+   
    Filesystem::traverseFs(m_projectDir, 1, [](QFileInfo& fileInfo, int)->void{
       qDebug() << fileInfo.absoluteFilePath();
    });

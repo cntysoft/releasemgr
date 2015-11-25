@@ -19,7 +19,6 @@ CommandRunner::CommandRunner(Application &app)
    :m_app(app)
 {
 }
-
 const CommandRunner::CmdPoolType CommandRunner::m_cmdRegisterPool{
    {CommandName::Global_Help,[](CommandRunner* runner, const CommandMeta& meta)->AbstractCommand*{
          GlobalHelpCommand* cmd = new GlobalHelpCommand(runner, meta);
