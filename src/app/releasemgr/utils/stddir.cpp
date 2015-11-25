@@ -5,7 +5,7 @@
 namespace releasemgr 
 {
 
-QString StdDir::getAssetsDir()
+const QString& StdDir::getAssetsDir()
 {
    static QString assetDir(StdDir::getShareResDir() + QDir::separator() + "assets");
    return assetDir;

@@ -13,8 +13,8 @@ namespace releasemgr
 class StdDir
 {
 public:
-   static QString getShareResDir();
-   static QString getAssetsDir();
+   static const QString& getShareResDir();
+   static const QString& getAssetsDir();
 };
 
 }//releasemgr

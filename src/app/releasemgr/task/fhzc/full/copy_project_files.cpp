@@ -21,7 +21,9 @@ void CopyProjectFiles::exec()
    writeBeginMsg("复制项目PHP部分文件夹 ... ");
    QDir buildDir(m_buildDir);
    if(!buildDir.exists()){
-      buildDir.mkpath(".");
+      if(!buildDir.mkpath(".")){
+         throw ErrorInfo(QString("create build directory : %1 error").arg(m_buildDir));
+      };
    }
    QStringList filenames;
    QChar ds = QDir::separator();
