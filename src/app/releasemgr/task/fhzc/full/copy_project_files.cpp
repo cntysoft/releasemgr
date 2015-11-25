@@ -62,6 +62,7 @@ void CopyProjectFiles::exec()
       Filesystem::copyFile(sourceFilename, destinationFilename);
       it++;
    }
+   writeDoneMsg();
 }
 
 void CopyProjectFiles::collectSpecialFilenames(QStringList& filenames)
