@@ -127,6 +127,12 @@ void CommandRunner::parseFhzcFullBuildCmdArgs(const QStringList &invokeArgs, Com
    if(0 == version.size()){
       syntaxOk = false;
    }
+   QCommandLineOption* aliyunOpt = opts["aliyun"];
+   if(parser->isSet(*aliyunOpt)){
+      args[QLatin1String("aliyun")] = true;
+   }else{
+      args[QLatin1String("aliyun")] = false;
+   }
    if(!syntaxOk){
       printUsage();
       throw ErrorInfo();

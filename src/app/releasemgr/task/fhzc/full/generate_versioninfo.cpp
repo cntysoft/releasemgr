@@ -5,6 +5,7 @@
 #include <QDebug>
 
 #include "generate_versioninfo.h"
+#include "task/abstract_taskmgr.h"
 
 namespace releasemgr{
 namespace task{

@@ -2,6 +2,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QFile>
+#include <QByteArray>
 
 #include "io/filesystem.h"
 
@@ -45,6 +46,29 @@ bool Filesystem::copyFile(const QString &source, const QString &destination, boo
       return false;
    }
    return true;
+}
+
+int Filesystem::filePutContents(const QString &filename, const QString &content)
+{
+   QFileInfo fileInfo(filename);
+   QDir targetDir = fileInfo.absoluteDir();
+   if(!fileInfo.exists()){
+      targetDir.mkpath(".");
+   }
+   QFile target(filename);
+   if(!target.open(QFile::WriteOnly| QFile::Truncate)){
+      return -1;
+   }
+   return target.write(content.toLatin1());
+}
+
+QByteArray Filesystem::fileGetContents(const QString &filename)
+{
+   QFile target(filename);
+   if(!target.exists() || !target.open(QFile::ReadOnly)){
+      return QByteArray();
+   }
+   return target.readAll();
 }
 
 }//releasemgr

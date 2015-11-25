@@ -68,6 +68,8 @@ ReleaseMgrApplication
            "full/copy_project_files.h",
            "full/generate_versioninfo.cpp",
            "full/generate_versioninfo.h",
+           "full/setup_dist_const.cpp",
+           "full/setup_dist_const.h",
            "full/taskmgr.cpp",
            "full/taskmgr.h",
        ]
@@ -76,11 +78,13 @@ ReleaseMgrApplication
       name : "utils"
       prefix : name + '/'
       files : [
-         "funcs.cpp",
-         "funcs.h",
-         "env_detecter.cpp",
-         "default_cfg_initializer.cpp",
-         "env_detecter.h",
-      ]
+           "funcs.cpp",
+           "funcs.h",
+           "env_detecter.cpp",
+           "default_cfg_initializer.cpp",
+           "env_detecter.h",
+           "stddir.cpp",
+           "stddir.h",
+       ]
    }   
 }

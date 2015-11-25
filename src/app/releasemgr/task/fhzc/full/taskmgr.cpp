@@ -7,6 +7,7 @@
 #include "task/fhzc/full/clear.h"
 #include "task/fhzc/full/copy_project_files.h"
 #include "task/fhzc/full/generate_versioninfo.h"
+#include "task/fhzc/full/setup_dist_const.h"
 
 namespace releasemgr{
 namespace task{
@@ -24,6 +25,9 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    });
    m_taskInitializers.insert("GenerateVersionInfo", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new GenerateVersionInfo(taskmgr, args);
+   });
+   m_taskInitializers.insert("SetupDistConst", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new SetupDistConst(taskmgr, args);
    });
 }
 

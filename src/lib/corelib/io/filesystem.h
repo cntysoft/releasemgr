@@ -8,6 +8,7 @@
 QT_BEGIN_INCLUDE_NAMESPACE
 class QFileInfo;
 class QString;
+class QByteArray;
 QT_END_NAMESPACE
 
 namespace releasemgr 
@@ -26,6 +27,8 @@ public:
    template <typename FnType>
    static bool traverseFs(const QString& path, int level = 0, FnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);
    static bool copyFile(const QString& source, const QString& destination, bool overwrite = false);
+   static QByteArray fileGetContents(const QString& filename);
+   static int filePutContents(const QString& filename, const QString& content);
 private:
    template <typename FnType>
    static void doTraverseFs(const QString& path, bool limitDepth = true, int level = 0, int depth = 0, FnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);

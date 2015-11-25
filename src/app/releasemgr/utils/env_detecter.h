@@ -1,5 +1,5 @@
-#ifndef ENV_DETECTER_H
-#define ENV_DETECTER_H
+#ifndef RMMGR_UTILS_ENV_DETECTER_H
+#define RMMGR_UTILS_ENV_DETECTER_H
 
 #include <QStringList>
 
@@ -27,4 +27,4 @@ private:
 
 }//releasemgr
 
-#endif // ENV_DETECTER_H
+#endif // RMMGR_UTILS_ENV_DETECTER_H

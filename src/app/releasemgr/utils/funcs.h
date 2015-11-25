@@ -1,5 +1,5 @@
-#ifndef FUNCS_H
-#define FUNCS_H
+#ifndef RMMGR_UTILS_FUNCS_H
+#define RMMGR_UTILS_FUNCS_H
 
 namespace releasemgr 
 {
@@ -12,4 +12,4 @@ const Application& get_app_ref();
 
 }//releasemgr
 
-#endif // FUNCS_H
+#endif // RMMGR_UTILS_FUNCS_H
