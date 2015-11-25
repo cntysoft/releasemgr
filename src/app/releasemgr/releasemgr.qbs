@@ -66,6 +66,8 @@ ReleaseMgrApplication
            "full/clear.h",
            "full/copy_project_files.cpp",
            "full/copy_project_files.h",
+           "full/generate_versioninfo.cpp",
+           "full/generate_versioninfo.h",
            "full/taskmgr.cpp",
            "full/taskmgr.h",
        ]

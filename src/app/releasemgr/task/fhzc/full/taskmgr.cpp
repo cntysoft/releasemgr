@@ -6,6 +6,7 @@
 
 #include "task/fhzc/full/clear.h"
 #include "task/fhzc/full/copy_project_files.h"
+#include "task/fhzc/full/generate_versioninfo.h"
 
 namespace releasemgr{
 namespace task{
@@ -20,6 +21,9 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    });
    m_taskInitializers.insert("CopyProjectFiles", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new CopyProjectFiles(taskmgr, args);
+   });
+   m_taskInitializers.insert("GenerateVersionInfo", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new GenerateVersionInfo(taskmgr, args);
    });
 }
 

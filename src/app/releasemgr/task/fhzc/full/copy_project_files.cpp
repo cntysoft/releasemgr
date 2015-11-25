@@ -1,7 +1,6 @@
 #include <QDir>
 #include <QStringList>
 #include <QFileInfo>
-#include <QDebug>
 
 #include "copy_project_files.h"
 #include "task/abstract_taskmgr.h"
