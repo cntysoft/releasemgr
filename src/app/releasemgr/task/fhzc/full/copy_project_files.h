@@ -3,8 +3,6 @@
 
 #include "task/abstract_task.h"
 
-class AbstractTaskMgr;
-
 QT_BEGIN_NAMESPACE
 class QStringList;
 QT_END_NAMESPACE

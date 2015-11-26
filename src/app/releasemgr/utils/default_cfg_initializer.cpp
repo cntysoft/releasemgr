@@ -25,6 +25,7 @@ static void init_global_cfg(Settings& settings)
 {
    settings.setValue("db.host", "127.0.0.1", CFG_GROUP_GLOABL);
    settings.setValue("db.username", "root", CFG_GROUP_GLOABL);
+   settings.setValue("db.password", "cntysoft", CFG_GROUP_GLOABL);
    settings.setValue("db.charset", "utf8", CFG_GROUP_GLOABL);
 }
 

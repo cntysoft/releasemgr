@@ -68,6 +68,8 @@ ReleaseMgrApplication
            "full/clear.h",
            "full/copy_project_files.cpp",
            "full/copy_project_files.h",
+           "full/dump_mysql.cpp",
+           "full/dump_mysql.h",
            "full/generate_versioninfo.cpp",
            "full/generate_versioninfo.h",
            "full/setup_dist_const.cpp",

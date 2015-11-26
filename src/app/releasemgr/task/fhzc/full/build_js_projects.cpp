@@ -26,7 +26,7 @@ void BuildJsProjects::exec()
    QString baseDir = m_projectDir+ds+"PlatformJs";
    while(it != projects.cend()){
       writeLine(QString("正在打包项目 : %1 ... ").arg(*it).toLocal8Bit(), TerminalColor::LightYellow, false);
-      //execSenchaCmd(baseDir+ds+(*it));
+//      execSenchaCmd(baseDir+ds+(*it));
       writeDoneMsg();
       it++;
    }
