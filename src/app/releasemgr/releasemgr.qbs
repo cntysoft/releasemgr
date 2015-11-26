@@ -72,6 +72,8 @@ ReleaseMgrApplication
            "full/dump_mysql.h",
            "full/generate_versioninfo.cpp",
            "full/generate_versioninfo.h",
+           "full/setup_config.cpp",
+           "full/setup_config.h",
            "full/setup_dist_const.cpp",
            "full/setup_dist_const.h",
            "full/taskmgr.cpp",

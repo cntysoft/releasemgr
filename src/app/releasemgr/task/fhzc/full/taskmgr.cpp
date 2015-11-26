@@ -10,6 +10,7 @@
 #include "task/fhzc/full/setup_dist_const.h"
 #include "task/fhzc/full/build_js_projects.h"
 #include "task/fhzc/full/dump_mysql.h"
+#include "task/fhzc/full/setup_config.h"
 
 namespace releasemgr{
 namespace task{
@@ -36,6 +37,9 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    });
    m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new DumpMysql(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new SetupConfig(taskmgr, args);
    });
 }
 
