@@ -1,11 +1,9 @@
-#include "settings.h"
-
-#include <QDebug>
 #include <QJsonObject>
 #include <QMap>
 #include <QString>
 #include <QVariant>
 
+#include "settings.h"
 #include "const.h"
 
 namespace releasemgr 
@@ -54,11 +52,11 @@ static void init_fhshop_cfg(Settings& settings)
    };
    settings.setValue("sourceDirs", sourceDirs, CFG_GROUP_FHSHOP);
    
-   //用户组权限设置
-   settings.setValue("targetFsUserGroup.user", "cntysoft", CFG_GROUP_FHSHOP);
-   settings.setValue("targetFsUserGroup.group", "users", CFG_GROUP_FHSHOP);
-   settings.setValue("senchaCmdUserGroup.user", "cntysoft", CFG_GROUP_FHSHOP);
-   settings.setValue("senchaCmdUserGroup.group", "users", CFG_GROUP_FHSHOP);
+//   //用户组权限设置
+//   settings.setValue("targetFsUserGroup/user", "cntysoft", CFG_GROUP_FHSHOP);
+//   settings.setValue("targetFsUserGroup/group", "users", CFG_GROUP_FHSHOP);
+//   settings.setValue("senchaCmdUserGroup/user", "cntysoft", CFG_GROUP_FHSHOP);
+//   settings.setValue("senchaCmdUserGroup/group", "users", CFG_GROUP_FHSHOP);
    
    //设置sencha项目相关的
    QStringList senchaProjectsFengHuang{
@@ -71,7 +69,7 @@ static void init_fhshop_cfg(Settings& settings)
       "PlatformJs/FengHuang/bootstrap.js",
       "PlatformJs/FengHuang/index.html"
    };
-   settings.setValue("senchaProjects.FengHuang", senchaProjectsFengHuang, CFG_GROUP_FHSHOP);
+   settings.setValue("senchaProjects/FengHuang", senchaProjectsFengHuang, CFG_GROUP_FHSHOP);
    
    //submodules 相关设置
    QStringList submodulesPhp{
@@ -92,9 +90,9 @@ static void init_fhshop_cfg(Settings& settings)
       "JsLibrary/JsSha",
       "JsLibrary/WebUploader"
    };
-   settings.setValue("submodules.php", submodulesPhp, CFG_GROUP_FHSHOP);
-   settings.setValue("submodules.sencha", submodulesSencha, CFG_GROUP_FHSHOP);
-   settings.setValue("submodules.js", submodulesJs, CFG_GROUP_FHSHOP);
+   settings.setValue("submodules/php", submodulesPhp, CFG_GROUP_FHSHOP);
+   settings.setValue("submodules/sencha", submodulesSencha, CFG_GROUP_FHSHOP);
+   settings.setValue("submodules/js", submodulesJs, CFG_GROUP_FHSHOP);
    
 }
 
@@ -137,13 +135,13 @@ static void init_fhzc_cfg(Settings& settings)
       "PlatformJs/packages/cntysoft-comp/src",
       "PlatformJs/packages/cntysoft-webos/src"
    };
-   settings.setValue("docSourceDirs.php", docSourceDirsPhp, CFG_GROUP_FHZC);
-   settings.setValue("docSourceDirs.js", docSourceDirsJs, CFG_GROUP_FHZC);
-   //用户组权限设置
-   settings.setValue("targetFsUserGroup.user", "cntysoft", CFG_GROUP_FHZC);
-   settings.setValue("targetFsUserGroup.group", "users", CFG_GROUP_FHZC);
-   settings.setValue("senchaCmdUserGroup.user", "cntysoft", CFG_GROUP_FHZC);
-   settings.setValue("senchaCmdUserGroup.group", "users", CFG_GROUP_FHZC);
+   settings.setValue("docSourceDirs/php", docSourceDirsPhp, CFG_GROUP_FHZC);
+   settings.setValue("docSourceDirs/js", docSourceDirsJs, CFG_GROUP_FHZC);
+//   //用户组权限设置
+//   settings.setValue("targetFsUserGroup/user", "cntysoft", CFG_GROUP_FHZC);
+//   settings.setValue("targetFsUserGroup/group", "users", CFG_GROUP_FHZC);
+//   settings.setValue("senchaCmdUserGroup/user", "cntysoft", CFG_GROUP_FHZC);
+//   settings.setValue("senchaCmdUserGroup/group", "users", CFG_GROUP_FHZC);
    //submodules 相关设置
    QStringList submodulesPhp{
       "Library/Cntysoft",
@@ -163,9 +161,9 @@ static void init_fhzc_cfg(Settings& settings)
       "JsLibrary/JsSha",
       "JsLibrary/WebUploader"
    };
-   settings.setValue("submodules.php", submodulesPhp, CFG_GROUP_FHZC);
-   settings.setValue("submodules.sencha", submodulesSencha, CFG_GROUP_FHZC);
-   settings.setValue("submodules.js", submodulesJs, CFG_GROUP_FHZC);
+   settings.setValue("submodules/php", submodulesPhp, CFG_GROUP_FHZC);
+   settings.setValue("submodules/sencha", submodulesSencha, CFG_GROUP_FHZC);
+   settings.setValue("submodules/js", submodulesJs, CFG_GROUP_FHZC);
    //设置sencha项目相关的
    QStringList senchaProjectsFengHuang{
       "PlatformJs/FengHuang/resources",
@@ -177,7 +175,7 @@ static void init_fhzc_cfg(Settings& settings)
       "PlatformJs/FengHuang/bootstrap.js",
       "PlatformJs/FengHuang/index.html"
    };
-   settings.setValue("senchaProjects.FengHuang", senchaProjectsFengHuang, CFG_GROUP_FHZC);
+   settings.setValue("senchaProjects/FengHuang", senchaProjectsFengHuang, CFG_GROUP_FHZC);
 }
 
 }//releasemgr

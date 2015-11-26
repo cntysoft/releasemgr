@@ -1,3 +1,5 @@
+#include <QStringList>
+
 #include "abstract_task.h"
 #include "types.h"
 #include "settings.h"
@@ -15,6 +17,15 @@ AbstractTask::AbstractTask(const AbstractTaskMgr &taskmgr, const TaskParamsType&
 QVariant AbstractTask::getSysCfgValue(const QString &key, const QVariant &defaultValue)
 {
    return m_settings.getValue(key, m_taskmgr.getModuleName(), defaultValue);
+}
+
+QStringList AbstractTask::getChildKeys(const QString &path)
+{
+   QString gPath = m_taskmgr.getModuleName();
+   if(!path.isEmpty()){
+      gPath = gPath + '.' + path;
+   }
+   return m_settings.getChildKeys(gPath);
 }
 
 void AbstractTask::writeLine(const char *msg, TerminalColor color, bool withNewLine)

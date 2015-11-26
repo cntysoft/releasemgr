@@ -27,4 +27,3 @@ private:
 }//releasemgr
 
 #endif // APPLICATION
-

@@ -14,7 +14,7 @@ void AbstractTaskMgr::initTaskRepo(const TaskParamsType& args)
 {
    TaskPoolType::const_iterator iterator = m_taskInitializers.cbegin();
    while(iterator != m_taskInitializers.cend()){
-      TaskInitializerFnPtrType initializer = iterator.value();
+      TaskInitializerFnPtrType initializer = *iterator;
       m_tasks.append(initializer(*this, args));
       iterator++;
    }

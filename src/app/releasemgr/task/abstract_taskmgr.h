@@ -1,7 +1,6 @@
 #ifndef ABSTRACT_TASKMGR_H
 #define ABSTRACT_TASKMGR_H
 
-#include <QMap>
 #include <QList>
 #include <QString>
 #include <QLatin1String>
@@ -21,7 +20,7 @@ class RMGR_EXPORT AbstractTaskMgr
    Q_DISABLE_COPY(AbstractTaskMgr)
 public:
    using TaskInitializerFnPtrType = AbstractTask* (*)(const AbstractTaskMgr& taskmgr, const TaskParamsType& args);
-   using TaskPoolType = QMap<QString, TaskInitializerFnPtrType>;
+   using TaskPoolType = QList<TaskInitializerFnPtrType>;
 public:
    AbstractTaskMgr(const QLatin1String& moduleName, Settings& settings);
    const QLatin1String& getModuleName() const;

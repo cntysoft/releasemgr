@@ -27,10 +27,13 @@ public:
    Status getStatus() const;
    QVariant getValue(const QString& key, const QString& group = CFG_GROUP_GLOABL, const QVariant & defaultValue = QVariant()) const;
    void setValue(const QString& key, const QVariant& value, const QString& group = CFG_GROUP_GLOABL);
+   QStringList getChildKeys(const QString& path = QString());
 private:
    QSettings* createQSettings();
    void initDefaultConf();
    friend void init_defualt_cfg(Settings& Settings);
+   int enterGroup(const QString& path);
+   void exitGroup(int depth);
 private:  
    QSettings* const m_settings;
 };

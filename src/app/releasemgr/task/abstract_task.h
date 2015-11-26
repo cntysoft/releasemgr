@@ -24,7 +24,6 @@ class AbstractTask
    Q_DISABLE_COPY(AbstractTask)
 public:
    AbstractTask(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);
-   QVariant getSysCfgValue(const QString& key, const QVariant & defaultValue = QVariant());
 public:
    virtual void exec() = 0;
    virtual ~AbstractTask();
@@ -34,6 +33,8 @@ protected:
    void writeMsg(const char* msg, TerminalColor color = TerminalColor::Default);
    void writeBeginMsg(const char* msg);
    void writeDoneMsg();
+   QVariant getSysCfgValue(const QString& key, const QVariant & defaultValue = QVariant());
+   QStringList getChildKeys(const QString& path = QString());
 protected:
    const AbstractTaskMgr& m_taskmgr;
    Settings& m_settings;

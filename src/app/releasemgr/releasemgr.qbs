@@ -62,6 +62,8 @@ ReleaseMgrApplication
       prefix : "task/fhzc/"
       files : [
            "diff/clear.h",
+           "full/build_js_projects.cpp",
+           "full/build_js_projects.h",
            "full/clear.cpp",
            "full/clear.h",
            "full/copy_project_files.cpp",

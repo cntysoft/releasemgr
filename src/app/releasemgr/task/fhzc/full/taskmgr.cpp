@@ -8,6 +8,7 @@
 #include "task/fhzc/full/copy_project_files.h"
 #include "task/fhzc/full/generate_versioninfo.h"
 #include "task/fhzc/full/setup_dist_const.h"
+#include "task/fhzc/full/build_js_projects.h"
 
 namespace releasemgr{
 namespace task{
@@ -17,17 +18,20 @@ namespace fullbuild{
 TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    :AbstractTaskMgr(moduleName, settings)
 {
-   m_taskInitializers.insert("Clear", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new Clear(taskmgr, args);
    });
-   m_taskInitializers.insert("CopyProjectFiles", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new CopyProjectFiles(taskmgr, args);
    });
-   m_taskInitializers.insert("GenerateVersionInfo", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new GenerateVersionInfo(taskmgr, args);
    });
-   m_taskInitializers.insert("SetupDistConst", [](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new SetupDistConst(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new BuildJsProjects(taskmgr, args);
    });
 }
 

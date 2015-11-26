@@ -43,6 +43,18 @@ void Settings::initDefaultConf()
    init_defualt_cfg(*this);
 }
 
+QStringList Settings::getChildKeys(const QString& path)
+{
+   QStringList keys;
+   if(!path.isEmpty()){
+      int depth = enterGroup(path);
+      keys = m_settings->childKeys();
+      exitGroup(depth);
+   }else{
+      keys = m_settings->childKeys();
+   }
+   return keys;  
+}
 
 Settings::Status Settings::getStatus()const
 {
@@ -62,6 +74,24 @@ void Settings::setValue(const QString &key, const QVariant &value, const QString
    m_settings->beginGroup(group);
    m_settings->setValue(key,value);
    m_settings->endGroup();
+}
+
+int Settings::enterGroup(const QString &path)
+{
+   QStringList parts = path.split('.');
+   auto it = parts.cbegin();
+   while(it != parts.cend()){
+      m_settings->beginGroup(*it);
+      it++;
+   }
+   return parts.count();
+}
+
+void Settings::exitGroup(int depth)
+{
+   for(int i = 0; i < depth; i++){
+      m_settings->endGroup();
+   }
 }
 
 void Settings::sync()
