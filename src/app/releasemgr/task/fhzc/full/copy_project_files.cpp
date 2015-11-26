@@ -40,7 +40,7 @@ void CopyProjectFiles::exec()
             m_projectDir+ds+"Apps",
             m_projectDir+ds+"Config",
             m_projectDir+ds+"SysApiHandler",
-            m_projectDir+ds+"JsLibraray",
+            m_projectDir+ds+"JsLibrary",
             m_projectDir+ds+"Data"+ds+"Framework",
             m_projectDir+ds+"Statics",
             m_projectDir+ds+"TagLibrary"

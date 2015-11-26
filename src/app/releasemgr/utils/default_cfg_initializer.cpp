@@ -109,11 +109,10 @@ static void init_fhzc_cfg(Settings& settings)
    QStringList sourceDirs{
       "Apps", "Data/Framework",
       "Config", "JsLibrary",
-      "Library", "Modules",
+      "Library",
       "Modules", "Statics",
       "PlatformJs" , "SysApiHandler",
-      "TagLibrary", "index.php",
-      "fenghuang.sql"
+      "TagLibrary", "index.php"
    };
    settings.setValue("sourceDirs", sourceDirs, CFG_GROUP_FHZC);
    //源码文件夹

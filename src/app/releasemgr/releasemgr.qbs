@@ -66,6 +66,8 @@ ReleaseMgrApplication
            "full/build_js_projects.h",
            "full/clear.cpp",
            "full/clear.h",
+           "full/compress.cpp",
+           "full/compress.h",
            "full/copy_project_files.cpp",
            "full/copy_project_files.h",
            "full/dump_mysql.cpp",

@@ -26,7 +26,7 @@ void BuildJsProjects::exec()
    QString baseDir = m_projectDir+ds+"PlatformJs";
    while(it != projects.cend()){
       writeLine(QString("正在打包项目 : %1 ... ").arg(*it).toLocal8Bit(), TerminalColor::LightYellow, false);
-//      execSenchaCmd(baseDir+ds+(*it));
+      execSenchaCmd(baseDir+ds+(*it));
       writeDoneMsg();
       it++;
    }
@@ -41,7 +41,8 @@ void BuildJsProjects::exec()
    it = files.cbegin();
    while(it != files.cend()){
       QString source = *it;
-      QString destination = source.replace(m_projectDir, m_buildDir);
+      QString destination(source);
+      destination.replace(m_projectDir, m_buildDir);
       Filesystem::copyFile(source, destination);
       it++;
    }
