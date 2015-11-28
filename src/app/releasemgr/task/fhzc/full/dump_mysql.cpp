@@ -17,7 +17,7 @@ namespace fhzc{
 namespace fullbuild{
 
 DumpMysql::DumpMysql(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
-   :AbstractTask(taskmgr, invokeArgs)
+   :FullBuildAbstractTask(taskmgr, invokeArgs)
 {}
 
 void DumpMysql::exec()

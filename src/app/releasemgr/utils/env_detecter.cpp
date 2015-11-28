@@ -87,6 +87,7 @@ bool EnvDetecter::detectSencha()
    process.start("sencha");
    bool status = process.waitForFinished();
    if(!status){
+      qDebug() << process.errorString();
       return status;
    }
    QByteArray ret = process.readAll();

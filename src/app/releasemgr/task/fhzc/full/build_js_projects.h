@@ -1,7 +1,7 @@
 #ifndef TASK_FHZC_FULLBUILD_BUID_JS_PROJECTS_H
 #define TASK_FHZC_FULLBUILD_BUID_JS_PROJECTS_H
 
-#include "task/abstract_task.h"
+#include "fullbuild_abstract_task.h"
 
 class AbstractTaskMgr;
 
@@ -10,7 +10,7 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
-class BuildJsProjects : public releasemgr::AbstractTask
+class BuildJsProjects : public FullBuildAbstractTask
 {
 public:
    BuildJsProjects(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);

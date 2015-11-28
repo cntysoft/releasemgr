@@ -72,6 +72,8 @@ ReleaseMgrApplication
            "full/copy_project_files.h",
            "full/dump_mysql.cpp",
            "full/dump_mysql.h",
+           "full/fullbuild_abstract_task.cpp",
+           "full/fullbuild_abstract_task.h",
            "full/generate_versioninfo.cpp",
            "full/generate_versioninfo.h",
            "full/setup_config.cpp",

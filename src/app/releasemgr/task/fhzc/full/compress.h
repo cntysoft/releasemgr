@@ -1,7 +1,11 @@
 #ifndef TASK_FHZC_FULLBUILD_BUID_COMPRESS_H
 #define TASK_FHZC_FULLBUILD_BUID_COMPRESS_H
 
-#include "task/abstract_task.h"
+#include "fullbuild_abstract_task.h"
+
+QT_BEGIN_NAMESPACE
+class QString;
+QT_END_NAMESPACE
 
 class AbstractTaskMgr;
 
@@ -10,7 +14,7 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
-class Compress : public releasemgr::AbstractTask
+class Compress : public FullBuildAbstractTask
 {
 public:
    Compress(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);
@@ -18,7 +22,7 @@ public:
    virtual void exec();
    virtual ~Compress();
 private:
-   void execGzipCmd(const QString& savedFilename, const QStringList& files);
+   void execGzipCmd(const QString& savedFilename, const QString& sourceDir);
 };
 
 }//fullbuild

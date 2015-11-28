@@ -14,7 +14,7 @@ namespace fhzc{
 namespace fullbuild{
 
 BuildJsProjects::BuildJsProjects(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
-   :AbstractTask(taskmgr, invokeArgs)
+   :FullBuildAbstractTask(taskmgr, invokeArgs)
 {}
 
 void BuildJsProjects::exec()

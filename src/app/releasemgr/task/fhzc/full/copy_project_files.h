@@ -1,7 +1,7 @@
 #ifndef TASK_FHZC_FULLBUILD_COPY_PROJECT_FILES_H
 #define TASK_FHZC_FULLBUILD_COPY_PROJECT_FILES_H
 
-#include "task/abstract_task.h"
+#include "fullbuild_abstract_task.h"
 
 QT_BEGIN_NAMESPACE
 class QStringList;
@@ -12,7 +12,7 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
-class CopyProjectFiles : public releasemgr::AbstractTask
+class CopyProjectFiles : public FullBuildAbstractTask
 {
 public:
    CopyProjectFiles(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);

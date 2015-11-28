@@ -1,14 +1,14 @@
 #ifndef TASK_FHZC_FULLBUILD_GENERATE_VERSIONINFO_H
 #define TASK_FHZC_FULLBUILD_GENERATE_VERSIONINFO_H
 
-#include "task/abstract_task.h"
+#include "fullbuild_abstract_task.h"
 
 namespace releasemgr{
 namespace task{
 namespace fhzc{
 namespace fullbuild{
 
-class GenerateVersionInfo : public releasemgr::AbstractTask
+class GenerateVersionInfo : public FullBuildAbstractTask
 {
 public:
    GenerateVersionInfo(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);

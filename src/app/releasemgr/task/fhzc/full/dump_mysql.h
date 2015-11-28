@@ -1,7 +1,7 @@
 #ifndef TASK_FHZC_FULLBUILD_DUMP_MYSQL_H
 #define TASK_FHZC_FULLBUILD_DUMP_MYSQL_H
 
-#include "task/abstract_task.h"
+#include "fullbuild_abstract_task.h"
 
 QT_BEGIN_NAMESPACE
 class QString;
@@ -12,7 +12,7 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
-class DumpMysql : public releasemgr::AbstractTask
+class DumpMysql : public FullBuildAbstractTask
 {
 public:
    DumpMysql(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);

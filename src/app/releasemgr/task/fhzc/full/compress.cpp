@@ -1,5 +1,6 @@
 #include <QStringList>
 #include <QDir>
+#include <QFileInfo>
 #include <QChar>
 #include <QProcess>
 #include <QLatin1String>
@@ -13,7 +14,7 @@ namespace fhzc{
 namespace fullbuild{
 
 Compress::Compress(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
-   :AbstractTask(taskmgr, invokeArgs)
+   :FullBuildAbstractTask(taskmgr, invokeArgs)
 {
 }
 
@@ -21,17 +22,16 @@ void Compress::exec()
 {
    writeBeginMsg("开始压缩项目文件 ... ");
    QString version = m_invokeArgs[QLatin1String("version")].toString();
-   QStringList sourceDirs = getSysCfgValue("sourceDirs").toStringList();
-   sourceDirs.append(QString("fenghuang_%1.sql").arg(version));
-   execGzipCmd(QString("fenghuang_%1.tar.gz").arg(version), sourceDirs);
+   QString sourceDir = "fenghuang_"+version;
+   execGzipCmd(QString("fenghuang_%1.tar.gz").arg(version), sourceDir);
    writeDoneMsg();
 }
-void Compress::execGzipCmd(const QString& savedFilename, const QStringList &files)
+void Compress::execGzipCmd(const QString& savedFilename, const QString &sourceDir)
 {
    QProcess process;
    QStringList args;
-   process.setWorkingDirectory(m_buildDir);
-   args << "-czvf" << savedFilename << files;
+   process.setWorkingDirectory(QFileInfo(m_buildDir).absolutePath());
+   args << "-czvf" << savedFilename << sourceDir;
    process.start("tar", args);
    bool status = process.waitForFinished(-1);
    if(!status || process.exitCode() != 0){

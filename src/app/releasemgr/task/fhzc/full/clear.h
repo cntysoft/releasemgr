@@ -1,7 +1,7 @@
 #ifndef TASK_FHZC_FULLBUILD_CLEAR_H
 #define TASK_FHZC_FULLBUILD_CLEAR_H
 
-#include "task/abstract_task.h"
+#include "fullbuild_abstract_task.h"
 
 class AbstractTaskMgr;
 
@@ -10,7 +10,7 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
-class Clear : public releasemgr::AbstractTask
+class Clear : public FullBuildAbstractTask
 {
 public:
    Clear(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);

@@ -13,7 +13,7 @@ namespace fhzc{
 namespace fullbuild{
 
 SetupDistConst::SetupDistConst(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
-   : AbstractTask(taskmgr, invokeArgs)
+   : FullBuildAbstractTask(taskmgr, invokeArgs)
 {}
 
 void SetupDistConst::exec()

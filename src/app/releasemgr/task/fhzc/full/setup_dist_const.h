@@ -1,7 +1,7 @@
 #ifndef TASK_FHZC_FULLBUILD_SETUP_DIST_CONST_H
 #define TASK_FHZC_FULLBUILD_SETUP_DIST_CONST_H
 
-#include "task/abstract_task.h"
+#include "fullbuild_abstract_task.h"
 
 class AbstractTaskMgr;
 
@@ -10,7 +10,7 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
-class SetupDistConst : public releasemgr::AbstractTask
+class SetupDistConst : public FullBuildAbstractTask
 {
 public:
    SetupDistConst(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs);
