@@ -61,7 +61,14 @@ ReleaseMgrApplication
       name : "fhzc_task"
       prefix : "task/fhzc/"
       files : [
+           "diff/clear.cpp",
            "diff/clear.h",
+           "diff/diffbuild_abstract_task.cpp",
+           "diff/diffbuild_abstract_task.h",
+           "diff/generate_diff_metainfo.cpp",
+           "diff/generate_diff_metainfo.h",
+           "diff/taskmgr.cpp",
+           "diff/taskmgr.h",
            "full/build_js_projects.cpp",
            "full/build_js_projects.h",
            "full/clear.cpp",

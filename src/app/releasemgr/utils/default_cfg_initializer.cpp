@@ -52,13 +52,7 @@ static void init_fhshop_cfg(Settings& settings)
       "index.php"
    };
    settings.setValue("sourceDirs", sourceDirs, CFG_GROUP_FHSHOP);
-   
-//   //用户组权限设置
-//   settings.setValue("targetFsUserGroup/user", "cntysoft", CFG_GROUP_FHSHOP);
-//   settings.setValue("targetFsUserGroup/group", "users", CFG_GROUP_FHSHOP);
-//   settings.setValue("senchaCmdUserGroup/user", "cntysoft", CFG_GROUP_FHSHOP);
-//   settings.setValue("senchaCmdUserGroup/group", "users", CFG_GROUP_FHSHOP);
-   
+     
    //设置sencha项目相关的
    QStringList senchaProjectsFengHuang{
       "PlatformJs/FengHuang/resources",
@@ -102,7 +96,6 @@ static void init_fhzc_cfg(Settings& settings)
    //项目相关文件夹
    settings.setValue("projectDir", "/srv/www/fenghuangdevel", CFG_GROUP_FHZC);
    settings.setValue("buildDir", "/srv/www/fenghuangdevel-build", CFG_GROUP_FHZC);
-   settings.setValue("diffBuildDir", "/srv/www/fenghuangdevel-diff-build", CFG_GROUP_FHZC);
    settings.setValue("docBuildDir", "/srv/www/fenghuang-apidoc-build", CFG_GROUP_FHZC);
    settings.setValue("senchaBuildDir", "PlatformJs/build/production", CFG_GROUP_FHZC);
    //源码文件夹
@@ -137,11 +130,6 @@ static void init_fhzc_cfg(Settings& settings)
    };
    settings.setValue("docSourceDirs/php", docSourceDirsPhp, CFG_GROUP_FHZC);
    settings.setValue("docSourceDirs/js", docSourceDirsJs, CFG_GROUP_FHZC);
-//   //用户组权限设置
-//   settings.setValue("targetFsUserGroup/user", "cntysoft", CFG_GROUP_FHZC);
-//   settings.setValue("targetFsUserGroup/group", "users", CFG_GROUP_FHZC);
-//   settings.setValue("senchaCmdUserGroup/user", "cntysoft", CFG_GROUP_FHZC);
-//   settings.setValue("senchaCmdUserGroup/group", "users", CFG_GROUP_FHZC);
    //submodules 相关设置
    QStringList submodulesPhp{
       "Library/Cntysoft",

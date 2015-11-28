@@ -14,6 +14,8 @@ OptionPool::OptionMapType& OptionPool::getFhzcOptions()
    if(nullptr == m_fhzcOptions){
       m_fhzcOptions = new OptionMapType{
       {"version", new QCommandLineOption("version", "the target version to build", "version")},
+      {"from", new QCommandLineOption("from", "the start version to build", "from")},
+      {"to", new QCommandLineOption("to", "the stop version to build", "to")},
       {"aliyun", new QCommandLineOption("aliyun", "build for aliyun platform")}
    };
    }

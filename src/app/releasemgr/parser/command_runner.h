@@ -38,7 +38,7 @@ protected:
    bool isSubCmdSupported(const QString& cmd) const;
 private:
    CommandMeta::CmdArgType parseSubCmdArgs(CommandCategory& category, CommandName cmd, const QStringList& invokeArgs);
-   void parseFhzcFullBuildCmdArgs(const QStringList& invokeArgs, CommandMeta::CmdArgType& args);
+   void parseFhzcBuildCmdArgs(const QStringList& invokeArgs, CommandMeta::CmdArgType& args);
 private:
    OptionPool m_optionPool;
    Application& m_app;

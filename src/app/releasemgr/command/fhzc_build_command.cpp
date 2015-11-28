@@ -3,6 +3,7 @@
 
 #include "fhzc_build_command.h"
 #include "task/fhzc/full/taskmgr.h"
+#include "task/fhzc/diff/taskmgr.h"
 #include "types.h"
 
 namespace releasemgr 
@@ -23,10 +24,13 @@ AbstractTaskMgr* FhzcBuildCommand::getTaskMgr()
 {
    AbstractTaskMgr* taskmgr = nullptr;
    using FullBuildTaskMgr = releasemgr::task::fhzc::fullbuild::TaskMgr;
+   using DiffBuildTaskMgr = releasemgr::task::fhzc::diffbuild::TaskMgr;
    TaskParamsType args = m_invokeMeta.getCmdArgs();
    QString action = args[QLatin1String("action")].toString();
    if("fullbuild" == action){
       taskmgr = new FullBuildTaskMgr(QLatin1String("Fhzc"), m_cmdRunner->getSysSettings());
+   }else if("diffbuild" == action){
+      taskmgr = new DiffBuildTaskMgr(QLatin1String("Fhzc"), m_cmdRunner->getSysSettings());
    }
    return taskmgr;
 }

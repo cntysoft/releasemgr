@@ -95,7 +95,7 @@ CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandCategory& category
    switch (command) {
    case CommandName::Fhzc_Build:
    {
-      parseFhzcFullBuildCmdArgs(invokeArgs, args);
+      parseFhzcBuildCmdArgs(invokeArgs, args);
       category = CommandCategory::Fhzc;
       break;
    }
@@ -105,7 +105,7 @@ CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandCategory& category
    return args;
 }
 
-void CommandRunner::parseFhzcFullBuildCmdArgs(const QStringList &invokeArgs, CommandMeta::CmdArgType &args)
+void CommandRunner::parseFhzcBuildCmdArgs(const QStringList &invokeArgs, CommandMeta::CmdArgType &args)
 {
    QCommandLineParser* parser = m_optionPool.getFhzcCmdParser();
    parser->process(invokeArgs);
@@ -116,29 +116,53 @@ void CommandRunner::parseFhzcFullBuildCmdArgs(const QStringList &invokeArgs, Com
       syntaxOk = false;
    }
    QString action = positionArgs.takeFirst();
-   QStringList supportActions{
-      "fullbuild", "diffbuild", "docbuild"
-   };
-   if(!supportActions.contains(action)){
-      syntaxOk = false;
-   }
-   QCommandLineOption* versionOpt = opts["version"];
-   QString version = parser->value(*versionOpt);
-   if(0 == version.size()){
-      syntaxOk = false;
-   }
-   QCommandLineOption* aliyunOpt = opts["aliyun"];
-   if(parser->isSet(*aliyunOpt)){
-      args[QLatin1String("aliyun")] = true;
+   args[QLatin1String("action")] = action;
+   //这里按照action解析命令行参数
+   if(action == "fullbuild"){
+      QCommandLineOption* versionOpt = opts["version"];
+      QString version = parser->value(*versionOpt);
+      if(version.isEmpty()){
+         syntaxOk = false;
+         goto THE_END;
+      }
+      QCommandLineOption* aliyunOpt = opts["aliyun"];
+      if(parser->isSet(*aliyunOpt)){
+         args[QLatin1String("aliyun")] = true;
+      }else{
+         args[QLatin1String("aliyun")] = false;
+      }
+      args[QLatin1String("version")] = version;
+   }else if(action == "diffbuild"){
+      QCommandLineOption* fromOpt  = opts["from"];
+      QCommandLineOption* toOpt = opts["to"];
+      QCommandLineOption* aliyunOpt = opts["aliyun"];
+      QString from = parser->value(*fromOpt);
+      QString to = parser->value(*toOpt);
+      if(from.isEmpty()){
+         syntaxOk = false;
+         goto THE_END;
+      }
+      if(to.isEmpty()){
+         syntaxOk = false;
+         goto THE_END;
+      }
+      if(parser->isSet(*aliyunOpt)){
+         args[QLatin1String("aliyun")] = true;
+      }else{
+         args[QLatin1String("aliyun")] = false;
+      }
+      args[QLatin1String("from")] = from;
+      args[QLatin1String("to")] = to;
+   }else if(action == "docbuild"){
+      
    }else{
-      args[QLatin1String("aliyun")] = false;
+      syntaxOk = false;
    }
+   THE_END:
    if(!syntaxOk){
       printUsage();
       throw ErrorInfo();
    }
-   args[QLatin1String("action")] = action;
-   args[QLatin1String("version")] = version;
 }
 
 void CommandRunner::runCmd(const CommandMeta& meta)

@@ -1,0 +1,43 @@
+#include <QLatin1String>
+#include <QDir>
+
+#include "taskmgr.h"
+#include "settings.h"
+
+#include "task/fhzc/diff/clear.h"
+#include "task/fhzc/diff/generate_diff_metainfo.h"
+
+namespace releasemgr{
+namespace task{
+namespace fhzc{
+namespace diffbuild{
+
+TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
+   :AbstractTaskMgr(moduleName, settings)
+{
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new Clear(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new GenerateDiffMetaInfo(taskmgr, args);
+   });
+}
+
+void TaskMgr::beforeRun(const TaskParamsType& args)
+{
+   writeMsg("开始差异性打包凤凰筑巢系统, 打包范围为 : ");
+   writeMsg(args[QLatin1String("version")].toString().toLatin1(), TerminalColor::LightBlue);
+   writeMsg("\n-----------------------------------------------------------------------------------------\n");
+}
+
+void TaskMgr::afterRun(const TaskParamsType &args)
+{
+   QString buildDir = getSysSettings().getValue("buildDir", getModuleName()).toString();
+   QString filename(buildDir+QDir::separator()+"fenghuang_patch_"+args[QLatin1String("from")].toString()+"_"+args[QLatin1String("to")].toString()+".gzip\n");
+   writeMsg(filename.toLatin1(), TerminalColor::Green);
+}
+
+}//diffbuild
+}//fhzc
+}//task
+}//releasemgr
