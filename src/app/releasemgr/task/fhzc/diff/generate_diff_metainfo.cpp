@@ -23,7 +23,7 @@ void GenerateDiffMetaInfo::exec()
 void GenerateDiffMetaInfo::collectModifiedSubmodules(QStringList &submodules)
 {
    writeMsg("\n开始分析改动的submodules数据 ... ", TerminalColor::LightYellow);
-   
+   //获取submodules路径
    writeDoneMsg();
 }
 
