@@ -56,10 +56,10 @@ int Filesystem::filePutContents(const QString &filename, const QString &content)
       targetDir.mkpath(".");
    }
    QFile target(filename);
-   if(!target.open(QFile::WriteOnly| QFile::Truncate)){
+   if(!target.open(QFile::WriteOnly| QFile::Truncate | QFile::Text)){
       return -1;
    }
-   return target.write(content.toLatin1());
+   return target.write(content.toLocal8Bit());
 }
 
 QByteArray Filesystem::fileGetContents(const QString &filename)
@@ -71,4 +71,13 @@ QByteArray Filesystem::fileGetContents(const QString &filename)
    return target.readAll();
 }
 
+bool Filesystem::deleteDirRecusive(const QString &dir)
+{
+   return QDir(dir).removeRecursively();
+}
+
+bool Filesystem::deleteDir(const QString &dir)
+{
+   return QDir(dir).remove(".");
+}
 }//releasemgr

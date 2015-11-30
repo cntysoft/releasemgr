@@ -23,6 +23,7 @@ public:
    };
 public:
    static bool deleteDirRecusive(const QString& dir);
+   static bool deleteDir(const QString& dir);
    static QFileInfoList ls(const QString& path, int level = 1);
    template <typename FnType>
    static bool traverseFs(const QString& path, int level = 0, FnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);
