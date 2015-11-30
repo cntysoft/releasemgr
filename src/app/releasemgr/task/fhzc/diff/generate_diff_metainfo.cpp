@@ -1,5 +1,4 @@
 #include <QStringList>
-#include <QDebug>
 #include <QDir>
 #include <QChar>
 #include <QProcess>
@@ -36,8 +35,9 @@ void GenerateDiffMetaInfo::exec()
    collectModifiedFiles(modifiedFilenames, modifiedSubmodules, fromHashs, toHashs);
    QStringList needRunCmdProjects;
    collectNeedRunCmdProjects(needRunCmdProjects, modifiedFilenames);
-   saveDiffMetaInfo(modifiedFilenames, needRunCmdProjects);
-   buildAndCopyFiles();
+   GeneralKeyToListMapType savedMetaInfo;
+   saveDiffMetaInfo(savedMetaInfo, modifiedFilenames, needRunCmdProjects);
+   buildAndCopyFiles(savedMetaInfo, needRunCmdProjects);
    writeDoneMsg();
 }
 
@@ -181,10 +181,9 @@ void GenerateDiffMetaInfo::collectNeedRunCmdProjects(QStringList& projects, cons
    writeDoneMsg();
 }
 
-void GenerateDiffMetaInfo::saveDiffMetaInfo(const GeneralKeyToListMapType &modifiedFiles, const QStringList& needRunCmdProjects)
+void GenerateDiffMetaInfo::saveDiffMetaInfo(GeneralKeyToListMapType& savedMetaInfo, const GeneralKeyToListMapType &modifiedFiles, const QStringList& needRunCmdProjects)
 {
    writeMsg("正在保存生成的元信息数据 ... ", TerminalColor::LightYellow);
-   GeneralKeyToListMapType savedMetaInfo;
    if(!modifiedFiles["delete"].isEmpty() || !modifiedFiles["modify"].isEmpty()){
       GeneralKeyToListMapType::const_iterator typeIterator = modifiedFiles.cbegin();
       while(typeIterator != modifiedFiles.cend()){
@@ -223,20 +222,48 @@ void GenerateDiffMetaInfo::saveDiffMetaInfo(const GeneralKeyToListMapType &modif
    QChar ds = QDir::separator();
    jsonDoc.setObject(jsonObject);
    Filesystem::filePutContents(m_buildDir+ds+m_from+"_"+m_to+".json", jsonDoc.toJson());
-//   //复制相关的变化文件
-//   writeMsg("\n复制相关的变化文件到打包文件夹 ... ", TerminalColor::LightYellow);
-//   QStringList::const_iterator mdfiterator = savedMetaInfo["modify"].cbegin();
-//   while(mdfiterator != savedMetaInfo["modify"].cend()){
-//      QString relative(*mdfiterator);
-//      Filesystem::copyFile(m_projectDir+ds+relative, m_buildDir+ds+relative);
-//      mdfiterator++;
-//   }
    writeDoneMsg();
 }
 
-void GenerateDiffMetaInfo::buildAndCopyFiles()
+void GenerateDiffMetaInfo::buildAndCopyFiles(const GeneralKeyToListMapType& savedMetaInfo, const QStringList& needRunCmdProjects)
 {
-   
+   //复制相关的变化文件
+   writeMsg("复制相关的变化文件到打包文件夹 ... ", TerminalColor::LightYellow);
+   QStringList::const_iterator mdfiterator = savedMetaInfo["modify"].cbegin();
+   QChar ds(QDir::separator());
+   while(mdfiterator != savedMetaInfo["modify"].cend()){
+      QString relative(*mdfiterator);
+      Filesystem::copyFile(m_projectDir+ds+relative, m_buildDir+ds+relative);
+      mdfiterator++;
+   }
+   writeDoneMsg();
+   //删除源码库里面跟打包相关的代码
+   QDir releasemgrDir(m_buildDir+ds+"Library"+ds+"FengHuang"+ds+"ReleaseTools");
+   if(releasemgrDir.exists()){
+      releasemgrDir.removeRecursively();
+   }
+   if(m_needRunSenchaCmd){
+      QStringList::const_iterator piterator = needRunCmdProjects.cbegin();
+      while(piterator != needRunCmdProjects.cend()){
+         QString projectName(*piterator);
+         writeMsg(QString("正在打包sencha项目%1 ... ").arg(projectName).toLocal8Bit(), TerminalColor::LightYellow);
+         execSenchaCmd(m_projectDir+ds+"PlatformJs"+ds+projectName);
+         writeDoneMsg();
+         piterator++;
+      }
+      //复制打包结果
+      writeMsg("正在复制打包结果文件 ... ", TerminalColor::LightYellow);
+      QString sourceDir(m_projectDir+ds+"PlatformJs"+ds+"build"+ds+"production");
+      Filesystem::traverseFs(sourceDir, 0, [this](QFileInfo& fileInfo, int){
+         if(fileInfo.isFile()){
+            QString sourceFilename(fileInfo.absoluteFilePath());
+            QString destinationFilename(sourceFilename);
+            destinationFilename.replace(this->m_projectDir, this->m_buildDir);
+            Filesystem::copyFile(sourceFilename, destinationFilename);
+         }
+      });
+      writeDoneMsg();
+   }
 }
 
 void GenerateDiffMetaInfo::getSubmoduleHash(const QString &projectDir, const QString &versionTag, const QStringList &submodules, SubmoduleHashMapType &hashs)
@@ -302,6 +329,18 @@ void GenerateDiffMetaInfo::getGitDiffFiles(const QString &projectDir, const QStr
    modifiedFilesMap["delete"] = deletedFilenames;
 }
 
+void GenerateDiffMetaInfo::execSenchaCmd(const QString &projectDir)
+{
+   QProcess process;
+   QStringList args;
+   process.setWorkingDirectory(projectDir);
+   args << "app" << "build";
+   process.start("sencha", args);
+   bool status = process.waitForFinished(-1);
+   if(!status || process.exitCode() != 0){
+      throw ErrorInfo(process.errorString());
+   }
+}
 
 GenerateDiffMetaInfo::~GenerateDiffMetaInfo()
 {}

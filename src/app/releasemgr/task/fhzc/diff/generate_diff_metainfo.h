@@ -31,10 +31,11 @@ private:
    void collectModifiedSubmodules(QStringList& modifiedSubmodules, SubmoduleHashMapType& fromHashs, SubmoduleHashMapType& toHashs);
    void collectModifiedFiles(GeneralKeyToListMapType& modifiedFiles, const QStringList& modifiedSubmodules, const SubmoduleHashMapType& fromHashs, const SubmoduleHashMapType& toHashs);
    void collectNeedRunCmdProjects(QStringList& projects, const GeneralKeyToListMapType& modifiedFilenames);
-   void buildAndCopyFiles();
-   void saveDiffMetaInfo(const GeneralKeyToListMapType& modifiedFiles, const QStringList& needRunCmdProjects);
+   void buildAndCopyFiles(const GeneralKeyToListMapType& savedMetaInfo, const QStringList& needRunCmdProjects);
+   void saveDiffMetaInfo(GeneralKeyToListMapType& savedMetaInfo, const GeneralKeyToListMapType& modifiedFiles, const QStringList& needRunCmdProjects);
    void getSubmoduleHash(const QString& projectDir, const QString& versionTag, const QStringList& submodules, SubmoduleHashMapType& hashs);
    void getGitDiffFiles(const QString& projectDir, const QString& from, const QString& to, GeneralKeyToListMapType& modifiedFilesMap, const QStringList& paths = QStringList(), const QStringList& skips = QStringList());
+   void execSenchaCmd(const QString& projectDir);
 private:
    bool m_needRunSenchaCmd = false;
 };
