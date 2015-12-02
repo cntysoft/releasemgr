@@ -67,6 +67,8 @@ ReleaseMgrApplication
            "diff/diffbuild_abstract_task.h",
            "diff/generate_diff_metainfo.cpp",
            "diff/generate_diff_metainfo.h",
+           "diff/generate_versioninfo.cpp",
+           "diff/generate_versioninfo.h",
            "diff/taskmgr.cpp",
            "diff/taskmgr.h",
            "full/build_js_projects.cpp",

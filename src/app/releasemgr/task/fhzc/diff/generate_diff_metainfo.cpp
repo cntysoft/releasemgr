@@ -247,7 +247,10 @@ void GenerateDiffMetaInfo::buildAndCopyFiles(const GeneralKeyToListMapType& save
       while(piterator != needRunCmdProjects.cend()){
          QString projectName(*piterator);
          writeMsg(QString("正在打包sencha项目%1 ... ").arg(projectName).toLocal8Bit(), TerminalColor::LightYellow);
-         execSenchaCmd(m_projectDir+ds+"PlatformJs"+ds+projectName);
+         
+         //暂时不运行这段代码
+         
+         //execSenchaCmd(m_projectDir+ds+"PlatformJs"+ds+projectName);
          writeDoneMsg();
          piterator++;
       }

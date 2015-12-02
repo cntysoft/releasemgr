@@ -3,6 +3,8 @@
 
 #include "fullbuild_abstract_task.h"
 
+class AbstractTaskMgr;
+
 namespace releasemgr{
 namespace task{
 namespace fhzc{
