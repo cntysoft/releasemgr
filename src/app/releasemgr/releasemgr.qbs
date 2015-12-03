@@ -4,6 +4,7 @@ ReleaseMgrApplication
    name : "releasemgr"
    targetName : "releasemgr"
    Depends {name:"releasemgr_core"}
+   Depends { name: "Qt"; submodules: ["sql"] }
    cpp.includePaths: base.concat([
                                     "."
                                  ])
@@ -61,6 +62,8 @@ ReleaseMgrApplication
       name : "fhzc_task"
       prefix : "task/fhzc/"
       files : [
+           "diff/analysis_database.cpp",
+           "diff/analysis_database.h",
            "diff/clear.cpp",
            "diff/clear.h",
            "diff/diffbuild_abstract_task.cpp",
@@ -69,6 +72,8 @@ ReleaseMgrApplication
            "diff/generate_diff_metainfo.h",
            "diff/generate_versioninfo.cpp",
            "diff/generate_versioninfo.h",
+           "diff/setup_diff_const.cpp",
+           "diff/setup_dist_const.h",
            "diff/taskmgr.cpp",
            "diff/taskmgr.h",
            "full/build_js_projects.cpp",

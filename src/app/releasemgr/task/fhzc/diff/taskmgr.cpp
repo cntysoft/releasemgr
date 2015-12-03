@@ -7,6 +7,8 @@
 #include "task/fhzc/diff/clear.h"
 #include "task/fhzc/diff/generate_diff_metainfo.h"
 #include "task/fhzc/diff/generate_versioninfo.h"
+#include "task/fhzc/diff/setup_dist_const.h"
+#include "task/fhzc/diff/analysis_database.h"
 
 namespace releasemgr{
 namespace task{
@@ -24,6 +26,12 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    });
    m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new GenerateVersionInfo(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new SetupDistConst(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new AnalysisDatabase(taskmgr, args);
    });
 }
 
