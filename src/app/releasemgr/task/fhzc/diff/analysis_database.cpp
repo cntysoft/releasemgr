@@ -64,7 +64,6 @@ void AnalysisDatabase::exec()
    
    QSet<QString> intersection(toTableNameSet);
    intersection.intersect(fromTableNameSet);
-   
    writeMsg("正在分析数据库字段级别差异性 ... ", TerminalColor::LightYellow);
    QJsonObject modifyTableJsonObject;
    //探测修改表信息

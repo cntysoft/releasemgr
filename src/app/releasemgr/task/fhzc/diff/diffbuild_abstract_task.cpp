@@ -14,7 +14,7 @@ DiffBuildAbstractTask::DiffBuildAbstractTask(const AbstractTaskMgr &taskmgr, con
      m_from(m_invokeArgs[QLatin1String("from")].toString()),
      m_to(m_invokeArgs[QLatin1String("to")].toString())
 {
-   m_buildDir = m_buildDir + QDir::separator() + "fenghuang_patch_" + m_from +"_"+ m_to;
+   m_buildDir = m_buildDir + QDir::separator() + "fenghuang_" + m_from +"_"+ m_to;
 }
 
 DiffBuildAbstractTask::~DiffBuildAbstractTask()

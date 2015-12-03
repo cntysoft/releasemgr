@@ -9,6 +9,8 @@
 #include "task/fhzc/diff/generate_versioninfo.h"
 #include "task/fhzc/diff/setup_dist_const.h"
 #include "task/fhzc/diff/analysis_database.h"
+#include "task/fhzc/diff/copy_upgrade_script.h"
+#include "task/fhzc/diff/compress.h"
 
 namespace releasemgr{
 namespace task{
@@ -32,6 +34,12 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    });
    m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new AnalysisDatabase(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new CopyUpgradeScript(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new Compress(taskmgr, args);
    });
 }
 

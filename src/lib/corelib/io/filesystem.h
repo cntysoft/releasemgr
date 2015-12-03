@@ -2,6 +2,7 @@
 #define RMGR_CORE_IO_FILESYSTEM_H
 
 #include <QFileInfoList>
+#include <QDir>
 
 #include "global/global.h"
 

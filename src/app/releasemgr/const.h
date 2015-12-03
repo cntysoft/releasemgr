@@ -1,6 +1,7 @@
 #ifndef RELEASEMGR_CONST_H
 #define RELEASEMGR_CONST_H
-
+#include <QChar>
+#include <QDir>
 namespace releasemgr 
 {
 
@@ -11,6 +12,8 @@ extern const char* CFG_GROUP_FHSHOP;
 
 const int DEPLOY_TYPE_PRODUCT = 4;
 const int DEPLOY_TYPE_DEBUG = 5;
+
+const QChar DS = QDir::separator();
 
 }//releasemgr
 
