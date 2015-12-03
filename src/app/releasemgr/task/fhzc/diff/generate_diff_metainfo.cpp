@@ -250,7 +250,7 @@ void GenerateDiffMetaInfo::buildAndCopyFiles(const GeneralKeyToListMapType& save
          
          //暂时不运行这段代码
          
-         //execSenchaCmd(m_projectDir+ds+"PlatformJs"+ds+projectName);
+         execSenchaCmd(m_projectDir+ds+"PlatformJs"+ds+projectName);
          writeDoneMsg();
          piterator++;
       }
