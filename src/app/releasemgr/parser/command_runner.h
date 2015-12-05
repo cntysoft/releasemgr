@@ -39,6 +39,7 @@ protected:
 private:
    CommandMeta::CmdArgType parseSubCmdArgs(CommandCategory& category, CommandName cmd, const QStringList& invokeArgs);
    void parseFhzcBuildCmdArgs(const QStringList& invokeArgs, CommandMeta::CmdArgType& args);
+   void parseFhshopBuildCmdArgs(const QStringList& invokeArgs, CommandMeta::CmdArgType& args);
 private:
    OptionPool m_optionPool;
    Application& m_app;

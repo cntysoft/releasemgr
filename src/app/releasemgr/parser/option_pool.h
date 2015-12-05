@@ -20,32 +20,29 @@ public:
    ~OptionPool();
    OptionMapType& getFhzcOptions();
    OptionMapType& getEntryOptions();
-//   OptionMapType& getFhShopOptions() const;
-//   OptionMapType& getDeployOptions() const;
-//   OptionMapType& getReleaseMgrOptions() const;
-//   OptionMapType& getConfigOptions() const;
+   OptionMapType& getFhshopOptions();
+   //   OptionMapType& getDeployOptions() const;
+   //   OptionMapType& getReleaseMgrOptions() const;
+   //   OptionMapType& getConfigOptions() const;
    
    QCommandLineParser* getFhzcCmdParser();
    QCommandLineParser* getEntryCmdParser();
-//   QCommandLineParser* getFhShopCmdParser() const;
-//   QCommandLineParser* getDeployCmdParser() const;
-//   QCommandLineParser* getReleaseCmdParser() const;
-//   QCommandLineParser* getConfigCmdParser() const;
+   QCommandLineParser* getFhshopCmdParser();
+   //   QCommandLineParser* getDeployCmdParser() const;
+   //   QCommandLineParser* getReleaseCmdParser() const;
+   //   QCommandLineParser* getConfigCmdParser() const;
 private:
-   //   void initFhzcOptions() const;
-   //   void initFhShopOptions() const;
-   //   void initDeployOptions() const;
-   //   void initReleaseMgrOptions() const;
-   //   void initConfigOptions() const;
-   OptionMapType* m_fhzcOptions = nullptr;
    OptionMapType* m_entryOptions = nullptr;
+   OptionMapType* m_fhzcOptions = nullptr;
+   OptionMapType* m_fhshopOptions = nullptr;
    
-   QCommandLineParser* m_fhzcCmdParser = nullptr;
    QCommandLineParser* m_entryCmdParser = nullptr;
-//   OptionMapType* fhShopOptions = nullptr;
-//   OptionMapType* deployOptions = nullptr;
-//   OptionMapType* releaseMgrOptions = nullptr;
-//   OptionMapType* configOptions = nullptr;
+   QCommandLineParser* m_fhzcCmdParser = nullptr;
+   QCommandLineParser* m_fhshopCmdParser = nullptr;
+   
+   //   OptionMapType* deployOptions = nullptr;
+   //   OptionMapType* releaseMgrOptions = nullptr;
+   //   OptionMapType* configOptions = nullptr;
    
    
 };

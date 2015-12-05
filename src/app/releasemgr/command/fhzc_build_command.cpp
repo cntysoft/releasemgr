@@ -1,4 +1,3 @@
-#include <QDebug>
 #include <QScopedPointer>
 
 #include "fhzc_build_command.h"

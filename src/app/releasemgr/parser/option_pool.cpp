@@ -9,6 +9,18 @@ OptionPool::OptionPool()
 {
 }
 
+OptionPool::OptionMapType& OptionPool::getEntryOptions()
+{
+   if(nullptr == m_entryOptions){
+      m_entryOptions = new OptionMapType
+      {
+      {"version", new QCommandLineOption("version", "the target version to build", "version")},
+      {"help", new QCommandLineOption("help", "print the help info")}
+   };
+   }
+   return *m_entryOptions;
+}
+
 OptionPool::OptionMapType& OptionPool::getFhzcOptions()
 {
    if(nullptr == m_fhzcOptions){
@@ -22,16 +34,17 @@ OptionPool::OptionMapType& OptionPool::getFhzcOptions()
    return *m_fhzcOptions;
 }
 
-OptionPool::OptionMapType& OptionPool::getEntryOptions()
+OptionPool::OptionMapType& OptionPool::getFhshopOptions()
 {
-   if(nullptr == m_entryOptions){
-      m_entryOptions = new OptionMapType
-      {
+   if(nullptr == m_fhshopOptions){
+      m_fhshopOptions = new OptionMapType{
       {"version", new QCommandLineOption("version", "the target version to build", "version")},
-      {"help", new QCommandLineOption("help", "print the help info")}
+      {"from", new QCommandLineOption("from", "the start version to build", "from")},
+      {"to", new QCommandLineOption("to", "the stop version to build", "to")},
+      {"aliyun", new QCommandLineOption("aliyun", "build for aliyun platform")}
    };
    }
-   return *m_entryOptions;
+   return *m_fhshopOptions;
 }
 
 QCommandLineParser* OptionPool::getEntryCmdParser()
@@ -61,6 +74,21 @@ QCommandLineParser* OptionPool::getFhzcCmdParser()
       }
    }
    return m_fhzcCmdParser;
+}
+
+QCommandLineParser* OptionPool::getFhshopCmdParser()
+{
+   if(nullptr == m_fhshopCmdParser){
+      m_fhshopCmdParser = new QCommandLineParser();
+      m_fhshopCmdParser->addPositionalArgument("action", "the build action type");
+      OptionMapType map = getFhzcOptions();
+      OptionMapType::const_iterator iterator = map.cbegin();
+      while(iterator != map.cend()){
+         m_fhshopCmdParser->addOption(*iterator.value());
+         iterator++;
+      }
+   }
+   return m_fhshopCmdParser;
 }
 
 OptionPool::~OptionPool()

@@ -18,7 +18,8 @@ enum class CommandName
    Unknow,
    Global_Version,
    Global_Help,
-   Fhzc_Build
+   Fhzc_Build,
+   Fhshop_Build
 };
 
 }//releasemgr

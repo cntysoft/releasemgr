@@ -129,14 +129,14 @@ void AnalysisDatabase::exec()
             colModifyItemFromMetaJsonObject.insert("numeric_scale", QJsonValue(fromColMeta["numeric_scale"].toString()));
             colModifyItemFromMetaJsonObject.insert("numeric_unsigned", QJsonValue(fromColMeta["numeric_unsigned"].toString()));
             
-            colModifyItemJsonToMetaObject.insert("column_default", QJsonValue(fromColMeta["column_default"].toString()));
-            colModifyItemJsonToMetaObject.insert("is_nullable", QJsonValue(fromColMeta["is_nullable"].toBool()));
-            colModifyItemJsonToMetaObject.insert("data_type", QJsonValue(fromColMeta["data_type"].toString()));
-            colModifyItemJsonToMetaObject.insert("character_maximum_length", QJsonValue(fromColMeta["character_maximum_length"].toString()));
-            colModifyItemJsonToMetaObject.insert("character_octet_length", QJsonValue(fromColMeta["character_octet_length"].toString()));
-            colModifyItemJsonToMetaObject.insert("numeric_precision", QJsonValue(fromColMeta["numeric_precision"].toString()));
-            colModifyItemJsonToMetaObject.insert("numeric_scale", QJsonValue(fromColMeta["numeric_scale"].toString()));
-            colModifyItemJsonToMetaObject.insert("numeric_unsigned", QJsonValue(fromColMeta["numeric_unsigned"].toString()));
+            colModifyItemJsonToMetaObject.insert("column_default", QJsonValue(toColMeta["column_default"].toString()));
+            colModifyItemJsonToMetaObject.insert("is_nullable", QJsonValue(toColMeta["is_nullable"].toBool()));
+            colModifyItemJsonToMetaObject.insert("data_type", QJsonValue(toColMeta["data_type"].toString()));
+            colModifyItemJsonToMetaObject.insert("character_maximum_length", QJsonValue(toColMeta["character_maximum_length"].toString()));
+            colModifyItemJsonToMetaObject.insert("character_octet_length", QJsonValue(toColMeta["character_octet_length"].toString()));
+            colModifyItemJsonToMetaObject.insert("numeric_precision", QJsonValue(toColMeta["numeric_precision"].toString()));
+            colModifyItemJsonToMetaObject.insert("numeric_scale", QJsonValue(toColMeta["numeric_scale"].toString()));
+            colModifyItemJsonToMetaObject.insert("numeric_unsigned", QJsonValue(toColMeta["numeric_unsigned"].toString()));
             
             colModifyItemJsonObject.insert("from", QJsonValue(colModifyItemFromMetaJsonObject));
             colModifyItemJsonObject.insert("to", QJsonValue(colModifyItemJsonToMetaObject));

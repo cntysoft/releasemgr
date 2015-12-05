@@ -1,16 +1,15 @@
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+#include <QLatin1String>
+#include <QScopedPointer>
+
+#include "command/abstract_command.h"
+#include "command/command_repo.h"
+#include "settings.h"
 #include "command_runner.h"
 #include "application.h"
 #include "kernel/errorinfo.h"
 #include "command/command_category.h"
-#include <QCommandLineParser>
-#include <QCommandLineOption>
-#include <QLatin1String>
-#include <QDebug>
-
-#include <QScopedPointer>
-#include "command/abstract_command.h"
-#include "command/command_repo.h"
-#include "settings.h"
 
 namespace releasemgr
 {
@@ -31,11 +30,16 @@ const CommandRunner::CmdPoolType CommandRunner::m_cmdRegisterPool{
    {CommandName::Fhzc_Build, [](CommandRunner* runner, const CommandMeta& meta)->AbstractCommand*{
          FhzcBuildCommand* cmd = new FhzcBuildCommand(runner, meta);
          return cmd;
+      }},
+   {CommandName::Fhshop_Build, [](CommandRunner* runner, const CommandMeta& meta)->AbstractCommand*{
+         FhshopBuildCommand* cmd = new FhshopBuildCommand(runner, meta);
+         return cmd;
       }}
 };
 
 const CommandRunner::CmdNameRepoType CommandRunner::m_subCmdNameMap{
-   {"fhzc", CommandName::Fhzc_Build}
+   {"fhzc", CommandName::Fhzc_Build},
+   {"fhshop", CommandName::Fhshop_Build}
 };
 
 Settings& CommandRunner::getSysSettings()
@@ -99,6 +103,11 @@ CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandCategory& category
       category = CommandCategory::Fhzc;
       break;
    }
+   case CommandName::Fhshop_Build:
+   {
+      parseFhshopBuildCmdArgs(invokeArgs, args);
+      category = CommandCategory::Fhshop;
+   }
    default:
       break;
    }
@@ -158,7 +167,67 @@ void CommandRunner::parseFhzcBuildCmdArgs(const QStringList &invokeArgs, Command
    }else{
       syntaxOk = false;
    }
-   THE_END:
+THE_END:
+   if(!syntaxOk){
+      printUsage();
+      throw ErrorInfo();
+   }
+}
+
+void CommandRunner::parseFhshopBuildCmdArgs(const QStringList &invokeArgs, CommandMeta::CmdArgType &args)
+{
+   QCommandLineParser* parser = m_optionPool.getFhzcCmdParser();
+   parser->process(invokeArgs);
+   OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
+   QStringList positionArgs = parser->positionalArguments();
+   bool syntaxOk = true;
+   if(1 != positionArgs.count()){
+      syntaxOk = false;
+   }
+   QString action = positionArgs.takeFirst();
+   args[QLatin1String("action")] = action;
+   //这里按照action解析命令行参数
+   if(action == "fullbuild"){
+      QCommandLineOption* versionOpt = opts["version"];
+      QString version = parser->value(*versionOpt);
+      if(version.isEmpty()){
+         syntaxOk = false;
+         goto THE_END;
+      }
+      QCommandLineOption* aliyunOpt = opts["aliyun"];
+      if(parser->isSet(*aliyunOpt)){
+         args[QLatin1String("aliyun")] = true;
+      }else{
+         args[QLatin1String("aliyun")] = false;
+      }
+      args[QLatin1String("version")] = version;
+   }else if(action == "diffbuild"){
+      QCommandLineOption* fromOpt  = opts["from"];
+      QCommandLineOption* toOpt = opts["to"];
+      QCommandLineOption* aliyunOpt = opts["aliyun"];
+      QString from = parser->value(*fromOpt);
+      QString to = parser->value(*toOpt);
+      if(from.isEmpty()){
+         syntaxOk = false;
+         goto THE_END;
+      }
+      if(to.isEmpty()){
+         syntaxOk = false;
+         goto THE_END;
+      }
+      if(parser->isSet(*aliyunOpt)){
+         args[QLatin1String("aliyun")] = true;
+      }else{
+         args[QLatin1String("aliyun")] = false;
+      }
+      args[QLatin1String("from")] = from;
+      args[QLatin1String("to")] = to;
+   }else if(action == "docbuild"){
+      
+   }else{
+      syntaxOk = false;
+   }
+THE_END:
    if(!syntaxOk){
       printUsage();
       throw ErrorInfo();

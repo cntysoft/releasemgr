@@ -1,5 +1,5 @@
-#ifndef FHZC_FULL_BUILD_COMMAND_H
-#define FHZC_FULL_BUILD_COMMAND_H
+#ifndef COMMAND_FHZC_FULL_BUILD_COMMAND_H
+#define COMMAND_FHZC_FULL_BUILD_COMMAND_H
 
 #include "abstract_command.h"
 #include "global/global.h"
@@ -22,4 +22,4 @@ private:
 
 }//releasemgr
 
-#endif // FHZC_FULL_BUILD_COMMAND_H
+#endif // COMMAND_FHZC_FULL_BUILD_COMMAND_H
