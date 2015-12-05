@@ -10,6 +10,7 @@
 #include "application.h"
 #include "kernel/errorinfo.h"
 #include "command/command_category.h"
+#include "io/terminal.h"
 
 namespace releasemgr
 {
@@ -254,9 +255,15 @@ bool CommandRunner::isSubCmdSupported(const QString& cmd) const
 
 void CommandRunner::printUsage()const
 {
-   return qDebug("welcome to use sheneninfo release manager system\n\n"
-                 "usage: \nreleasemgr --version \t print main system version number\n"
-                 "releasemgr --help \t print help document\n");
+   Terminal::writeText("welcome to use sheneninfo release manager system\n\n", TerminalColor::Green);
+   Terminal::writeText("usage: \n", TerminalColor::Blue);
+   qDebug(
+            "releasemgr --version \t print main system version number\n"
+            "releasemgr --help \t print help document\n\n"
+            "releasemgr fhzc build --version=<version> [--aliyun]\n"
+            "releasemgr fhzc diffbuild --from=<start version> --to=<stop version> [--aliyun]\n\n"
+            "releasemgr fhshop build --version=<version> [--aliyun]\n"
+            "releasemgr fhshop diffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
 }
 
 QCommandLineParser* CommandRunner::getCmdParserByCmdName(CommandName cmdName)
