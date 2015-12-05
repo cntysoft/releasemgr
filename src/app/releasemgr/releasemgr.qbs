@@ -34,21 +34,21 @@ ReleaseMgrApplication
       name : "command"
       prefix : name + '/'
       files : [
-           "abstract_command.h",
-           "abstract_command.cpp",
-           "command_category.h",
-           "command_meta.cpp",
-           "command_meta.h",
-           "command_repo.h",
-           "fhshop_build_command.cpp",
-           "fhshop_build_command.h",
-           "fhzc_build_command.cpp",
-           "fhzc_build_command.h",
-           "global_help_command.cpp",
-           "global_help_command.h",
-           "global_version_command.cpp",
-           "global_version_command.h",
-       ]
+         "abstract_command.h",
+         "abstract_command.cpp",
+         "command_category.h",
+         "command_meta.cpp",
+         "command_meta.h",
+         "command_repo.h",
+         "fhshop_build_command.cpp",
+         "fhshop_build_command.h",
+         "fhzc_build_command.cpp",
+         "fhzc_build_command.h",
+         "global_help_command.cpp",
+         "global_help_command.h",
+         "global_version_command.cpp",
+         "global_version_command.h",
+      ]
    }
    Group {
       name : "task"
@@ -64,9 +64,27 @@ ReleaseMgrApplication
       name : "fhshop_task"
       prefix:"task/fhshop/"
       files : [
-           "full/taskmgr.cpp",
-           "full/taskmgr.h",
-       ]
+         "full/taskmgr.cpp",
+         "full/taskmgr.h",
+         "full/fullbuild_abstract_task.h",
+         "full/fullbuild_abstract_task.cpp",
+         "full/clear.h",
+         "full/clear.cpp",
+         "full/copy_project_files.h",
+         "full/copy_project_files.cpp",
+         "full/build_js_projects.h",
+         "full/build_js_projects.cpp",
+         "full/dump_mysql.h",
+         "full/dump_mysql.cpp",
+         "full/generate_versioninfo.h",
+         "full/generate_versioninfo.cpp",
+         "full/setup_config.h",
+         "full/setup_config.cpp",
+         "full/setup_dist_const.h",
+         "full/setup_dist_const.cpp",
+         "full/compress.h",
+         "full/compress.cpp"
+      ]
    }
    
    Group {

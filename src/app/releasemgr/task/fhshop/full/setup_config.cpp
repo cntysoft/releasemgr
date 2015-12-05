@@ -9,7 +9,7 @@
 
 namespace releasemgr{
 namespace task{
-namespace fhzc{
+namespace fhshop{
 namespace fullbuild{
 
 SetupConfig::SetupConfig(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
@@ -31,6 +31,6 @@ SetupConfig::~SetupConfig()
 {}
 
 }//fullbuild
-}//fhzc
+}//fhshop
 }//task
 }//releasemgr

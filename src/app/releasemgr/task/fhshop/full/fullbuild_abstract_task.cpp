@@ -6,19 +6,19 @@
 
 namespace releasemgr{
 namespace task{
-namespace fhzc{
+namespace fhshop{
 namespace fullbuild{
 
 FullBuildAbstractTask::FullBuildAbstractTask(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    :AbstractTask(taskmgr, invokeArgs)
 {
-   m_buildDir = m_buildDir + QDir::separator() + "fenghuang_" + m_invokeArgs[QLatin1String("version")].toString();
+   m_buildDir = m_buildDir + QDir::separator() + "fenghuangshop_" + m_invokeArgs[QLatin1String("version")].toString();
 }
 
 FullBuildAbstractTask::~FullBuildAbstractTask()
 {}
 
 }//fullbuild
-}//fhzc
+}//fhshop
 }//task
 }//releasemgr
