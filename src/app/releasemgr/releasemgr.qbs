@@ -8,13 +8,15 @@ ReleaseMgrApplication
    cpp.includePaths: base.concat([
                                     "."
                                  ])
+   cpp.defines: base.concat([
+                               'RMMGR_VERSION="' + project.rmmgrVersion + '"'
+                            ])
    
    files : [
       "application.cpp",
       "application.h",
       "const.cpp",
       "const.h",
-      
       "main.cpp",
       "settings.cpp",
       "settings.h",

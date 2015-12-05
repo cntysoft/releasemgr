@@ -11,6 +11,7 @@ Project
    property string appInstallDir: "bin"
    property string libInstallDir: libDirName
    property string resourcesInstallDir: "share"
+   property string rmmgrVersion: "0.0.1"
    property stringList libRPaths: {
       if (!enableRPath){
          return undefined;
