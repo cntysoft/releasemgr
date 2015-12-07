@@ -36,21 +36,23 @@ ReleaseMgrApplication
       name : "command"
       prefix : name + '/'
       files : [
-         "abstract_command.h",
-         "abstract_command.cpp",
-         "command_category.h",
-         "command_meta.cpp",
-         "command_meta.h",
-         "command_repo.h",
-         "fhshop_build_command.cpp",
-         "fhshop_build_command.h",
-         "fhzc_build_command.cpp",
-         "fhzc_build_command.h",
-         "global_help_command.cpp",
-         "global_help_command.h",
-         "global_version_command.cpp",
-         "global_version_command.h",
-      ]
+           "abstract_command.h",
+           "abstract_command.cpp",
+           "command_category.h",
+           "command_meta.cpp",
+           "command_meta.h",
+           "command_repo.h",
+           "fhshop_build_command.cpp",
+           "fhshop_build_command.h",
+           "fhzc_build_command.cpp",
+           "fhzc_build_command.h",
+           "global_help_command.cpp",
+           "global_help_command.h",
+           "global_version_command.cpp",
+           "global_version_command.h",
+           "rmmgr_build_command.cpp",
+           "rmmgr_build_command.h",
+       ]
    }
    Group {
       name : "task"
@@ -133,6 +135,15 @@ ReleaseMgrApplication
          "full/taskmgr.h",
       ]
    }
+   Group {
+      name : "rmmgr_task"
+      prefix: "task/rmmgr/"
+      files : [
+         "taskmgr.cpp",
+         "taskmgr.h"
+      ]
+   }
+
    Group {
       name : "utils"
       prefix : name + '/'

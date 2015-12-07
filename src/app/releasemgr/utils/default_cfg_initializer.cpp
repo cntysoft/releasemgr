@@ -12,12 +12,14 @@ namespace releasemgr
 static void init_global_cfg(Settings &settings);
 static void init_fhzc_cfg(Settings &settings);
 static void init_fhshop_cfg(Settings& settings);
+static void init_rmmgr_cfg(Settings& settings);
 
 void init_defualt_cfg(Settings& settings)
 {
    init_global_cfg(settings);
    init_fhzc_cfg(settings);
    init_fhshop_cfg(settings);
+   init_rmmgr_cfg(settings);
    settings.sync();
 }
 
@@ -164,6 +166,12 @@ static void init_fhzc_cfg(Settings& settings)
       "PlatformJs/FengHuang/index.html"
    };
    settings.setValue("senchaProjects/FengHuang", senchaProjectsFengHuang, CFG_GROUP_FHZC);
+}
+
+void init_rmmgr_cfg(Settings &settings)
+{
+   settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/releasemgr", CFG_GROUP_RMMGR);
+   settings.setValue("buildDir", "/tmp/relasemgr-build", CFG_GROUP_RMMGR);
 }
 
 }//releasemgr

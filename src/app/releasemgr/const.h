@@ -9,6 +9,7 @@ extern const char* CFG_FILE_NAME;
 extern const char* CFG_GROUP_GLOABL;
 extern const char* CFG_GROUP_FHZC;
 extern const char* CFG_GROUP_FHSHOP;
+extern const char* CFG_GROUP_RMMGR;
 
 const int DEPLOY_TYPE_PRODUCT = 4;
 const int DEPLOY_TYPE_DEBUG = 5;

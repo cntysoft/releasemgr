@@ -10,6 +10,7 @@ enum class CommandCategory
    DeployServer,
    Fhzc,
    Fhshop,
+   RmMgr,
    Unknow
 };
 
@@ -19,7 +20,8 @@ enum class CommandName
    Global_Version,
    Global_Help,
    Fhzc_Build,
-   Fhshop_Build
+   Fhshop_Build,
+   RmMgr_Build
 };
 
 }//releasemgr

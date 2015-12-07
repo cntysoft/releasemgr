@@ -47,6 +47,18 @@ OptionPool::OptionMapType& OptionPool::getFhshopOptions()
    return *m_fhshopOptions;
 }
 
+OptionPool::OptionMapType& OptionPool::getRmMgrOptions()
+{
+   if(nullptr == m_rmmgrOptions){
+      m_rmmgrOptions = new OptionMapType{
+      {"projectDir", new QCommandLineOption("projectDir", "releasemgr project source files directory", "projectDir")},
+      {"buildDir", new QCommandLineOption("buildDir", "the working directory to build rpm package")},
+      {"version", new QCommandLineOption("version", "the target version to build", "version")},
+   };
+   }
+   return *m_rmmgrOptions;
+}
+
 QCommandLineParser* OptionPool::getEntryCmdParser()
 {
    if(nullptr == m_entryCmdParser){
@@ -91,13 +103,34 @@ QCommandLineParser* OptionPool::getFhshopCmdParser()
    return m_fhshopCmdParser;
 }
 
+QCommandLineParser* OptionPool::getRmMgrCmdParser()
+{
+   if(nullptr == m_rmmgrCmdParser){
+      m_rmmgrCmdParser = new QCommandLineParser();
+      m_rmmgrCmdParser->addPositionalArgument("action", "the build action type");
+      OptionMapType map = getRmMgrOptions();
+      OptionMapType::const_iterator iterator = map.cbegin();
+      while(iterator != map.cend()){
+         m_rmmgrCmdParser->addOption(*iterator.value());
+         iterator++;
+      }
+   }
+   return m_rmmgrCmdParser;
+}
+
 OptionPool::~OptionPool()
 {
+   if(nullptr != m_entryCmdParser){
+      delete m_entryCmdParser;
+   }
    if(nullptr != m_fhzcCmdParser){
       delete m_fhzcCmdParser;
    }
-   if(nullptr != m_entryCmdParser){
-      delete m_entryCmdParser;
+   if(nullptr != m_fhshopCmdParser){
+      delete m_fhshopCmdParser;
+   }
+   if(nullptr != m_rmmgrCmdParser){
+      delete m_rmmgrCmdParser;
    }
    if(nullptr != m_entryOptions){
       OptionMapType::const_iterator it = m_entryOptions->cbegin();
@@ -114,6 +147,22 @@ OptionPool::~OptionPool()
          it++;
       }
       delete m_fhzcOptions;
+   }
+   if(nullptr != m_fhshopOptions){
+      OptionMapType::const_iterator it = m_fhzcOptions->cbegin();
+      while(it != m_fhshopOptions->cend()){
+         delete it.value();
+         it++;
+      }
+      delete m_fhshopOptions;
+   }
+   if(nullptr != m_rmmgrOptions){
+      OptionMapType::const_iterator it = m_rmmgrOptions->cbegin();
+      while(it != m_rmmgrOptions->cend()){
+         delete it.value();
+         it++;
+      }
+      delete m_rmmgrOptions;
    }
 }
 
