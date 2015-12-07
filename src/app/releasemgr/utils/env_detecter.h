@@ -20,6 +20,7 @@ private:
    bool detectGit();
    bool detectGzip();
    bool detectSencha();
+   bool detectRpmbuild();
 private:
    Settings& m_settings;
    QStringList m_needInstalledTools;

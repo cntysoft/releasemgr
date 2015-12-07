@@ -39,6 +39,11 @@ void EnvDetecter::detect()
       m_needInstalledTools << "sencha";
       Terminal::writeText("sencha not found\n", TerminalColor::Red);
    }
+   Terminal::writeText("begin detect rpmbuild ...\n", TerminalColor::Default);
+   if(!detectRpmbuild()){
+      m_needInstalledTools << "rpmbuild";
+      Terminal::writeText("rpmbuild not found\n", TerminalColor::Red);
+   }
    if(!m_needInstalledTools.empty()){
       throw ErrorInfo("build enviroment tools not satisfy, please install them and try again");
    }
@@ -92,6 +97,24 @@ bool EnvDetecter::detectSencha()
    }
    QByteArray ret = process.readAll();
    if(ret.startsWith("Sencha Cmd")){
+      return true;
+   }
+   return false;
+}
+
+bool EnvDetecter::detectRpmbuild()
+{
+   QProcess process;
+   QStringList args;
+   args << "--version";
+   process.start("rpmbuild", args);
+   bool status = process.waitForFinished();
+   if(!status){
+      qDebug() << process.errorString();
+      return status;
+   }
+   QByteArray ret = process.readAll();
+   if(ret.startsWith("RPM")){
       return true;
    }
    return false;
