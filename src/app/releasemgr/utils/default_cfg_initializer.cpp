@@ -171,7 +171,7 @@ static void init_fhzc_cfg(Settings& settings)
 void init_rmmgr_cfg(Settings &settings)
 {
    settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/releasemgr", CFG_GROUP_RMMGR);
-   settings.setValue("buildDir", "/tmp/relasemgr-build", CFG_GROUP_RMMGR);
+   settings.setValue("buildDir", "/tmp/releasemgr-build", CFG_GROUP_RMMGR);
 }
 
 }//releasemgr

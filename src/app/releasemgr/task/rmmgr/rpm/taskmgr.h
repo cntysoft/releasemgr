@@ -1,5 +1,5 @@
-#ifndef TASK_RMMGR_TASKMGR_H
-#define TASK_RMMGR_TASKMGR_H
+#ifndef TASK_RMMGR_RPM_TASKMGR_H
+#define TASK_RMMGR_RPM_TASKMGR_H
 
 #include "task/abstract_taskmgr.h"
 
@@ -12,7 +12,7 @@ class Settings;
 namespace releasemgr{
 namespace task{
 namespace rmmgr{
-namespace fullbuild{
+namespace rpmbuild{
 
 class TaskMgr : public releasemgr::AbstractTaskMgr
 {
@@ -23,9 +23,9 @@ protected:
    virtual void afterRun(const TaskParamsType& args);
 };
 
-}//fullbuild
+}//rpmbuild
 }//rmmgr
 }//task
 }//releasemgr
 
-#endif // TASK_RMMGR_TASKMGR_H
+#endif // TASK_RMMGR_RPM_TASKMGR_H

@@ -1,10 +1,10 @@
 #include "rmmgr_build_command.h"
-#include "task/rmmgr/taskmgr.h"
+#include "task/rmmgr/rpm/taskmgr.h"
 
 #include <QDebug>
 namespace releasemgr 
 {
-using RPMTaskMgr = releasemgr::task::rmmgr::fullbuild::TaskMgr;
+using RPMTaskMgr = releasemgr::task::rmmgr::rpmbuild::TaskMgr;
 RmMgrBuildCommand::RmMgrBuildCommand(CommandRunner *runner, const CommandMeta &invokeMeta)
    :AbstractCommand(runner, invokeMeta)
 {}

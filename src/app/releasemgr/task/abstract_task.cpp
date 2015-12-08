@@ -3,6 +3,7 @@
 #include "abstract_task.h"
 #include "types.h"
 #include "settings.h"
+#include "utils/stddir.h"
 
 namespace releasemgr 
 {
@@ -17,6 +18,11 @@ AbstractTask::AbstractTask(const AbstractTaskMgr &taskmgr, const TaskParamsType&
 QVariant AbstractTask::getSysCfgValue(const QString &key, const QVariant &defaultValue)
 {
    return m_settings.getValue(key, m_taskmgr.getModuleName(), defaultValue);
+}
+
+QString AbstractTask::getAssetDir()
+{
+   return StdDir::getAssetsDir();
 }
 
 QStringList AbstractTask::getChildKeys(const QString &path)

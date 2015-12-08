@@ -4,14 +4,27 @@
 #include "taskmgr.h"
 #include "settings.h"
 
+#include "task/rmmgr/rpm/clear.h"
+#include "task/rmmgr/rpm/make_project_structure.h"
+#include "task/rmmgr/rpm/copy_source_files.h"
+
 namespace releasemgr{
 namespace task{
 namespace rmmgr{
-namespace fullbuild{
+namespace rpmbuild{
 
 TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    :AbstractTaskMgr(moduleName, settings)
 {
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new Clear(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new MakeProjectStructure(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new CopySourceFiles(taskmgr, args);
+   });
 }
 
 void TaskMgr::beforeRun(const TaskParamsType& args)
@@ -28,7 +41,7 @@ void TaskMgr::afterRun(const TaskParamsType &args)
    writeMsg(filename.toLatin1(), TerminalColor::Green);
 }
 
-}//fullbuild
+}//rpmbuild
 }//rmmgr
 }//task
 }//releasemgr

@@ -265,6 +265,7 @@ void CommandRunner::parseRmmgrBuildCmdArgs(const QStringList &invokeArgs, Comman
       QString version = parser->value(*versionOpt);
       if(version.isEmpty()){
          syntaxOk = false;
+         goto THE_END;
       }
       QCommandLineOption* projectDirOpt = opts["projectDir"];
       QString projectDir = parser->value(*projectDirOpt);
@@ -279,6 +280,7 @@ void CommandRunner::parseRmmgrBuildCmdArgs(const QStringList &invokeArgs, Comman
       args[QLatin1String("version")] = version;
       if(action != "rpmbuild"){
          syntaxOk = false;
+         goto THE_END;
       }
    }
 THE_END:  

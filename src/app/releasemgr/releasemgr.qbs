@@ -139,9 +139,17 @@ ReleaseMgrApplication
       name : "rmmgr_task"
       prefix: "task/rmmgr/"
       files : [
-         "taskmgr.cpp",
-         "taskmgr.h"
-      ]
+           "rpm/clear.cpp",
+           "rpm/clear.h",
+           "rpm/copy_source_files.cpp",
+           "rpm/copy_source_files.h",
+           "rpm/make_project_structure.cpp",
+           "rpm/make_project_structure.h",
+           "rpm/rpmbuild_abstract_task.cpp",
+           "rpm/rpmbuild_abstract_task.h",
+           "rpm/taskmgr.cpp",
+           "rpm/taskmgr.h",
+       ]
    }
 
    Group {

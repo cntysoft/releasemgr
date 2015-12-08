@@ -3,6 +3,7 @@
 
 #include <QFileInfoList>
 #include <QDir>
+#include <QFileInfo>
 
 #include "global/global.h"
 
@@ -31,6 +32,11 @@ public:
    static bool copyFile(const QString& source, const QString& destination, bool overwrite = false);
    static QByteArray fileGetContents(const QString& filename);
    static int filePutContents(const QString& filename, const QString& content);
+   static bool isReadable(const QString& filename);
+   static bool isWritable(const QString& filename);
+   static bool fileExist(const QString& filePath);
+   static bool createPath(const QString& dirPath);
+   static bool createDir(const QString& dirName);
 private:
    template <typename FnType>
    static void doTraverseFs(const QString& path, bool limitDepth = true, int level = 0, int depth = 0, FnType fn = nullptr, FsTraverFlag flag = FsTraverFlag::SelfFirst);

@@ -65,7 +65,7 @@ int Filesystem::filePutContents(const QString &filename, const QString &content)
 QByteArray Filesystem::fileGetContents(const QString &filename)
 {
    QFile target(filename);
-   if(!target.exists() || !target.open(QFile::ReadOnly)){
+   if(!target.exists() || !target.open(QFile::ReadOnly|QFile::Text)){
       return QByteArray();
    }
    return target.readAll();
@@ -80,4 +80,30 @@ bool Filesystem::deleteDir(const QString &dir)
 {
    return QDir(dir).remove(".");
 }
+
+bool Filesystem::createDir(const QString &dirName)
+{
+   return QDir(dirName).mkdir(".");
+}
+
+bool Filesystem::createPath(const QString &dirPath)
+{
+   return QDir(dirPath).mkpath(".");
+}
+
+bool Filesystem::isReadable(const QString &filename)
+{
+   return QFileInfo(filename).isReadable();
+}
+
+bool Filesystem::isWritable(const QString &filename)
+{
+   return QFileInfo(filename).isWritable();
+}
+
+bool Filesystem::fileExist(const QString &filePath)
+{
+   return QFileInfo(filePath).exists();
+}
+
 }//releasemgr

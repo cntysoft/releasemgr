@@ -36,6 +36,8 @@ protected:
    QVariant getSysCfgValue(const QString& key, const QVariant & defaultValue = QVariant());
    QStringList getChildKeys(const QString& path = QString());
 protected:
+   virtual QString getAssetDir();
+protected:
    const AbstractTaskMgr& m_taskmgr;
    Settings& m_settings;
    const TaskParamsType& m_invokeArgs;
