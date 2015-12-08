@@ -139,6 +139,8 @@ ReleaseMgrApplication
       name : "rmmgr_task"
       prefix: "task/rmmgr/"
       files : [
+           "rpm/build_rpm.cpp",
+           "rpm/build_rpm.h",
            "rpm/clear.cpp",
            "rpm/clear.h",
            "rpm/copy_source_files.cpp",

@@ -13,10 +13,10 @@ BuildArch:x86_64
 %prep
 
 %build
-qbs -f ../SOURCES/%{name}.qbs profile:qt5-1-1 project.resourcesInstallDir:share/releasemgr project.rmmgrVersion:%{version} qbs.installRoot:%{installRoot} release
+qbs -f ../SOURCES/%{name}.qbs profile:Qt5 project.resourcesInstallDir:share/releasemgr project.rmmgrVersion:%{version} qbs.installRoot:%{installRoot} release
 %files
 /usr/local/bin/releasemgr
 /usr/local/lib/libreleasemgrcore.so
-/usr/local/share/assets/fhzc/distconst/AliyunDeployment.php
-/usr/local/share/assets/fhzc/distconst/NormalDeployment.php
-/usr/local/share/assets/rmmgr/rpmspec.tpl
+/usr/local/share/releasemgr/assets/fhzc/distconst/AliyunDeployment.php
+/usr/local/share/releasemgr/assets/fhzc/distconst/NormalDeployment.php
+/usr/local/share/releasemgr/assets/rmmgr/rpmspec.tpl

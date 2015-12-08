@@ -7,6 +7,7 @@
 #include "task/rmmgr/rpm/clear.h"
 #include "task/rmmgr/rpm/make_project_structure.h"
 #include "task/rmmgr/rpm/copy_source_files.h"
+#include "task/rmmgr/rpm/build_rpm.h"
 
 namespace releasemgr{
 namespace task{
@@ -24,6 +25,9 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    });
    m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new CopySourceFiles(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new BuildRpm(taskmgr, args);
    });
 }
 

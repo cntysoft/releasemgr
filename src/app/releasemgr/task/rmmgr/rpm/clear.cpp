@@ -1,4 +1,3 @@
-#include <QDebug>
 #include <QFileInfo>
 
 #include "clear.h"

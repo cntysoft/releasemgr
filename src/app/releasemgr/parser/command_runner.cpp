@@ -79,6 +79,9 @@ void CommandRunner::run()
          cmdName = CommandName::Global_Version;
       }else if(parser->isSet(*opts["help"])){
          cmdName = CommandName::Global_Help;
+      }else{
+         printUsage();
+         throw ErrorInfo();
       }
    }else{
       //匹配子命令的Commandparser
@@ -312,7 +315,7 @@ void CommandRunner::printUsage()const
 {
    Terminal::writeText("welcome to use sheneninfo release manager system\n\n", TerminalColor::Green);
    Terminal::writeText("usage: \n", TerminalColor::Blue);
-   qDebug(
+   Terminal::writeText(
             "releasemgr --version \t print main system version number\n"
             "releasemgr --help \t print help document\n\n"
             "releasemgr fhzc build --version=<version> [--aliyun]\n"
