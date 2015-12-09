@@ -21,7 +21,7 @@ RpmBuildAbstractTask::RpmBuildAbstractTask(const AbstractTaskMgr& taskmgr, const
    m_rpmSourceDir = m_buildDir+DS+"SOURCES";
    m_rpmSpecDir = m_buildDir+DS+"SPECS";
    m_rpmSRpmDir = m_buildDir+DS+"SRPMS";
-   m_rpmBuildRootDir = m_rpmBuildRootDir+"BUILDROOT";
+   m_rpmBuildRootDir = m_buildDir+"BUILDROOT";
 }
 
 QString RpmBuildAbstractTask::getAssetDir()
