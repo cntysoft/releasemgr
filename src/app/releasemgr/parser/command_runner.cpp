@@ -87,7 +87,8 @@ void CommandRunner::run()
       //匹配子命令的Commandparser
       //查看子命令类型
       if(!isSubCmdSupported(first)){
-         throw ErrorInfo(QString("sub command %1 is not supported").arg(first), CodeLocation(__FILE__, __LINE__));
+         printUsage();
+         throw ErrorInfo();
       }
       args.removeFirst();
       QStringList::const_iterator it = args.cbegin();
@@ -130,56 +131,60 @@ CommandMeta::CmdArgType CommandRunner::parseSubCmdArgs(CommandCategory& category
 
 void CommandRunner::parseFhzcBuildCmdArgs(const QStringList &invokeArgs, CommandMeta::CmdArgType &args)
 {
-   QCommandLineParser* parser = m_optionPool.getFhzcCmdParser();
-   parser->process(invokeArgs);
-   OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
-   QStringList positionArgs = parser->positionalArguments();
    bool syntaxOk = true;
-   if(1 != positionArgs.count()){
+   QCommandLineParser* parser = m_optionPool.getFhzcCmdParser();
+   if(!parser->parse(invokeArgs)){
       syntaxOk = false;
    }else{
-      QString action = positionArgs.takeFirst();
-      args[QLatin1String("action")] = action;
-      //这里按照action解析命令行参数
-      if(action == "fullbuild"){
-         QCommandLineOption* versionOpt = opts["version"];
-         QString version = parser->value(*versionOpt);
-         if(version.isEmpty()){
-            syntaxOk = false;
-            goto THE_END;
-         }
-         QCommandLineOption* aliyunOpt = opts["aliyun"];
-         if(parser->isSet(*aliyunOpt)){
-            args[QLatin1String("aliyun")] = true;
-         }else{
-            args[QLatin1String("aliyun")] = false;
-         }
-         args[QLatin1String("version")] = version;
-      }else if(action == "diffbuild"){
-         QCommandLineOption* fromOpt  = opts["from"];
-         QCommandLineOption* toOpt = opts["to"];
-         QCommandLineOption* aliyunOpt = opts["aliyun"];
-         QString from = parser->value(*fromOpt);
-         QString to = parser->value(*toOpt);
-         if(from.isEmpty()){
-            syntaxOk = false;
-            goto THE_END;
-         }
-         if(to.isEmpty()){
-            syntaxOk = false;
-            goto THE_END;
-         }
-         if(parser->isSet(*aliyunOpt)){
-            args[QLatin1String("aliyun")] = true;
-         }else{
-            args[QLatin1String("aliyun")] = false;
-         }
-         args[QLatin1String("from")] = from;
-         args[QLatin1String("to")] = to;
-      }else if(action == "docbuild"){
-         
-      }else{
+      OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
+      QStringList positionArgs = parser->positionalArguments();
+      
+      if(1 != positionArgs.count()){
          syntaxOk = false;
+      }else{
+         QString action = positionArgs.takeFirst();
+         args[QLatin1String("action")] = action;
+         //这里按照action解析命令行参数
+         if(action == "fullbuild"){
+            QCommandLineOption* versionOpt = opts["version"];
+            QString version = parser->value(*versionOpt);
+            if(version.isEmpty()){
+               syntaxOk = false;
+               goto THE_END;
+            }
+            QCommandLineOption* aliyunOpt = opts["aliyun"];
+            if(parser->isSet(*aliyunOpt)){
+               args[QLatin1String("aliyun")] = true;
+            }else{
+               args[QLatin1String("aliyun")] = false;
+            }
+            args[QLatin1String("version")] = version;
+         }else if(action == "diffbuild"){
+            QCommandLineOption* fromOpt  = opts["from"];
+            QCommandLineOption* toOpt = opts["to"];
+            QCommandLineOption* aliyunOpt = opts["aliyun"];
+            QString from = parser->value(*fromOpt);
+            QString to = parser->value(*toOpt);
+            if(from.isEmpty()){
+               syntaxOk = false;
+               goto THE_END;
+            }
+            if(to.isEmpty()){
+               syntaxOk = false;
+               goto THE_END;
+            }
+            if(parser->isSet(*aliyunOpt)){
+               args[QLatin1String("aliyun")] = true;
+            }else{
+               args[QLatin1String("aliyun")] = false;
+            }
+            args[QLatin1String("from")] = from;
+            args[QLatin1String("to")] = to;
+         }else if(action == "docbuild"){
+            
+         }else{
+            syntaxOk = false;
+         }
       }
    }
 THE_END:
@@ -191,59 +196,62 @@ THE_END:
 
 void CommandRunner::parseFhshopBuildCmdArgs(const QStringList &invokeArgs, CommandMeta::CmdArgType &args)
 {
-   QCommandLineParser* parser = m_optionPool.getFhzcCmdParser();
-   parser->process(invokeArgs);
-   OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
-   QStringList positionArgs = parser->positionalArguments();
    bool syntaxOk = true;
-   if(1 != positionArgs.count()){
+   QCommandLineParser* parser = m_optionPool.getFhzcCmdParser();
+   if(!parser->parse(invokeArgs)){
       syntaxOk = false;
    }else{
-      QString action = positionArgs.takeFirst();
-      args[QLatin1String("action")] = action;
-      //这里按照action解析命令行参数
-      if(action == "fullbuild"){
-         QCommandLineOption* versionOpt = opts["version"];
-         QString version = parser->value(*versionOpt);
-         if(version.isEmpty()){
-            syntaxOk = false;
-            goto THE_END;
-         }
-         QCommandLineOption* aliyunOpt = opts["aliyun"];
-         if(parser->isSet(*aliyunOpt)){
-            args[QLatin1String("aliyun")] = true;
-         }else{
-            args[QLatin1String("aliyun")] = false;
-         }
-         args[QLatin1String("version")] = version;
-      }else if(action == "diffbuild"){
-         QCommandLineOption* fromOpt  = opts["from"];
-         QCommandLineOption* toOpt = opts["to"];
-         QCommandLineOption* aliyunOpt = opts["aliyun"];
-         QString from = parser->value(*fromOpt);
-         QString to = parser->value(*toOpt);
-         if(from.isEmpty()){
-            syntaxOk = false;
-            goto THE_END;
-         }
-         if(to.isEmpty()){
-            syntaxOk = false;
-            goto THE_END;
-         }
-         if(parser->isSet(*aliyunOpt)){
-            args[QLatin1String("aliyun")] = true;
-         }else{
-            args[QLatin1String("aliyun")] = false;
-         }
-         args[QLatin1String("from")] = from;
-         args[QLatin1String("to")] = to;
-      }else if(action == "docbuild"){
-         
-      }else{
+      OptionPool::OptionMapType opts = m_optionPool.getFhzcOptions();
+      QStringList positionArgs = parser->positionalArguments();
+      
+      if(1 != positionArgs.count()){
          syntaxOk = false;
+      }else{
+         QString action = positionArgs.takeFirst();
+         args[QLatin1String("action")] = action;
+         //这里按照action解析命令行参数
+         if(action == "fullbuild"){
+            QCommandLineOption* versionOpt = opts["version"];
+            QString version = parser->value(*versionOpt);
+            if(version.isEmpty()){
+               syntaxOk = false;
+               goto THE_END;
+            }
+            QCommandLineOption* aliyunOpt = opts["aliyun"];
+            if(parser->isSet(*aliyunOpt)){
+               args[QLatin1String("aliyun")] = true;
+            }else{
+               args[QLatin1String("aliyun")] = false;
+            }
+            args[QLatin1String("version")] = version;
+         }else if(action == "diffbuild"){
+            QCommandLineOption* fromOpt  = opts["from"];
+            QCommandLineOption* toOpt = opts["to"];
+            QCommandLineOption* aliyunOpt = opts["aliyun"];
+            QString from = parser->value(*fromOpt);
+            QString to = parser->value(*toOpt);
+            if(from.isEmpty()){
+               syntaxOk = false;
+               goto THE_END;
+            }
+            if(to.isEmpty()){
+               syntaxOk = false;
+               goto THE_END;
+            }
+            if(parser->isSet(*aliyunOpt)){
+               args[QLatin1String("aliyun")] = true;
+            }else{
+               args[QLatin1String("aliyun")] = false;
+            }
+            args[QLatin1String("from")] = from;
+            args[QLatin1String("to")] = to;
+         }else if(action == "docbuild"){
+            
+         }else{
+            syntaxOk = false;
+         }
       }
    }
-   
 THE_END:
    if(!syntaxOk){
       printUsage();
@@ -253,40 +261,43 @@ THE_END:
 
 void CommandRunner::parseRmmgrBuildCmdArgs(const QStringList &invokeArgs, CommandMeta::CmdArgType &args)
 {
-   QCommandLineParser* parser = m_optionPool.getRmMgrCmdParser();
-   parser->process(invokeArgs);
-   OptionPool::OptionMapType opts = m_optionPool.getRmMgrOptions();
-   QStringList positionArgs = parser->positionalArguments();
    bool syntaxOk = true;
-   if(1 != positionArgs.count()){
+   QCommandLineParser* parser = m_optionPool.getRmMgrCmdParser();
+   if(!parser->parse(invokeArgs)){
       syntaxOk = false;
    }else{
-      QString action = positionArgs.takeFirst();
-      args[QLatin1String("action")] = action;
-      //这里按照action解析命令行参数
-      QCommandLineOption* versionOpt = opts["version"];
-      QString version = parser->value(*versionOpt);
-      if(version.isEmpty()){
+      OptionPool::OptionMapType opts = m_optionPool.getRmMgrOptions();
+      QStringList positionArgs = parser->positionalArguments();
+      if(1 != positionArgs.count()){
          syntaxOk = false;
-         goto THE_END;
-      }
-      QCommandLineOption* projectDirOpt = opts["projectDir"];
-      QString projectDir = parser->value(*projectDirOpt);
-      if(!projectDir.isEmpty()){
-         args[QLatin1String("projectDir")] = projectDir;
-      }
-      QCommandLineOption* buildDirOpt = opts["buildDir"];
-      QString buildDir = parser->value(*buildDirOpt);
-      if(!buildDir.isEmpty()){
-         args[QLatin1String("buildDir")] = buildDir;
-      }
-      args[QLatin1String("version")] = version;
-      if(action != "rpmbuild"){
-         syntaxOk = false;
-         goto THE_END;
+      }else{
+         QString action = positionArgs.takeFirst();
+         args[QLatin1String("action")] = action;
+         //这里按照action解析命令行参数
+         QCommandLineOption* versionOpt = opts["version"];
+         QString version = parser->value(*versionOpt);
+         if(version.isEmpty()){
+            syntaxOk = false;
+            goto THE_END_RMMGR;
+         }
+         QCommandLineOption* projectDirOpt = opts["projectDir"];
+         QString projectDir = parser->value(*projectDirOpt);
+         if(!projectDir.isEmpty()){
+            args[QLatin1String("projectDir")] = projectDir;
+         }
+         QCommandLineOption* buildDirOpt = opts["buildDir"];
+         QString buildDir = parser->value(*buildDirOpt);
+         if(!buildDir.isEmpty()){
+            args[QLatin1String("buildDir")] = buildDir;
+         }
+         args[QLatin1String("version")] = version;
+         if(action != "rpmbuild"){
+            syntaxOk = false;
+            goto THE_END_RMMGR;
+         }
       }
    }
-THE_END:  
+THE_END_RMMGR:  
    if(!syntaxOk){
       printUsage();
       throw ErrorInfo();
