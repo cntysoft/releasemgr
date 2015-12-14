@@ -12,6 +12,9 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
+using sn::corelib::Filesystem;
+using sn::corelib::ErrorInfo;
+
 CopyProjectFiles::CopyProjectFiles(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
    :FullBuildAbstractTask(taskmgr, invokeArgs)
 {}

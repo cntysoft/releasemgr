@@ -1,5 +1,5 @@
-#ifndef ABSTRACT_TASKMGR_H
-#define ABSTRACT_TASKMGR_H
+#ifndef RELEASEMGR_TASK_ABSTRACT_TASKMGR_H
+#define RELEASEMGR_TASK_ABSTRACT_TASKMGR_H
 
 #include <QList>
 #include <QString>
@@ -12,10 +12,13 @@
 namespace releasemgr 
 {
 
+using sn::corelib::Terminal;
+using sn::corelib::TerminalColor;
+
 class AbstractTask;
 class Settings;
 
-class RMGR_EXPORT AbstractTaskMgr
+class SN_CORELIB_EXPORT AbstractTaskMgr
 {
    Q_DISABLE_COPY(AbstractTaskMgr)
 public:
@@ -48,4 +51,4 @@ private:
 
 }//releasemgr
 
-#endif // ABSTRACT_TASKMGR_H
+#endif // RELEASEMGR_TASK_ABSTRACT_TASKMGR_H

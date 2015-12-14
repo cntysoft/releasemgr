@@ -13,6 +13,8 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
+using sn::corelib::ErrorInfo;
+
 Compress::Compress(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    :FullBuildAbstractTask(taskmgr, invokeArgs)
 {

@@ -1,5 +1,5 @@
-#ifndef ABSTRACT_TASK_H
-#define ABSTRACT_TASK_H
+#ifndef RELEASEMGR_TASK_ABSTRACT_TASK_H
+#define RELEASEMGR_TASK_ABSTRACT_TASK_H
 
 #include <QVariant>
 
@@ -47,4 +47,4 @@ protected:
 
 }//relasemgr
 
-#endif // ABSTRACT_TASK_H
+#endif // RELEASEMGR_TASK_ABSTRACT_TASK_H

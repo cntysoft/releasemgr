@@ -3,6 +3,6 @@ Project
 {
    references: [
       "app/apps.qbs",
-      "lib/libs.qbs"
+      "libs/libs.qbs"
    ]
 }

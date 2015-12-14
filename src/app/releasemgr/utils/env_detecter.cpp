@@ -13,6 +13,10 @@
 namespace releasemgr 
 {
 
+using sn::corelib::Terminal;
+using sn::corelib::TerminalColor;
+using sn::corelib::ErrorInfo;
+
 EnvDetecter::EnvDetecter(Settings& settings)
    : m_settings(settings)
 {

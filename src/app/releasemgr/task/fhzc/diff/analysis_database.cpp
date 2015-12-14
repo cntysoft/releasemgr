@@ -22,6 +22,8 @@ namespace task{
 namespace fhzc{
 namespace diffbuild{
 
+using sn::corelib::Filesystem;
+
 AnalysisDatabase::AnalysisDatabase(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : DiffBuildAbstractTask(taskmgr, invokeArgs),
      m_fromDb(QSqlDatabase::addDatabase("QMYSQL", QLatin1String("FromDb"))),

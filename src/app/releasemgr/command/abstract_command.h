@@ -7,6 +7,9 @@
 namespace releasemgr
 {
 
+using sn::corelib::Terminal;
+using sn::corelib::TerminalColor;
+
 class AbstractCommand
 {
    Q_DISABLE_COPY(AbstractCommand)

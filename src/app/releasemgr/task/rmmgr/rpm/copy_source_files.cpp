@@ -13,6 +13,8 @@ namespace task{
 namespace rmmgr{
 namespace rpmbuild{
 
+using sn::corelib::Filesystem;
+
 CopySourceFiles::CopySourceFiles(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : RpmBuildAbstractTask(taskmgr, invokeArgs)
 {}

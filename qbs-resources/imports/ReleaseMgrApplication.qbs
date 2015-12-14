@@ -2,6 +2,7 @@ import qbs 1.0
 ReleaseMgrProduct
 {
    Depends {name:"cpp"}
+   Depends { name: "corelib"}
    type : "application"
    consoleApplication: true
    destinationDirectory: "bin"

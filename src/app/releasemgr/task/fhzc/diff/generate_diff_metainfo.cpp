@@ -20,6 +20,9 @@ namespace task{
 namespace fhzc{
 namespace diffbuild{
 
+using sn::corelib::Filesystem;
+using sn::corelib::ErrorInfo;
+
 GenerateDiffMetaInfo::GenerateDiffMetaInfo(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : DiffBuildAbstractTask(taskmgr, invokeArgs)
 {}

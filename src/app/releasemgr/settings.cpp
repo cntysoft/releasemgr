@@ -11,6 +11,8 @@
 namespace releasemgr 
 {
 
+using sn::corelib::get_current_user_home_dir;
+
 Settings::Settings()
    :m_settings(createQSettings())
 {

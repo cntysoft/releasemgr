@@ -9,6 +9,8 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
+using sn::corelib::ErrorInfo;
+
 Clear::Clear(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
    :FullBuildAbstractTask(taskmgr, invokeArgs)
 {}

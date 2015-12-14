@@ -10,6 +10,9 @@ namespace task{
 namespace rmmgr{
 namespace rpmbuild{
 
+using sn::corelib::Filesystem;
+using sn::corelib::ErrorInfo;
+
 Clear::Clear(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
    :RpmBuildAbstractTask(taskmgr, invokeArgs)
 {}

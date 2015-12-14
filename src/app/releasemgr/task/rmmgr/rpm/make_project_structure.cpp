@@ -11,6 +11,8 @@ namespace task{
 namespace rmmgr{
 namespace rpmbuild{
 
+using sn::corelib::Filesystem;
+
 MakeProjectStructure::MakeProjectStructure(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : RpmBuildAbstractTask(taskmgr, invokeArgs)
 {}

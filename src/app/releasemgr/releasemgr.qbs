@@ -3,7 +3,6 @@ ReleaseMgrApplication
 {
    name : "releasemgr"
    targetName : "releasemgr"
-   Depends {name:"releasemgr_core"}
    Depends { name: "Qt"; submodules: ["sql"] }
    cpp.includePaths: base.concat([
                                     "."
@@ -13,15 +12,17 @@ ReleaseMgrApplication
                             ])
    
    files : [
-      "application.cpp",
-      "application.h",
-      "const.cpp",
-      "const.h",
-      "main.cpp",
-      "settings.cpp",
-      "settings.h",
-      "types.h",
-   ]
+        "application.cpp",
+        "application.h",
+        "command_runner.cpp",
+        "command_runner.h",
+        "const.cpp",
+        "const.h",
+        "main.cpp",
+        "settings.cpp",
+        "settings.h",
+        "types.h",
+    ]
    Group {
       name : "parser"
       prefix : name + '/'

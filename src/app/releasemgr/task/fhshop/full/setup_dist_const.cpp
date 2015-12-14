@@ -12,6 +12,8 @@ namespace task{
 namespace fhshop{
 namespace fullbuild{
 
+using sn::corelib::Filesystem;
+
 SetupDistConst::SetupDistConst(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : FullBuildAbstractTask(taskmgr, invokeArgs)
 {}

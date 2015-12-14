@@ -8,13 +8,18 @@
 #include "application.h"
 #include "io/terminal.h"
 #include "kernel/errorinfo.h"
-#include "parser/command_runner.h"
+#include "command_runner.h"
 #include "global/common_funcs.h"
 #include "settings.h"
 #include "utils/env_detecter.h"
 #include "io/terminal.h"
 
-using namespace releasemgr;
+using releasemgr::CommandRunner;
+using releasemgr::EnvDetecter;
+using releasemgr::Application;
+using sn::corelib::Terminal;
+using sn::corelib::TerminalColor;
+using sn::corelib::ErrorInfo;
 
 int main(int argc, char *argv[])
 {
