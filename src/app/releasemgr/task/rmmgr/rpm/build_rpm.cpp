@@ -3,6 +3,9 @@
 #include <QString>
 #include <cstdlib>
 #include <QFileInfo>
+#include <QProcessEnvironment>
+#include <QDebug>
+#include <cstdlib>
 
 #include "build_rpm.h"
 #include "task/abstract_taskmgr.h"
@@ -23,6 +26,10 @@ BuildRpm::BuildRpm(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeA
 void BuildRpm::exec()
 {
    writeBeginMsg("开始进行RPM打包 ... ");
+   QProcessEnvironment env(QProcessEnvironment::systemEnvironment());
+   QString ldLibraryPath(env.value("LD_LIBRARY_PATH"));
+   ldLibraryPath = "/usr/lib64:"+ldLibraryPath;
+   ::setenv("LD_LIBRARY_PATH", ldLibraryPath.toLocal8Bit(), 1);
    QString cmd = QString ("rpmbuild -bb --define=\"_topdir %1\" %2/releasemgr.spec").arg(m_buildDir, m_rpmSpecDir);
    std::system(cmd.toLocal8Bit());
    Filesystem::traverseFs(m_rpmRpmDir, 0, [this](QFileInfo fileInfo, int){
