@@ -20,7 +20,7 @@ void GenerateVersionInfo::exec()
    QFile versionTplFile(m_buildDir+ds+"Library"+ds+"FengHuang"+ds+"Version.php");
    versionTplFile.open(QFile::ReadWrite);
    QByteArray content = versionTplFile.readAll();
-   content.replace("{version}", m_invokeArgs[QLatin1String("version")].toString().toLatin1());
+   content.replace("{version}", m_invokeArgs["version"].toLatin1());
    versionTplFile.remove();
    QFile versionFile(m_buildDir+ds+"Library"+ds+"FengHuang"+ds+"Version.php");
    versionFile.open(QFile::WriteOnly|QFile::Truncate);

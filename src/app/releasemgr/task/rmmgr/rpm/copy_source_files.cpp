@@ -7,6 +7,7 @@
 #include "task/abstract_taskmgr.h"
 #include "io/filesystem.h"
 #include "const.h"
+#include "global/global.h"
 
 namespace releasemgr{
 namespace task{
@@ -41,7 +42,21 @@ void CopySourceFiles::processSpecFile()
 {
    writeBeginMsg("正在处理Spec文件 ... ");
    QByteArray specFileContent(Filesystem::fileGetContents(getAssetDir()+DS+"rpmspec.tpl"));
-   specFileContent.replace(QByteArray("<version>"), QByteArray(m_invokeArgs[QLatin1String("version")].toString().toLocal8Bit()));
+   specFileContent.replace(QByteArray("<version>"), QByteArray(m_invokeArgs["version"].toLocal8Bit()));
+   QString corelibVersion = sn::corelib::get_corelib_version();
+   QStringList versionParts = corelibVersion.split('.');
+   QString baseName = "/usr/local/lib/libsncore.so";
+   QStringList paths{
+      baseName
+   };
+   for(int i = 0; i < versionParts.size();i++){
+      QString temp(baseName);
+      for(int j = 0; j <= i; j++){
+         temp += "."+versionParts[j];
+      }
+      paths << temp;
+   }
+   specFileContent.replace(QByteArray("<sncorepaths>"), QByteArray((paths.join('\n')).toLocal8Bit()));
    Filesystem::filePutContents(m_rpmSpecDir+DS+"releasemgr.spec", specFileContent);
    writeDoneMsg();
 }

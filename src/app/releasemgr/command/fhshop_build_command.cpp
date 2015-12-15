@@ -3,11 +3,13 @@
 #include "fhshop_build_command.h"
 #include "task/fhshop/full/taskmgr.h"
 #include "types.h"
+#include "command_runner.h"
+#include "command/command_meta.h"
 
-namespace releasemgr 
-{
+namespace releasemgr{
+namespace command{
 
-FhshopBuildCommand::FhshopBuildCommand(CommandRunner *runner, const CommandMeta &invokeMeta)
+FhshopBuildCommand::FhshopBuildCommand(CommandRunner& runner, const CommandMeta &invokeMeta)
    :AbstractCommand(runner, invokeMeta)
 {}
 
@@ -24,9 +26,9 @@ AbstractTaskMgr* FhshopBuildCommand::getTaskMgr()
    using FullBuildTaskMgr = releasemgr::task::fhshop::fullbuild::TaskMgr;
 //   using DiffBuildTaskMgr = releasemgr::task::fhshop::diffbuild::TaskMgr;
    TaskParamsType args = m_invokeMeta.getCmdArgs();
-   QString action = args[QLatin1String("action")].toString();
+   QString action = args["action"];
    if("fullbuild" == action){
-      taskmgr = new FullBuildTaskMgr(QLatin1String("Fhshop"), m_cmdRunner->getSysSettings());
+      taskmgr = new FullBuildTaskMgr(QLatin1String("Fhshop"), m_cmdRunner.getSysSettings());
    }else if("diffbuild" == action){
 //      taskmgr = new DiffBuildTaskMgr(QLatin1String("Fhshop"), m_cmdRunner->getSysSettings());
    }
@@ -36,4 +38,5 @@ AbstractTaskMgr* FhshopBuildCommand::getTaskMgr()
 FhshopBuildCommand::~FhshopBuildCommand()
 {}
 
+}//command
 }//releasemgr

@@ -8,15 +8,16 @@
 #include "global/global.h"
 #include "types.h"
 #include "io/terminal.h"
+#include "kernel/settings.h"
 
 namespace releasemgr 
 {
 
 using sn::corelib::Terminal;
 using sn::corelib::TerminalColor;
+using sn::corelib::Settings;
 
 class AbstractTask;
-class Settings;
 
 class SN_CORELIB_EXPORT AbstractTaskMgr
 {

@@ -2,7 +2,6 @@
 
 #include "abstract_task.h"
 #include "types.h"
-#include "settings.h"
 #include "utils/stddir.h"
 
 namespace releasemgr 

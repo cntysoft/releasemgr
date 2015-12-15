@@ -1,5 +1,5 @@
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef RELEASEMGR_TYPES_H
+#define RELEASEMGR_TYPES_H
 
 #include <QMap>
 #include <QVariant>
@@ -8,9 +8,9 @@
 namespace releasemgr
 {
 
-using TaskParamsType = QMap<QLatin1String, QVariant>;
+using TaskParamsType = QMap<QString, QString>;
 
 
 }//relasemgr
 
-#endif // TYPES_H
+#endif // RELEASEMGR_TYPES_H

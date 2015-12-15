@@ -7,6 +7,8 @@ namespace task{
 namespace fhzc{
 namespace diffbuild{
 
+using sn::corelib::Filesystem;
+
 CopyUpgradeScript::CopyUpgradeScript(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : DiffBuildAbstractTask(taskmgr, invokeArgs)
 {

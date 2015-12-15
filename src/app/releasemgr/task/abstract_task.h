@@ -17,8 +17,6 @@ QT_END_NAMESPACE
 namespace releasemgr 
 {
 
-class Settings;
-
 class AbstractTask
 {
    Q_DISABLE_COPY(AbstractTask)

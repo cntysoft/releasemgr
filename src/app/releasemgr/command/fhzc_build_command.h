@@ -1,18 +1,24 @@
-#ifndef COMMAND_FHZC_FULL_BUILD_COMMAND_H
-#define COMMAND_FHZC_FULL_BUILD_COMMAND_H
+#ifndef RELEASEMGR_COMMAND_FHZC_FULL_BUILD_COMMAND_H
+#define RELEASEMGR_COMMAND_FHZC_FULL_BUILD_COMMAND_H
 
-#include "abstract_command.h"
+#include "command/abstract_command.h"
 #include "global/global.h"
+#include "command/command_meta.h"
+#include "command_runner.h"
+#include "task/abstract_taskmgr.h"
 
-namespace releasemgr 
-{
+namespace releasemgr{
+namespace command{
 
-class AbstractTaskMgr;
+using sn::corelib::AbstractCommand;
+using sn::corelib::CommandMeta;
+using releasemgr::CommandRunner;
+using releasemgr::AbstractTaskMgr;
 
 class FhzcBuildCommand : public AbstractCommand
 {
 public:
-   FhzcBuildCommand(CommandRunner* runner, const CommandMeta& invokeMeta);
+   FhzcBuildCommand(CommandRunner& runner, const CommandMeta& invokeMeta);
 public:
    virtual void exec();
    virtual ~FhzcBuildCommand(); 
@@ -20,6 +26,7 @@ private:
    AbstractTaskMgr* getTaskMgr();
 };
 
+}//command
 }//releasemgr
 
-#endif // COMMAND_FHZC_FULL_BUILD_COMMAND_H
+#endif // RELEASEMGR_COMMAND_FHZC_FULL_BUILD_COMMAND_H

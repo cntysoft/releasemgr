@@ -12,6 +12,8 @@ namespace task{
 namespace fhzc{
 namespace diffbuild{
 
+using sn::corelib::Filesystem;
+
 SetupDistConst::SetupDistConst(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : DiffBuildAbstractTask(taskmgr, invokeArgs)
 {}
@@ -19,7 +21,7 @@ SetupDistConst::SetupDistConst(const AbstractTaskMgr &taskmgr, const TaskParamsT
 void SetupDistConst::exec()
 {
    writeBeginMsg("正在生成部署相关的常量 ... ");
-   bool deployForAliyun = m_invokeArgs[QLatin1String("aliyun")].toBool();
+   bool deployForAliyun = m_invokeArgs["aliyun"] == "true" ? true : false;
    QChar ds = QDir::separator();
    QString baseDir(StdDir::getAssetsDir()+ds+"fhzc"+ds+"distconst");
    QString constFilename;

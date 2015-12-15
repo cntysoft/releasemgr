@@ -3,11 +3,13 @@
 #include <QString>
 #include <QVariant>
 
-#include "settings.h"
 #include "const.h"
+#include "kernel/settings.h"
 
 namespace releasemgr 
 {
+
+using sn::corelib::Settings;
 
 static void init_global_cfg(Settings &settings);
 static void init_fhzc_cfg(Settings &settings);
@@ -25,10 +27,10 @@ void init_defualt_cfg(Settings& settings)
 
 static void init_global_cfg(Settings& settings)
 {
-   settings.setValue("db.host", "127.0.0.1", CFG_GROUP_GLOABL);
-   settings.setValue("db.username", "root", CFG_GROUP_GLOABL);
-   settings.setValue("db.password", "cntysoft", CFG_GROUP_GLOABL);
-   settings.setValue("db.charset", "utf8", CFG_GROUP_GLOABL);
+   settings.setValue("db.host", "127.0.0.1", CFG_GROUP_GLOBAL);
+   settings.setValue("db.username", "root", CFG_GROUP_GLOBAL);
+   settings.setValue("db.password", "cntysoft", CFG_GROUP_GLOBAL);
+   settings.setValue("db.charset", "utf8", CFG_GROUP_GLOBAL);
 }
 
 static void init_fhshop_cfg(Settings& settings)

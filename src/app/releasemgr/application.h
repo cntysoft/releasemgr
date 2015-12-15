@@ -1,29 +1,24 @@
-#ifndef APPLICATION
-#define APPLICATION
+#ifndef RELEASEMGR_APPLICATION_H
+#define RELEASEMGR_APPLICATION_H
 
-#include<QCoreApplication>
+#include "kernel/application.h"
+#include "kernel/settings.h"
 
-#include "settings.h"
-
-QT_BEGIN_NAMESPACE
-class QObject;
-class QEvent;
-QT_END_NAMESPACE
 namespace releasemgr
 {
 
-class Application : public QCoreApplication
+using BaseApplication = sn::corelib::Application;
+using sn::corelib::Settings;
+
+class Application : public BaseApplication
 {
-   Q_OBJECT
 public:
    Application(int &argc, char **argv);
-   bool notify(QObject * receiver, QEvent * event);
-   static Application *instance();
-   Settings& getSettings();
-private:
-   Settings m_settings;
+public:
+   virtual Settings::CfgInitializerFnType getDefaultCfgInitializerFn();
+   virtual ~Application();
 };
 
 }//releasemgr
 
-#endif // APPLICATION
+#endif // RELEASEMGR_APPLICATION_H

@@ -1,14 +1,16 @@
 #ifndef RMMGR_UTILS_FUNCS_H
 #define RMMGR_UTILS_FUNCS_H
 
+#include "kernel/settings.h"
+
 namespace releasemgr 
 {
 
-class Settings;
+using sn::corelib::Settings;
+
 class Application;
 
 const Settings& get_sys_settings();
-const Application& get_app_ref();
 
 }//releasemgr
 

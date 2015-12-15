@@ -15,6 +15,7 @@ class CommandRunner : public BaseCommandRunner
 public:
    CommandRunner(Application &app);
 private:
+   void initUsageText();
    void initCommandPool();
    void initRouteItems();
 };

@@ -1,12 +1,14 @@
-#ifndef RMMGR_UTILS_ENV_DETECTER_H
-#define RMMGR_UTILS_ENV_DETECTER_H
+#ifndef RELEASEMGR_UTILS_ENV_DETECTER_H
+#define RELEASEMGR_UTILS_ENV_DETECTER_H
 
 #include <QStringList>
+
+#include "kernel/settings.h"
 
 namespace releasemgr 
 {
 
-class Settings;
+using sn::corelib::Settings;
 
 class EnvDetecter
 {
@@ -28,4 +30,4 @@ private:
 
 }//releasemgr
 
-#endif // RMMGR_UTILS_ENV_DETECTER_H
+#endif // RELEASEMGR_UTILS_ENV_DETECTER_H

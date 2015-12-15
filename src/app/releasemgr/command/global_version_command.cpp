@@ -2,10 +2,13 @@
 
 #include "global_version_command.h"
 #include "io/terminal.h"
-namespace releasemgr 
-{
 
-GlobalVersionCommand::GlobalVersionCommand(CommandRunner *runner, const CommandMeta &invokeMeta)
+namespace releasemgr{
+namespace command{
+
+using sn::corelib::TerminalColor;
+
+GlobalVersionCommand::GlobalVersionCommand(CommandRunner& runner, const CommandMeta& invokeMeta)
    : AbstractCommand(runner, invokeMeta)
 {
 }
@@ -20,4 +23,5 @@ void GlobalVersionCommand::exec()
 GlobalVersionCommand::~GlobalVersionCommand()
 {}
 
+}//command
 }//relasemgr

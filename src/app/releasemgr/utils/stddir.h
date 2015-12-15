@@ -1,5 +1,5 @@
-#ifndef RMMGR_UTILS_STDDIR_H
-#define RMMGR_UTILS_STDDIR_H
+#ifndef RELEASEMGR_UTILS_STDDIR_H
+#define RELEASEMGR_UTILS_STDDIR_H
 
 #include "global/global.h"
 
@@ -19,4 +19,4 @@ public:
 
 }//releasemgr
 
-#endif // RMMGR_UTILS_STDDIR_H
+#endif // RELEASEMGR_UTILS_STDDIR_H

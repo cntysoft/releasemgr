@@ -1,5 +1,5 @@
-#ifndef TASK_RMMGR_RPM_BUILD_RPM
-#define TASK_RMMGR_RPM_BUILD_RPM
+#ifndef RELEASEMGR_TASK_RMMGR_RPM_BUILD_RPM
+#define RELEASEMGR_TASK_RMMGR_RPM_BUILD_RPM
 
 #include "rpmbuild_abstract_task.h"
 
@@ -24,5 +24,5 @@ public:
 }//task
 }//releasemgr
 
-#endif // TASK_RMMGR_RPM_BUILD_RPM
+#endif // RELEASEMGR_TASK_RMMGR_RPM_BUILD_RPM
 

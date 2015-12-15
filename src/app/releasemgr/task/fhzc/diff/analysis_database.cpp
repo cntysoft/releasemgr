@@ -14,8 +14,8 @@
 
 #include "analysis_database.h"
 #include "task/abstract_taskmgr.h"
-#include "settings.h"
 #include "io/filesystem.h"
+#include "const.h"
 
 namespace releasemgr{
 namespace task{
@@ -164,9 +164,9 @@ void AnalysisDatabase::exec()
 
 void AnalysisDatabase::openDatabases()
 {
-   QString host = m_settings.getValue("db.host", CFG_GROUP_GLOABL).toString();
-   QString username = m_settings.getValue("db.username", CFG_GROUP_GLOABL).toString();
-   QString password = m_settings.getValue("db.password", CFG_GROUP_GLOABL).toString();
+   QString host = m_settings.getValue("db.host", CFG_GROUP_GLOBAL).toString();
+   QString username = m_settings.getValue("db.username", CFG_GROUP_GLOBAL).toString();
+   QString password = m_settings.getValue("db.password", CFG_GROUP_GLOBAL).toString();
    QString baseDbName = "fenghuang_";
    if(!m_toDb.isOpen()){
       m_toDb.setHostName(host);

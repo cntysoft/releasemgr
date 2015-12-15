@@ -1,5 +1,5 @@
-#ifndef TASK_RMMGR_RPM_TASKMGR_H
-#define TASK_RMMGR_RPM_TASKMGR_H
+#ifndef RELEASEMGR_TASK_RMMGR_RPM_TASKMGR_H
+#define RELEASEMGR_TASK_RMMGR_RPM_TASKMGR_H
 
 #include "task/abstract_taskmgr.h"
 
@@ -28,4 +28,4 @@ protected:
 }//task
 }//releasemgr
 
-#endif // TASK_RMMGR_RPM_TASKMGR_H
+#endif // RELEASEMGR_TASK_RMMGR_RPM_TASKMGR_H

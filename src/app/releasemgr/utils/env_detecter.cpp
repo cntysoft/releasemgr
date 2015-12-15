@@ -1,10 +1,8 @@
 #include <QVariant>
-#include <QDebug>
 #include <QProcess>
 
 #include "const.h"
 #include "utils/env_detecter.h"
-#include "settings.h"
 #include "io/terminal.h"
 #include "utils/funcs.h"
 #include "application.h"
@@ -96,7 +94,6 @@ bool EnvDetecter::detectSencha()
    process.start("sencha");
    bool status = process.waitForFinished();
    if(!status){
-      qDebug() << process.errorString();
       return status;
    }
    QByteArray ret = process.readAll();
@@ -114,7 +111,6 @@ bool EnvDetecter::detectRpmbuild()
    process.start("rpmbuild", args);
    bool status = process.waitForFinished();
    if(!status){
-      qDebug() << process.errorString();
       return status;
    }
    QByteArray ret = process.readAll();
@@ -126,7 +122,7 @@ bool EnvDetecter::detectRpmbuild()
 
 bool EnvDetecter::isNeedDetect()const
 {
-   return !m_settings.getValue(IS_DETECT_KEY, CFG_GROUP_GLOABL, false).toBool();
+   return !m_settings.getValue(IS_DETECT_KEY, CFG_GROUP_GLOBAL, false).toBool();
 }
 
 }//releasemgr

@@ -14,6 +14,8 @@ namespace task{
 namespace fhzc{
 namespace diffbuild{
 
+using sn::corelib::ErrorInfo;
+
 Compress::Compress(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    :DiffBuildAbstractTask(taskmgr, invokeArgs)
 {

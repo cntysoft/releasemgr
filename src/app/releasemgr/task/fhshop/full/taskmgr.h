@@ -1,18 +1,19 @@
-#ifndef TASK_FHSHOP_FULLBUILD_TASKMGR_H
-#define TASK_FHSHOP_FULLBUILD_TASKMGR_H
+#ifndef RELEASEMGR_TASK_FHSHOP_FULLBUILD_TASKMGR_H
+#define RELEASEMGR_TASK_FHSHOP_FULLBUILD_TASKMGR_H
 
 #include "task/abstract_taskmgr.h"
+#include "kernel/settings.h"
 
 QT_BEGIN_NAMESPACE
 class QLatin1String;
 QT_END_NAMESPACE
 
-class Settings;
-
 namespace releasemgr{
 namespace task{
 namespace fhshop{
 namespace fullbuild{
+
+using sn::corelib::Settings;
 
 class TaskMgr : public releasemgr::AbstractTaskMgr
 {
@@ -28,4 +29,4 @@ protected:
 }//task
 }//releasemgr
 
-#endif // TASK_FHSHOP_FULLBUILD_TASKMGR_H
+#endif // RELEASEMGR_TASK_FHSHOP_FULLBUILD_TASKMGR_H

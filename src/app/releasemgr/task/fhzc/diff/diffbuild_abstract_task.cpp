@@ -11,8 +11,8 @@ namespace diffbuild{
 
 DiffBuildAbstractTask::DiffBuildAbstractTask(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    :AbstractTask(taskmgr, invokeArgs),
-     m_from(m_invokeArgs[QLatin1String("from")].toString()),
-     m_to(m_invokeArgs[QLatin1String("to")].toString())
+     m_from(m_invokeArgs["from"]),
+     m_to(m_invokeArgs["to"])
 {
    m_buildDir = m_buildDir + QDir::separator() + "fenghuang_" + m_from +"_"+ m_to;
 }

@@ -12,6 +12,8 @@ namespace task{
 namespace fhzc{
 namespace fullbuild{
 
+using sn::corelib::Filesystem;
+
 SetupConfig::SetupConfig(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : FullBuildAbstractTask(taskmgr, invokeArgs)
 {}

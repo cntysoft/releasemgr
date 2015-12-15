@@ -23,7 +23,7 @@ Compress::Compress(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeA
 void Compress::exec()
 {
    writeBeginMsg("开始压缩项目文件 ... ");
-   QString version = m_invokeArgs[QLatin1String("version")].toString();
+   QString version = m_invokeArgs["version"];
    QString sourceDir = "fenghuang_"+version;
    execGzipCmd(QString("fenghuang_%1.tar.gz").arg(version), sourceDir);
    writeDoneMsg();

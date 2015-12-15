@@ -1,9 +1,11 @@
 #include "abstract_taskmgr.h"
 #include "abstract_task.h"
-#include "settings.h"
+#include "kernel/settings.h"
 
 namespace releasemgr 
 {
+
+using sn::corelib::Settings;
 
 AbstractTaskMgr::AbstractTaskMgr(const QLatin1String& moduleName, Settings& settings)
    : m_moduleName(moduleName), m_settings(settings)

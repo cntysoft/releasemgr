@@ -5,10 +5,10 @@
 #include "task/fhzc/diff/taskmgr.h"
 #include "types.h"
 
-namespace releasemgr 
-{
+namespace releasemgr{
+namespace command{
 
-FhzcBuildCommand::FhzcBuildCommand(CommandRunner *runner, const CommandMeta &invokeMeta)
+FhzcBuildCommand::FhzcBuildCommand(CommandRunner& runner, const CommandMeta& invokeMeta)
    :AbstractCommand(runner, invokeMeta)
 {}
 
@@ -25,11 +25,11 @@ AbstractTaskMgr* FhzcBuildCommand::getTaskMgr()
    using FullBuildTaskMgr = releasemgr::task::fhzc::fullbuild::TaskMgr;
    using DiffBuildTaskMgr = releasemgr::task::fhzc::diffbuild::TaskMgr;
    TaskParamsType args = m_invokeMeta.getCmdArgs();
-   QString action = args[QLatin1String("action")].toString();
+   QString action = args["action"];
    if("fullbuild" == action){
-      taskmgr = new FullBuildTaskMgr(QLatin1String("Fhzc"), m_cmdRunner->getSysSettings());
+      taskmgr = new FullBuildTaskMgr(QLatin1String("Fhzc"), m_cmdRunner.getSysSettings());
    }else if("diffbuild" == action){
-      taskmgr = new DiffBuildTaskMgr(QLatin1String("Fhzc"), m_cmdRunner->getSysSettings());
+      taskmgr = new DiffBuildTaskMgr(QLatin1String("Fhzc"), m_cmdRunner.getSysSettings());
    }
    return taskmgr;
 }
@@ -37,4 +37,5 @@ AbstractTaskMgr* FhzcBuildCommand::getTaskMgr()
 FhzcBuildCommand::~FhzcBuildCommand()
 {}
 
+}//command
 }//releasemgr

@@ -6,7 +6,6 @@
 
 #include "dump_mysql.h"
 #include "task/abstract_taskmgr.h"
-#include "settings.h"
 #include "const.h"
 #include "kernel/errorinfo.h"
 #include "io/filesystem.h"
@@ -16,6 +15,9 @@ namespace task{
 namespace fhshop{
 namespace fullbuild{
 
+using sn::corelib::Filesystem;
+using sn::corelib::ErrorInfo;
+
 DumpMysql::DumpMysql(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    :FullBuildAbstractTask(taskmgr, invokeArgs)
 {}
@@ -24,11 +26,11 @@ void DumpMysql::exec()
 {
    writeBeginMsg("开始导出项目数据库 ... ");
    QChar ds = QDir::separator();
-   QString savedFilename = m_buildDir+ds+"fenghuangshop_"+m_invokeArgs[QLatin1String("version")].toString()+".sql";
-   QString dbname = "fenghuangshop_" + m_invokeArgs[QLatin1String("version")].toString();
+   QString savedFilename = m_buildDir+ds+"fenghuangshop_"+m_invokeArgs["version"]+".sql";
+   QString dbname = "fenghuangshop_" + m_invokeArgs["version"];
    QString sql;
-   QString username = m_settings.getValue("db.username", CFG_GROUP_GLOABL).toString();
-   QString password = m_settings.getValue("db.password", CFG_GROUP_GLOABL).toString();
+   QString username = m_settings.getValue("db.username", CFG_GROUP_GLOBAL).toString();
+   QString password = m_settings.getValue("db.password", CFG_GROUP_GLOBAL).toString();
    execMysqlDumpCmd(username, password, dbname, sql, false);
    Filesystem::filePutContents(savedFilename, sql);
    writeDoneMsg();

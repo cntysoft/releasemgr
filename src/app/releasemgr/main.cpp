@@ -1,16 +1,13 @@
 #include <QTimer>
 #include <QMap>
 #include <QLatin1String>
-#include <QDebug>
 
-#include "global/const.h"
 #include "global/global.h"
 #include "application.h"
 #include "io/terminal.h"
 #include "kernel/errorinfo.h"
 #include "command_runner.h"
 #include "global/common_funcs.h"
-#include "settings.h"
 #include "utils/env_detecter.h"
 #include "io/terminal.h"
 
