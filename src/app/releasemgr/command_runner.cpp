@@ -18,6 +18,7 @@ using releasemgr::command::GlobalVersionCommand;
 using releasemgr::command::GlobalHelpCommand;
 using releasemgr::command::FhzcBuildCommand;
 using releasemgr::command::RmMgrBuildCommand;
+using releasemgr::command::FhshopBuildCommand;
 
 CommandRunner::CommandRunner(Application &app)
    : BaseCommandRunner(app)
@@ -54,6 +55,10 @@ void CommandRunner::initCommandPool()
       FhzcBuildCommand* cmd = new FhzcBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
                                                   return cmd;
                                                });
+   m_cmdRegisterPool.insert("Fhshop_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+      FhshopBuildCommand* cmd = new FhshopBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
+                                                  return cmd;
+                                               });
    m_cmdRegisterPool.insert("RmMgr_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       RmMgrBuildCommand* cmd = new RmMgrBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
                                                   return cmd;
@@ -77,6 +82,16 @@ void CommandRunner::initRouteItems()
    });
    addCmdRoute("fhzcdiffbuild", "fhzc diffbuild --from= --to= [--aliyun]", 1, {
       {"category", "Fhzc"},
+      {"name", "Build"},
+      {"action", "diffbuild"}
+   });
+   addCmdRoute("fhshopfullbuild", "fhshop fullbuild --version= [--aliyun]", 1, {
+      {"category", "Fhshop"},
+      {"name", "Build"},
+      {"action", "fullbuild"}
+   });
+   addCmdRoute("fhshopdiffbuild", "fhshop diffbuild --from= --to= [--aliyun]", 1, {
+      {"category", "Fhshop"},
       {"name", "Build"},
       {"action", "diffbuild"}
    });

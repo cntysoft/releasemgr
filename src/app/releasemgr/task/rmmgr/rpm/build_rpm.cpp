@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <QFileInfo>
 #include <QProcessEnvironment>
-#include <QDebug>
 #include <cstdlib>
 
 #include "build_rpm.h"

@@ -32,9 +32,9 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new CopyProjectFiles(taskmgr, args);
    });
-   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
-      return new BuildJsProjects(taskmgr, args);
-   });
+//   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+//      return new BuildJsProjects(taskmgr, args);
+//   });
    m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
       return new DumpMysql(taskmgr, args);
    });

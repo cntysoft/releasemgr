@@ -48,7 +48,7 @@ void DumpMysql::execMysqlDumpCmd(const QString &username, const QString &passwor
    process.start("mysqldump", args);
    bool status = process.waitForFinished(-1);
    if(!status || process.exitCode() != 0){
-      throw ErrorInfo(process.errorString());
+      throw ErrorInfo(process.readAll());
    }
    sql = process.readAll();
 }
