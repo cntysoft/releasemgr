@@ -1,5 +1,5 @@
-#ifndef TASK_FHZC_FULLBUILD_CLEAR_H
-#define TASK_FHZC_FULLBUILD_CLEAR_H
+#ifndef RELEASEMGR_TASK_FHZC_FULLBUILD_CLEAR_H
+#define RELEASEMGR_TASK_FHZC_FULLBUILD_CLEAR_H
 
 #include "fullbuild_abstract_task.h"
 
@@ -24,4 +24,4 @@ public:
 }//task
 }//releasemgr
 
-#endif // TASK_FHZC_FULLBUILD_CLEAR_H
+#endif // RELEASEMGR_TASK_FHZC_FULLBUILD_CLEAR_H

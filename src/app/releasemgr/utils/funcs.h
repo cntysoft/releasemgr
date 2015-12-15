@@ -1,5 +1,5 @@
-#ifndef RMMGR_UTILS_FUNCS_H
-#define RMMGR_UTILS_FUNCS_H
+#ifndef RELEASEMGR_UTILS_FUNCS_H
+#define RELEASEMGR_UTILS_FUNCS_H
 
 #include "kernel/settings.h"
 
@@ -14,4 +14,4 @@ const Settings& get_sys_settings();
 
 }//releasemgr
 
-#endif // RMMGR_UTILS_FUNCS_H
+#endif // RELEASEMGR_UTILS_FUNCS_H
