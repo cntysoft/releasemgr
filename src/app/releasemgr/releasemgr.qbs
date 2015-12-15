@@ -12,41 +12,32 @@ ReleaseMgrApplication
                             ])
    
    files : [
-        "application.cpp",
-        "application.h",
-        "command_runner.cpp",
-        "command_runner.h",
-        "const.cpp",
-        "const.h",
-        "main.cpp",
-        "types.h",
-    ]
-//   Group {
-//      name : "parser"
-//      prefix : name + '/'
-//      files : [
-//         "command_runner.cpp",
-//         "command_runner.h",
-//         "option_pool.h",
-//         "option_pool.cpp"
-//      ]
-//   }
+      "application.cpp",
+      "application.h",
+      "command_runner.cpp",
+      "command_runner.h",
+      "const.cpp",
+      "const.h",
+      "main.cpp",
+      "types.h",
+   ]
+   
    Group {
       name : "command"
       prefix : name + '/'
       files : [
-           "command_repo.h",
-           "fhshop_build_command.cpp",
-           "fhshop_build_command.h",
-           "fhzc_build_command.cpp",
-           "fhzc_build_command.h",
-           "global_help_command.cpp",
-           "global_help_command.h",
-           "global_version_command.cpp",
-           "global_version_command.h",
-           "rmmgr_build_command.cpp",
-           "rmmgr_build_command.h",
-       ]
+         "command_repo.h",
+         "fhshop_build_command.cpp",
+         "fhshop_build_command.h",
+         "fhzc_build_command.cpp",
+         "fhzc_build_command.h",
+         "global_help_command.cpp",
+         "global_help_command.h",
+         "global_version_command.cpp",
+         "global_version_command.h",
+         "rmmgr_build_command.cpp",
+         "rmmgr_build_command.h",
+      ]
    }
    Group {
       name : "task"
@@ -133,21 +124,21 @@ ReleaseMgrApplication
       name : "rmmgr_task"
       prefix: "task/rmmgr/"
       files : [
-           "rpm/build_rpm.cpp",
-           "rpm/build_rpm.h",
-           "rpm/clear.cpp",
-           "rpm/clear.h",
-           "rpm/copy_source_files.cpp",
-           "rpm/copy_source_files.h",
-           "rpm/make_project_structure.cpp",
-           "rpm/make_project_structure.h",
-           "rpm/rpmbuild_abstract_task.cpp",
-           "rpm/rpmbuild_abstract_task.h",
-           "rpm/taskmgr.cpp",
-           "rpm/taskmgr.h",
-       ]
+         "rpm/build_rpm.cpp",
+         "rpm/build_rpm.h",
+         "rpm/clear.cpp",
+         "rpm/clear.h",
+         "rpm/copy_source_files.cpp",
+         "rpm/copy_source_files.h",
+         "rpm/make_project_structure.cpp",
+         "rpm/make_project_structure.h",
+         "rpm/rpmbuild_abstract_task.cpp",
+         "rpm/rpmbuild_abstract_task.h",
+         "rpm/taskmgr.cpp",
+         "rpm/taskmgr.h",
+      ]
    }
-
+   
    Group {
       name : "utils"
       prefix : name + '/'
