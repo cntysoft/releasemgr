@@ -8,21 +8,17 @@
  */
 namespace Cntysoft;
 /**
- * @var string 商家系统的域名
- */
-const RT_MERCHANT_DOMAIN = MERCHANT_DOMAIN;
-/**
  * @var string 系统绑定的域名
  */
 const RT_SYS_DOMAIN = SYS_DOMAIN;
 /**
- * @var string
- */
-const RT_ALI_SEARCH_ENTRY = ALI_SEARCH_API_PUB_ENTRY;
-/**
  * @var string OTS接口的入口地址
  */
 const RT_OTS_API_ENTRY = OTS_PUB_API;
+/**
+ * @var string
+ */
+const RT_ALI_SEARCH_ENTRY = ALI_SEARCH_API_PUB_ENTRY;
 /**
  * @var string OSS接口的入口地址
  */

@@ -21,7 +21,7 @@
 
 namespace releasemgr{
 namespace task{
-namespace fhzc{
+namespace fhshop{
 namespace diffbuild{
 
 using sn::corelib::Filesystem;
@@ -170,7 +170,7 @@ void AnalysisDatabase::openDatabases()
    QString host = m_settings.getValue("db.host", CFG_GROUP_GLOBAL).toString();
    QString username = m_settings.getValue("db.username", CFG_GROUP_GLOBAL).toString();
    QString password = m_settings.getValue("db.password", CFG_GROUP_GLOBAL).toString();
-   QString baseDbName = "fenghuang_";
+   QString baseDbName = "fenghuangshop_";
    if(!m_toDb.isOpen()){
       m_toDb.setHostName(host);
       m_toDb.setUserName(username);
@@ -233,6 +233,6 @@ AnalysisDatabase::~AnalysisDatabase()
 {}
 
 }//diffbuild
-}//fhzc
+}//fhshop
 }//task
 }//releasemgr
