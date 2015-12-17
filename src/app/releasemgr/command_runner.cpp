@@ -85,11 +85,7 @@ void CommandRunner::initRouteItems()
       {"name", "Build"},
       {"action", "diffbuild"}
    });
-   addCmdRoute("fhshopfullbuild", "fhshop fullbuild --version= [--aliyun]", 1, {
-      {"category", "Fhshop"},
-      {"name", "Build"},
-      {"action", "fullbuild"}
-   });
+  
    addCmdRoute("fhshopdiffbuild", "fhshop diffbuild --from= --to= [--aliyun]", 1, {
       {"category", "Fhshop"},
       {"name", "Build"},
@@ -99,6 +95,11 @@ void CommandRunner::initRouteItems()
       {"category", "RmMgr"},
       {"name", "Build"},
       {"action", "rpmbuild"}
+   });
+   addCmdRoute("fhshopfullbuild", "fhshop fullbuild --version= [--aliyun]", 1, {
+      {"category", "Fhshop"},
+      {"name", "Build"},
+      {"action", "fullbuild"}
    });
 }
 
