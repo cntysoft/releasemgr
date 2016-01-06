@@ -14,7 +14,7 @@ BuildArch:x86_64
 /usr/local/bin/qbs -f ../SOURCES/%{name}.qbs profile:Qt5 project.resourcesInstallDir:share/releasemgr project.rmmgrVersion:%{version} qbs.installRoot:%{installRoot} release
 %files
 /usr/local/bin/releasemgr
-<sncorepaths>
+/usr/local/lib/libsncore.so
 /usr/local/share/releasemgr/assets/fhzc/distconst/AliyunDeployment.php
 /usr/local/share/releasemgr/assets/fhzc/distconst/NormalDeployment.php
 /usr/local/share/releasemgr/assets/fhshop/distconst/AliyunDeployment.php

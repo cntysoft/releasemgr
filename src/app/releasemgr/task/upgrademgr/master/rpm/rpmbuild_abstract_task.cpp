@@ -6,7 +6,7 @@
 
 namespace releasemgr{
 namespace task{
-namespace rmmgr{
+namespace upgrademgrmaster{
 namespace rpmbuild{
 
 RpmBuildAbstractTask::RpmBuildAbstractTask(const AbstractTaskMgr& taskmgr, const TaskParamsType& invokeArgs)
@@ -28,14 +28,13 @@ RpmBuildAbstractTask::RpmBuildAbstractTask(const AbstractTaskMgr& taskmgr, const
 
 QString RpmBuildAbstractTask::getAssetDir()
 {
-   return AbstractTask::getAssetDir() + DS+"rmmgr";
+   return AbstractTask::getAssetDir() + DS+"upgrademgr_master";
 }
 
 RpmBuildAbstractTask::~RpmBuildAbstractTask()
 {}
 
-
 }//rpmbuild
-}//rmmgr
+}//upgrademgrmaster
 }//task
 }//releasemgr

@@ -1,18 +1,19 @@
 #include <QLatin1String>
 #include <QDir>
-
-#include "corelib/kernel/settings.h"
+#include <QString>
 
 #include "taskmgr.h"
 
-#include "task/rmmgr/rpm/clear.h"
-#include "task/rmmgr/rpm/make_project_structure.h"
-#include "task/rmmgr/rpm/copy_source_files.h"
-#include "task/rmmgr/rpm/build_rpm.h"
+#include "corelib/kernel/settings.h"
+
+#include "task/upgrademgr/master/rpm/clear.h"
+#include "task/upgrademgr/master/rpm/make_project_structure.h"
+#include "task/upgrademgr/master/rpm/copy_source_files.h"
+#include "task/upgrademgr/master/rpm/build_rpm.h"
 
 namespace releasemgr{
 namespace task{
-namespace rmmgr{
+namespace upgrademgrmaster{
 namespace rpmbuild{
 
 using sn::corelib::Settings;
@@ -36,7 +37,7 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
 
 void TaskMgr::beforeRun(const TaskParamsType& args)
 {
-   writeMsg("开始打包releasemgr系统, 打包版本为 : ");
+   writeMsg("开始打包upgrademgr master系统, 打包版本为 : ");
    writeMsg(args["version"].toLatin1(), TerminalColor::LightBlue);
    writeMsg("\n-----------------------------------------------------------------------------------------\n");
 }
@@ -44,11 +45,11 @@ void TaskMgr::beforeRun(const TaskParamsType& args)
 void TaskMgr::afterRun(const TaskParamsType &args)
 {
    QString buildDir = getSysSettings().getValue("buildDir", getModuleName()).toString();
-   QString filename(buildDir+QDir::separator()+"releasemgr-"+args["version"]+".rpm\n");
+   QString filename(buildDir+QDir::separator()+"upgrademgr_master-"+args["version"]+".rpm\n");
    writeMsg(filename.toLatin1(), TerminalColor::Green);
 }
 
 }//rpmbuild
-}//rmmgr
+}//upgrademgrmaster
 }//task
 }//releasemgr

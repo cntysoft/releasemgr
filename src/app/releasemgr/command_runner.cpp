@@ -19,6 +19,7 @@ using releasemgr::command::GlobalHelpCommand;
 using releasemgr::command::FhzcBuildCommand;
 using releasemgr::command::RmMgrBuildCommand;
 using releasemgr::command::FhshopBuildCommand;
+using releasemgr::command::UpgrademgrBuildCommand;
 
 CommandRunner::CommandRunner(Application &app)
    : BaseCommandRunner(app)
@@ -39,6 +40,7 @@ void CommandRunner::initUsageText()
    addUsageText("releasemgr fhshop build --version=<version> [--aliyun]\n");
    addUsageText("releasemgr fhshop diffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
    addUsageText("releasemgr rmmgr rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
+   addUsageText("releasemgr upgrademgrmaster rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
 }
 
 void CommandRunner::initCommandPool()
@@ -61,6 +63,10 @@ void CommandRunner::initCommandPool()
                                                });
    m_cmdRegisterPool.insert("RmMgr_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       RmMgrBuildCommand* cmd = new RmMgrBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
+                                                  return cmd;
+                                               });
+   m_cmdRegisterPool.insert("Upgrademgr_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+      UpgrademgrBuildCommand* cmd = new UpgrademgrBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
                                                   return cmd;
                                                });
 }
@@ -98,6 +104,12 @@ void CommandRunner::initRouteItems()
    addCmdRoute("rmmgrrpmbuild", "rmmgr rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
       {"category", "RmMgr"},
       {"name", "Build"},
+      {"action", "rpmbuild"}
+   });
+   addCmdRoute("upgrademgrmasterrpmbuild", "upgrademgrmaster rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
+      {"category", "Upgrademgr"},
+      {"name", "Build"},
+      {"subsystem", "master"},
       {"action", "rpmbuild"}
    });
 }

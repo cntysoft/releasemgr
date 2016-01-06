@@ -11,6 +11,7 @@ extern const char* CFG_GROUP_FHZC;
 extern const char* CFG_GROUP_FHSHOP;
 extern const char* CFG_GROUP_GLOBAL;
 extern const char* CFG_GROUP_RMMGR;
+extern const char* CFG_GROUP_UPGRADEMGR_MASTER;
 
 const int DEPLOY_TYPE_PRODUCT = 4;
 const int DEPLOY_TYPE_DEBUG = 5;

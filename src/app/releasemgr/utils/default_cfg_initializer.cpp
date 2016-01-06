@@ -13,8 +13,9 @@ using sn::corelib::Settings;
 
 static void init_global_cfg(Settings &settings);
 static void init_fhzc_cfg(Settings &settings);
-static void init_fhshop_cfg(Settings& settings);
-static void init_rmmgr_cfg(Settings& settings);
+static void init_fhshop_cfg(Settings &settings);
+static void init_rmmgr_cfg(Settings &settings);
+static void init_upgrademgr_cfg(Settings &settings);
 
 void init_defualt_cfg(Settings& settings)
 {
@@ -22,6 +23,7 @@ void init_defualt_cfg(Settings& settings)
    init_fhzc_cfg(settings);
    init_fhshop_cfg(settings);
    init_rmmgr_cfg(settings);
+   init_upgrademgr_cfg(settings);
    settings.sync();
 }
 
@@ -174,6 +176,12 @@ void init_rmmgr_cfg(Settings &settings)
 {
    settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/releasemgr", CFG_GROUP_RMMGR);
    settings.setValue("buildDir", "/tmp/releasemgr-build", CFG_GROUP_RMMGR);
+}
+
+void init_upgrademgr_cfg(Settings &settings)
+{
+   settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/upgrademgr_master", CFG_GROUP_UPGRADEMGR_MASTER);
+   settings.setValue("buildDir", "/tmp/upgrademgr_master-build", CFG_GROUP_UPGRADEMGR_MASTER);
 }
 
 }//releasemgr

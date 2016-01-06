@@ -5,7 +5,7 @@ ReleaseMgrApplication
    targetName : "releasemgr"
    Depends { name: "Qt"; submodules: ["sql"] }
    cpp.includePaths: base.concat([
-                                    "."
+                                    ".","../../libs"
                                  ])
    cpp.defines: base.concat([
                                'RMMGR_VERSION="' + project.rmmgrVersion + '"'
@@ -37,6 +37,8 @@ ReleaseMgrApplication
          "global_version_command.h",
          "rmmgr_build_command.cpp",
          "rmmgr_build_command.h",
+         "upgrademgr_build_command.cpp",
+         "upgrademgr_build_command.h",
       ]
    }
    Group {
@@ -157,6 +159,24 @@ ReleaseMgrApplication
       ]
    }
    
+   Group {
+      name: "upgrademgr_task"
+      prefix: "task/upgrademgr/"
+      files:[
+         "master/rpm/clear.cpp",
+         "master/rpm/clear.h",
+         "master/rpm/make_project_structure.h",
+         "master/rpm/make_project_structure.cpp",
+         "master/rpm/rpmbuild_abstract_task.cpp",
+         "master/rpm/rpmbuild_abstract_task.h",
+         "master/rpm/copy_source_files.cpp",
+         "master/rpm/copy_source_files.h",
+         "master/rpm/build_rpm.cpp",
+         "master/rpm/build_rpm.h",
+         "master/rpm/taskmgr.cpp",
+         "master/rpm/taskmgr.h",
+      ]
+   }
    Group {
       name : "utils"
       prefix : name + '/'
