@@ -47,71 +47,71 @@ void CommandRunner::initCommandPool()
 {
    m_cmdRegisterPool.insert("Global_Version", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       GlobalVersionCommand* cmd = new GlobalVersionCommand(dynamic_cast<CommandRunner&>(runner), meta);
-                                                  return cmd;
-                                               });
+      return cmd;
+   });
    m_cmdRegisterPool.insert("Global_Help", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       GlobalHelpCommand* cmd = new GlobalHelpCommand(dynamic_cast<CommandRunner&>(runner), meta);
-                                                  return cmd;
-                                               });
+      return cmd;
+   });
    m_cmdRegisterPool.insert("Fhzc_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       FhzcBuildCommand* cmd = new FhzcBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
-                                                  return cmd;
-                                               });
+      return cmd;
+   });
    m_cmdRegisterPool.insert("Fhshop_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       FhshopBuildCommand* cmd = new FhshopBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
-                                                  return cmd;
-                                               });
+      return cmd;
+   });
    m_cmdRegisterPool.insert("RmMgr_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       RmMgrBuildCommand* cmd = new RmMgrBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
-                                                  return cmd;
-                                               });
+      return cmd;
+   });
    m_cmdRegisterPool.insert("Upgrademgr_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       UpgrademgrBuildCommand* cmd = new UpgrademgrBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
-                                                  return cmd;
-                                               });
+      return cmd;
+   });
 }
 
 void CommandRunner::initRouteItems()
 {
    addCmdRoute("version", "--version", 1, {
-      {"category", "Global"},
-      {"name", "Version"}
-   });
+                  {"category", "Global"},
+                  {"name", "Version"}
+               });
    addCmdRoute("help", "--help", 1, {
-      {"category", "Global"},
-      {"name", "Help"}
-   });
+                  {"category", "Global"},
+                  {"name", "Help"}
+               });
    addCmdRoute("fhzcfullbuild", "fhzc fullbuild --version= [--aliyun]", 1, {
-      {"category", "Fhzc"},
-      {"name", "Build"},
-      {"action", "fullbuild"}
-   });
+                  {"category", "Fhzc"},
+                  {"name", "Build"},
+                  {"action", "fullbuild"}
+               });
    addCmdRoute("fhzcdiffbuild", "fhzc diffbuild --from= --to= [--aliyun]", 1, {
-      {"category", "Fhzc"},
-      {"name", "Build"},
-      {"action", "diffbuild"}
-   });
+                  {"category", "Fhzc"},
+                  {"name", "Build"},
+                  {"action", "diffbuild"}
+               });
    addCmdRoute("fhshopfullbuild", "fhshop fullbuild --version= [--aliyun]", 1, {
-      {"category", "Fhshop"},
-      {"name", "Build"},
-      {"action", "fullbuild"}
-   });
+                  {"category", "Fhshop"},
+                  {"name", "Build"},
+                  {"action", "fullbuild"}
+               });
    addCmdRoute("fhshopdiffbuild", "fhshop diffbuild --from= --to= [--aliyun]", 1, {
-      {"category", "Fhshop"},
-      {"name", "Build"},
-      {"action", "diffbuild"}
-   });
+                  {"category", "Fhshop"},
+                  {"name", "Build"},
+                  {"action", "diffbuild"}
+               });
    addCmdRoute("rmmgrrpmbuild", "rmmgr rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
-      {"category", "RmMgr"},
-      {"name", "Build"},
-      {"action", "rpmbuild"}
-   });
+                  {"category", "RmMgr"},
+                  {"name", "Build"},
+                  {"action", "rpmbuild"}
+               });
    addCmdRoute("upgrademgrmasterrpmbuild", "upgrademgrmaster rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
-      {"category", "Upgrademgr"},
-      {"name", "Build"},
-      {"subsystem", "master"},
-      {"action", "rpmbuild"}
-   });
+                  {"category", "Upgrademgr"},
+                  {"name", "Build"},
+                  {"subsystem", "master"},
+                  {"action", "rpmbuild"}
+               });
 }
 
 }//releasemgr

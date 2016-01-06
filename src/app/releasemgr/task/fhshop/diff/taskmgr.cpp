@@ -45,7 +45,7 @@ TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
 void TaskMgr::beforeRun(const TaskParamsType& args)
 {
    writeMsg("开始差异性打包凤凰筑巢商家版系统, 打包范围为 : ");
-   writeMsg(args["version"].toLatin1(), TerminalColor::LightBlue);
+   writeMsg(QString("%1 -> %2").arg(args["from"]).arg(args["to"]).toLocal8Bit(), TerminalColor::LightBlue);
    writeMsg("\n-----------------------------------------------------------------------------------------\n");
 }
 

@@ -281,7 +281,7 @@ void GenerateDiffMetaInfo::getSubmoduleHash(const QString &projectDir, const QSt
    process.start("git", args);
    bool status = process.waitForFinished(-1);
    if(!status || process.exitCode() != 0){
-      throw ErrorInfo(process.errorString());
+      throw ErrorInfo(process.readAll());
    }
    QString ret(process.readAll());
    auto lines = ret.split("\n", QString::SkipEmptyParts);
