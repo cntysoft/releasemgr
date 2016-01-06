@@ -11,17 +11,18 @@
 
 namespace releasemgr{
 namespace task{
-namespace upgrademgrmaster{
+namespace cloudcontroller{
 namespace rpmbuild{
 
 using sn::corelib::Filesystem;
+
 CopySourceFiles::CopySourceFiles(const AbstractTaskMgr &taskmgr, const TaskParamsType &invokeArgs)
    : RpmBuildAbstractTask(taskmgr, invokeArgs)
 {}
 
 void CopySourceFiles::exec()
 {
-   writeBeginMsg("正在复制upgrademgrmaster项目源码 ... ");
+   writeBeginMsg("正在复制cloudcontroller项目源码 ... ");
    QStringList filenames;
    Filesystem::traverseFs(m_projectDir, 0, [&filenames, this](QFileInfo& fileInfo, int)->void{
       QString ext = fileInfo.suffix();
@@ -29,7 +30,6 @@ void CopySourceFiles::exec()
          QString source = fileInfo.absoluteFilePath();
          QString destination(source);
          destination.replace(this->m_projectDir, this->m_rpmSourceDir);
-
          Filesystem::copyFile(source, destination);
       }
    });
@@ -57,7 +57,7 @@ void CopySourceFiles::processSpecFile()
       paths << temp;
    }
    specFileContent.replace(QByteArray("<sncorepaths>"), QByteArray((paths.join('\n')).toLocal8Bit()));
-   Filesystem::filePutContents(m_rpmSpecDir+DS+"upgrademgrmaster.spec", specFileContent);
+   Filesystem::filePutContents(m_rpmSpecDir+DS+"cloudcontroller.spec", specFileContent);
    writeDoneMsg();
 }
 
@@ -65,6 +65,6 @@ CopySourceFiles::~CopySourceFiles()
 {}
 
 }//rpmbuild
-}//upgrademgrmaster
+}//cloudcontroller
 }//task
 }//releasemgr

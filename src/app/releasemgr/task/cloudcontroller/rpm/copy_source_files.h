@@ -1,5 +1,5 @@
-#ifndef RELEASEMGR_TASK_UPGRADEMGR_MASTER_RPM_COPY_SOURCE_FILES_H
-#define RELEASEMGR_TASK_UPGRADEMGR_MASTER_RPM_COPY_SOURCE_FILES_H
+#ifndef RELEASEMGR_TASK_CLOUD_CONTROLLER_RPM_COPY_SOURCE_FILES_H
+#define RELEASEMGR_TASK_CLOUD_CONTROLLER_RPM_COPY_SOURCE_FILES_H
 
 #include "rpmbuild_abstract_task.h"
 
@@ -7,7 +7,7 @@ class AbstractTaskMgr;
 
 namespace releasemgr{
 namespace task{
-namespace upgrademgrmaster{
+namespace cloudcontroller{
 namespace rpmbuild{
 
 class CopySourceFiles : public RpmBuildAbstractTask 
@@ -22,8 +22,8 @@ private:
 };
 
 }//rpmbuild
-}//upgrademgrmaster
+}//cloudcontroller
 }//task
 }//releasemgr
 
-#endif // RELEASEMGR_TASK_UPGRADEMGR_MASTER_RPM_COPY_SOURCE_FILES_H
+#endif // RELEASEMGR_TASK_CLOUD_CONTROLLER_RPM_COPY_SOURCE_FILES_H

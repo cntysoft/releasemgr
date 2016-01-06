@@ -8,7 +8,7 @@
 
 namespace releasemgr{
 namespace task{
-namespace rmmgr{
+namespace cloudcontroller{
 namespace rpmbuild{
 
 using sn::corelib::ErrorInfo;
@@ -36,14 +36,13 @@ RpmBuildAbstractTask::RpmBuildAbstractTask(const AbstractTaskMgr& taskmgr, const
 
 QString RpmBuildAbstractTask::getAssetDir()
 {
-   return AbstractTask::getAssetDir() + DS+"rmmgr";
+   return AbstractTask::getAssetDir() + DS+"cloudcontroller";
 }
 
 RpmBuildAbstractTask::~RpmBuildAbstractTask()
 {}
 
-
 }//rpmbuild
-}//rmmgr
+}//cloudcontroller
 }//task
 }//releasemgr

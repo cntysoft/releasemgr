@@ -9,7 +9,7 @@
 namespace releasemgr{
 namespace command{
 
-using RPMTaskMgr = releasemgr::task::upgrademgrmaster::rpmbuild::TaskMgr;
+using UpgrademgrMasterRPMTaskMgr = releasemgr::task::upgrademgrmaster::rpmbuild::TaskMgr;
 
 UpgrademgrBuildCommand::UpgrademgrBuildCommand(CommandRunner& runner, const CommandMeta &invokeMeta)
    :AbstractCommand(runner, invokeMeta)
@@ -18,7 +18,7 @@ UpgrademgrBuildCommand::UpgrademgrBuildCommand(CommandRunner& runner, const Comm
 void UpgrademgrBuildCommand::exec()
 {
    //暂时就一种打包方式
-   RPMTaskMgr upgrademgrMasterRpmTaskMgr(QLatin1String("UpgrademgrMaster"), m_cmdRunner.getSysSettings());
+   UpgrademgrMasterRPMTaskMgr upgrademgrMasterRpmTaskMgr(QLatin1String("UpgrademgrMaster"), m_cmdRunner.getSysSettings());
    upgrademgrMasterRpmTaskMgr.run(m_invokeMeta.getCmdArgs());
    exit(EXIT_SUCCESS);
 }

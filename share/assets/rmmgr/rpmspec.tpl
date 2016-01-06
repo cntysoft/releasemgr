@@ -20,3 +20,5 @@ BuildArch:x86_64
 /usr/local/share/releasemgr/assets/fhshop/distconst/AliyunDeployment.php
 /usr/local/share/releasemgr/assets/fhshop/distconst/NormalDeployment.php
 /usr/local/share/releasemgr/assets/rmmgr/rpmspec.tpl
+/usr/local/share/releasemgr/assets/upgrademgr_master/rpmspec.tpl
+/usr/local/share/releasemgr/assets/cloudcontroller/rpmspec.tpl

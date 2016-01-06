@@ -1,6 +1,7 @@
 #include <QTimer>
 #include <QMap>
 #include <QLatin1String>
+#include <QDebug>
 
 #include "global/global.h"
 #include "application.h"
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
       QString str(errorInfo.toString());
       if(str.size() > 0){
          str += '\n';
-         Terminal::writeText(str.toLatin1(), TerminalColor::Red);
+         Terminal::writeText(str.toLocal8Bit(), TerminalColor::Red);
       }
       return EXIT_FAILURE;
    }

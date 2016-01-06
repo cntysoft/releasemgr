@@ -16,6 +16,7 @@ static void init_fhzc_cfg(Settings &settings);
 static void init_fhshop_cfg(Settings &settings);
 static void init_rmmgr_cfg(Settings &settings);
 static void init_upgrademgr_cfg(Settings &settings);
+static void init_cloudcontroller_cfg(Settings &settings);
 
 void init_defualt_cfg(Settings& settings)
 {
@@ -24,6 +25,7 @@ void init_defualt_cfg(Settings& settings)
    init_fhshop_cfg(settings);
    init_rmmgr_cfg(settings);
    init_upgrademgr_cfg(settings);
+   init_cloudcontroller_cfg(settings);
    settings.sync();
 }
 
@@ -182,6 +184,12 @@ void init_upgrademgr_cfg(Settings &settings)
 {
    settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/upgrademgr_master", CFG_GROUP_UPGRADEMGR_MASTER);
    settings.setValue("buildDir", "/tmp/upgrademgr_master-build", CFG_GROUP_UPGRADEMGR_MASTER);
+}
+
+void init_cloudcontroller_cfg(Settings &settings)
+{
+   settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/cloud_controller", CFG_GROUP_CLOUDCONTROLLER);
+   settings.setValue("buildDir", "/tmp/cloudcontroller-build", CFG_GROUP_CLOUDCONTROLLER);
 }
 
 }//releasemgr

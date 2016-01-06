@@ -26,6 +26,8 @@ ReleaseMgrApplication
       name : "command"
       prefix : name + '/'
       files : [
+         "cloudcontroller_build_command.cpp",
+         "cloudcontroller_build_command.h",
          "command_repo.h",
          "fhshop_build_command.cpp",
          "fhshop_build_command.h",
@@ -177,6 +179,26 @@ ReleaseMgrApplication
          "master/rpm/taskmgr.h",
       ]
    }
+   
+   Group {
+      name: "cloudcontroller_task"
+      prefix: "task/cloudcontroller/"
+      files:[
+         "rpm/build_rpm.cpp",
+         "rpm/build_rpm.h",
+         "rpm/clear.cpp",
+         "rpm/clear.h",
+         "rpm/copy_source_files.cpp",
+         "rpm/copy_source_files.h",
+         "rpm/make_project_structure.cpp",
+         "rpm/make_project_structure.h",
+         "rpm/rpmbuild_abstract_task.cpp",
+         "rpm/rpmbuild_abstract_task.h",
+         "rpm/taskmgr.cpp",
+         "rpm/taskmgr.h"
+      ]
+   }
+   
    Group {
       name : "utils"
       prefix : name + '/'

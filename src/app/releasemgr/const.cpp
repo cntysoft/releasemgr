@@ -9,5 +9,6 @@ const char* CFG_GROUP_FHSHOP = "Fhshop";
 const char* CFG_GROUP_RMMGR = "RmMgr";
 const char* CFG_GROUP_GLOBAL = "Global";
 const char* CFG_GROUP_UPGRADEMGR_MASTER = "UpgrademgrMaster";
+const char* CFG_GROUP_CLOUDCONTROLLER = "CloudController";
 
 }//releasemgr
