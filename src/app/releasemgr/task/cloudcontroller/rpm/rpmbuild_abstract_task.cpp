@@ -26,6 +26,11 @@ RpmBuildAbstractTask::RpmBuildAbstractTask(const AbstractTaskMgr& taskmgr, const
    if(!Filesystem::dirExist(m_projectDir)){
       throw ErrorInfo(QString("项目文件夹 %1 不存在").arg(m_projectDir));
    }
+   //检查项目文件
+   QString projectQbsFile(m_projectDir+"/cloud_controller.qbs");
+   if(!Filesystem::fileExist(projectQbsFile)){
+      throw ErrorInfo(QString("项目文件夹中项目文件%1不存在").arg("cloud_controller.qbs"));
+   }
    m_rpmBuildDir = m_buildDir+DS+"BUILD";
    m_rpmRpmDir = m_buildDir+DS+"RPMS";
    m_rpmSourceDir = m_buildDir+DS+"SOURCES";
