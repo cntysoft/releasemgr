@@ -45,7 +45,7 @@ void TaskMgr::beforeRun(const TaskParamsType& args)
 void TaskMgr::afterRun(const TaskParamsType &args)
 {
    QString buildDir = getSysSettings().getValue("buildDir", getModuleName()).toString();
-   QString filename(buildDir+QDir::separator()+"upgrademgr_master-"+args["version"]+".rpm\n");
+   QString filename(buildDir+QDir::separator()+"upgrademgr_master-"+args["version"]+"-1.x86_64.rpm\n");
    writeMsg(filename.toLatin1(), TerminalColor::Green);
 }
 
