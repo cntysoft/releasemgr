@@ -43,6 +43,8 @@ void CommandRunner::initUsageText()
    addUsageText("releasemgr rmmgr rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr upgrademgrmaster rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr cloudcontroller rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
+   addUsageText("releasemgr cloudcontroller webfullbuild --version=<version> [--aliyun]\n");
+   addUsageText("releasemgr cloudcontroller webdiffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
 }
 
 void CommandRunner::initCommandPool()
@@ -122,6 +124,16 @@ void CommandRunner::initRouteItems()
                   {"category", "CloudController"},
                   {"name", "Build"},
                   {"action", "rpmbuild"}
+               });
+   addCmdRoute("cloudcontrollerwebfullbuild", "cloudcontroller webfullbuild --version= [--aliyun]", 1, {
+                  {"category", "CloudController"},
+                  {"name", "Build"},
+                  {"action", "webfullbuild"}
+               });
+   addCmdRoute("cloudcontrollerwebdiffbuild", "cloudcontroller webdiffbuild --from= --to= [--aliyun]", 1, {
+                  {"category", "CloudController"},
+                  {"name", "Build"},
+                  {"action", "webdiffbuild"}
                });
 }
 

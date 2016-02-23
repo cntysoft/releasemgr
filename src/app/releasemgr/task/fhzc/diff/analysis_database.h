@@ -8,7 +8,6 @@
 
 QT_BEGIN_NAMESPACE
 class QStringList;
-
 class QVariant;
 QT_END_NAMESPACE
 

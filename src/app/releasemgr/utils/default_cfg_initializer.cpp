@@ -190,6 +190,77 @@ void init_cloudcontroller_cfg(Settings &settings)
 {
    settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/cloud_controller", CFG_GROUP_CLOUDCONTROLLER);
    settings.setValue("buildDir", "/tmp/cloudcontroller-build", CFG_GROUP_CLOUDCONTROLLER);
+   settings.setValue("webProjectDir", "/srv/www/cloudcontrollerdevel", CFG_GROUP_CLOUDCONTROLLER);
+   settings.setValue("webBuildDir", "/tmp/cloudcontrollerweb-build", CFG_GROUP_CLOUDCONTROLLER);
+   
+   settings.setValue("docBuildDir", "/tmp/cloudcontroller-apidoc-build", CFG_GROUP_CLOUDCONTROLLER);
+   settings.setValue("senchaBuildDir", "PlatformJs/build/production", CFG_GROUP_CLOUDCONTROLLER);
+   //源码文件夹
+   QStringList sourceDirs{
+      "Apps", "Data/Framework",
+      "Config", "JsLibrary",
+      "Library",
+      "Modules", "Statics",
+      "PlatformJs" , "SysApiHandler",
+      "TagLibrary", "index.php"
+   };
+   settings.setValue("sourceDirs", sourceDirs, CFG_GROUP_CLOUDCONTROLLER);
+   //源码文件夹
+   QStringList docSourceDirsPhp{
+      "Library/Cntysoft",
+      "Library/FengHuang",
+      "Modules",
+      "Apps",
+      "SysApiHandler",
+      "index.php"
+   };
+   QStringList docSourceDirsJs{
+      //         "PlatformJs/ext/src",
+      //         "PlatformJs/ext/packages/sencha-core/src",
+      "PlatformJs/ext/packages/ext-ux/src",
+      "PlatformJs/CloudController/src",
+      "PlatformJs/CloudController/app.js",
+      "PlatformJs/packages/sencha-ext/src",
+      "PlatformJs/packages/cntysoft-core/src",
+      "PlatformJs/packages/cntysoft-comp/src",
+      "PlatformJs/packages/cntysoft-webos/src"
+   };
+   settings.setValue("docSourceDirs/php", docSourceDirsPhp, CFG_GROUP_CLOUDCONTROLLER);
+   settings.setValue("docSourceDirs/js", docSourceDirsJs, CFG_GROUP_CLOUDCONTROLLER);
+   //submodules 相关设置
+   QStringList submodulesPhp{
+      "Library/Cntysoft",
+      "Library/Zend",
+      "Library/Vender/VsImage"
+   };
+   QStringList submodulesSencha{
+      "PlatformJs/packages/cntysoft-comp",
+      "PlatformJs/packages/cntysoft-core",
+      "PlatformJs/packages/cntysoft-webos",
+      "PlatformJs/packages/sencha-ext"
+   };
+   QStringList submodulesJs{
+      "JsLibrary/CkEditor",
+      "JsLibrary/CodeMirror",
+      "JsLibrary/Jquery",
+      "JsLibrary/JsSha",
+      "JsLibrary/WebUploader"
+   };
+   settings.setValue("submodules/php", submodulesPhp, CFG_GROUP_CLOUDCONTROLLER);
+   settings.setValue("submodules/sencha", submodulesSencha, CFG_GROUP_CLOUDCONTROLLER);
+   settings.setValue("submodules/js", submodulesJs, CFG_GROUP_CLOUDCONTROLLER);
+   //设置sencha项目相关的
+   QStringList senchaProjectsCloudController{
+      "PlatformJs/CloudController/resources",
+      "PlatformJs/CloudController/sass",
+      "PlatformJs/CloudController/src",
+      "PlatformJs/CloudController/app.js",
+      "PlatformJs/CloudController/app.json",
+      "PlatformJs/CloudController/bootstrap.css",
+      "PlatformJs/CloudController/bootstrap.js",
+      "PlatformJs/CloudController/index.html"
+   };
+   settings.setValue("senchaProjects/CloudController", senchaProjectsCloudController, CFG_GROUP_CLOUDCONTROLLER);
 }
 
 }//releasemgr
