@@ -45,7 +45,7 @@ void TaskMgr::beforeRun(const TaskParamsType& args)
 void TaskMgr::afterRun(const TaskParamsType &args)
 {
    QString buildDir = getSysSettings().getValue("webBuildDir", getModuleName()).toString();
-   QString filename(buildDir+QDir::separator()+"cloudcontrollerweb_patch_"+args["from"]+"_"+args["to"]+".gzip\n");
+   QString filename(buildDir+QDir::separator()+"cloudcontrollerweb_patch_"+args["from"]+"_"+args["to"]+".tar.gz\n");
    writeMsg(filename.toLatin1(), TerminalColor::Green);
 }
 

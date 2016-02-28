@@ -294,9 +294,7 @@ void GenerateDiffMetaInfo::buildAndCopyFiles(const GeneralKeyToListMapType& save
       while(piterator != needRunCmdProjects.cend()){
          QString projectName(*piterator);
          writeMsg(QString("正在打包sencha项目%1 ... ").arg(projectName).toLocal8Bit(), TerminalColor::LightYellow);
-         
          //暂时不运行这段代码
-         
          execSenchaCmd(m_projectDir+ds+"PlatformJs"+ds+projectName);
          writeDoneMsg();
          piterator++;
@@ -406,7 +404,7 @@ void GenerateVersionInfo::exec()
    QFile versionTplFile(m_buildDir+ds+"Library"+ds+"CloudController"+ds+"Version.php");
    versionTplFile.open(QFile::ReadWrite);
    QByteArray content = versionTplFile.readAll();
-   content.replace("{version}", m_invokeArgs["version"].toLatin1());
+   content.replace("{version}", m_invokeArgs["to"].toLatin1());
    versionTplFile.remove();
    QFile versionFile(m_buildDir+ds+"Library"+ds+"CloudController"+ds+"Version.php");
    versionFile.open(QFile::WriteOnly|QFile::Truncate);
