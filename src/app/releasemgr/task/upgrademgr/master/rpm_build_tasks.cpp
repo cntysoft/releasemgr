@@ -104,7 +104,7 @@ void CopySourceFiles::exec()
    QStringList filenames;
    Filesystem::traverseFs(m_projectDir, 0, [&filenames, this](QFileInfo& fileInfo, int)->void{
       QString ext = fileInfo.suffix();
-      if(fileInfo.isFile() && (ext == "h" || ext == "cpp" || ext == "qbs" || ext == "php" || ext == "tpl" || ext == "js")){
+      if(fileInfo.isFile() && (ext == "h" || ext == "cpp" || ext == "service" || ext == "qbs" || ext == "php" || ext == "tpl" || ext == "js")){
          QString source = fileInfo.absoluteFilePath();
          QString destination(source);
          destination.replace(this->m_projectDir, this->m_rpmSourceDir);

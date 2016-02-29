@@ -17,3 +17,4 @@ BuildArch:x86_64
 /usr/local/lib/libumm.so
 /usr/local/lib/libsncore.so
 /usr/local/lib/libummservice.so
+/usr/local/share/upgrademgr_master/upgrademgr_master.service
