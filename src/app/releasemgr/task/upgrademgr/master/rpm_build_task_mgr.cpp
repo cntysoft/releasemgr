@@ -2,14 +2,10 @@
 #include <QDir>
 #include <QString>
 
-#include "taskmgr.h"
+#include "rpm_build_task_mgr.h"
+#include "rpm_build_tasks.h"
 
 #include "corelib/kernel/settings.h"
-
-#include "task/upgrademgr/master/rpm/clear.h"
-#include "task/upgrademgr/master/rpm/make_project_structure.h"
-#include "task/upgrademgr/master/rpm/copy_source_files.h"
-#include "task/upgrademgr/master/rpm/build_rpm.h"
 
 namespace releasemgr{
 namespace task{

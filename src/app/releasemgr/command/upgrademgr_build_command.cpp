@@ -4,7 +4,7 @@
 #include "command/command_meta.h"
 #include "command_runner.h"
 
-#include "task/upgrademgr/master/rpm/taskmgr.h"
+#include "task/upgrademgr/master/rpm_build_task_mgr.h"
 
 namespace releasemgr{
 namespace command{

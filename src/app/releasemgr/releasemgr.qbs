@@ -165,19 +165,11 @@ ReleaseMgrApplication
       name: "upgrademgr_task"
       prefix: "task/upgrademgr/"
       files:[
-         "master/rpm/clear.cpp",
-         "master/rpm/clear.h",
-         "master/rpm/make_project_structure.h",
-         "master/rpm/make_project_structure.cpp",
-         "master/rpm/rpmbuild_abstract_task.cpp",
-         "master/rpm/rpmbuild_abstract_task.h",
-         "master/rpm/copy_source_files.cpp",
-         "master/rpm/copy_source_files.h",
-         "master/rpm/build_rpm.cpp",
-         "master/rpm/build_rpm.h",
-         "master/rpm/taskmgr.cpp",
-         "master/rpm/taskmgr.h",
-      ]
+           "master/rpm_build_task_mgr.cpp",
+           "master/rpm_build_task_mgr.h",
+           "master/rpm_build_tasks.cpp",
+           "master/rpm_build_tasks.h",
+       ]
    }
    
    Group {

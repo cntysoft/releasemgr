@@ -132,8 +132,11 @@ void GenerateVersionInfo::exec()
    content.replace("{version}", m_invokeArgs["version"].toLatin1());
    versionTplFile.remove();
    QFile versionFile(m_buildDir+ds+"Library"+ds+"CloudController"+ds+"Version.php");
+   QFile versionFile1(m_buildDir+ds+"VERSION");
    versionFile.open(QFile::WriteOnly|QFile::Truncate);
+   versionFile1.open(QFile::WriteOnly|QFile::Truncate);
    versionFile.write(content);
+   versionFile1.write(QByteArray(m_invokeArgs["version"].toLatin1()));
    writeDoneMsg();
 }
 
@@ -265,7 +268,7 @@ void SetupConfig::exec()
    QChar ds = QDir::separator();
    QString applicationCfgFilename(m_buildDir+ds+"Config"+ds+"Application.config.json");
    QString cfg = Filesystem::fileGetContents(applicationCfgFilename);
-   cfg.replace(QRegularExpression("\"systemMode\"\\s*?:\\s*?2"), "'systemMode':1");
+   cfg.replace(QRegularExpression("\"systemMode\"\\s*?:\\s*?2"), "\"systemMode\":1");
    Filesystem::filePutContents(applicationCfgFilename, cfg);
    writeDoneMsg();
 }

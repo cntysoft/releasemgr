@@ -8,10 +8,6 @@
  */
 namespace Cntysoft;
 /**
- * @var string 系统绑定的域名
- */
-const RT_SYS_DOMAIN = SYS_DOMAIN;
-/**
  * @var string
  */
 const RT_ALI_SEARCH_ENTRY = ALI_SEARCH_INTERNAL_ENTRY;
