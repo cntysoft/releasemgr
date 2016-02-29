@@ -42,6 +42,7 @@ void CommandRunner::initUsageText()
    addUsageText("releasemgr fhshop diffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
    addUsageText("releasemgr rmmgr rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr upgrademgrmaster rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
+   addUsageText("releasemgr upgrademgrslave rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr cloudcontroller rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr cloudcontroller webfullbuild --version=<version> [--aliyun]\n");
    addUsageText("releasemgr cloudcontroller webdiffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
@@ -118,6 +119,12 @@ void CommandRunner::initRouteItems()
                   {"category", "Upgrademgr"},
                   {"name", "Build"},
                   {"subsystem", "master"},
+                  {"action", "rpmbuild"}
+               });
+   addCmdRoute("upgrademgrslaverpmbuild", "upgrademgrslave rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
+                  {"category", "Upgrademgr"},
+                  {"name", "Build"},
+                  {"subsystem", "slave"},
                   {"action", "rpmbuild"}
                });
    addCmdRoute("cloudcontrollerrpmbuild", "cloudcontroller rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {

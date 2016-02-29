@@ -184,6 +184,8 @@ void init_upgrademgr_cfg(Settings &settings)
 {
    settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/upgrademgr_master", CFG_GROUP_UPGRADEMGR_MASTER);
    settings.setValue("buildDir", "/tmp/upgrademgr_master-build", CFG_GROUP_UPGRADEMGR_MASTER);
+   settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/upgrademgr_slave", CFG_GROUP_UPGRADEMGR_SLAVE);
+   settings.setValue("buildDir", "/tmp/upgrademgr_slave-build", CFG_GROUP_UPGRADEMGR_SLAVE);
 }
 
 void init_cloudcontroller_cfg(Settings &settings)

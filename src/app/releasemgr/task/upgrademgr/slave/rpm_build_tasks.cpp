@@ -10,7 +10,7 @@
 
 namespace releasemgr{
 namespace task{
-namespace upgrademgrmaster{
+namespace upgrademgrslave{
 namespace rpmbuild{
 
 using sn::corelib::ErrorInfo;
@@ -29,9 +29,9 @@ RpmBuildAbstractTask::RpmBuildAbstractTask(const AbstractTaskMgr& taskmgr, const
       throw ErrorInfo(QString("项目文件夹 %1 不存在").arg(m_projectDir));
    }
    //检查项目文件
-   QString projectQbsFile(m_projectDir+"/upgrademgr_master.qbs");
+   QString projectQbsFile(m_projectDir+"/upgrademgr_slave.qbs");
    if(!Filesystem::fileExist(projectQbsFile)){
-      throw ErrorInfo(QString("项目文件夹中项目文件%1不存在").arg("upgrademgr_master.qbs"));
+      throw ErrorInfo(QString("项目文件夹中项目文件%1不存在").arg("upgrademgr_slave.qbs"));
    }
    m_rpmBuildDir = m_buildDir+DS+"BUILD";
    m_rpmRpmDir = m_buildDir+DS+"RPMS";
@@ -43,7 +43,7 @@ RpmBuildAbstractTask::RpmBuildAbstractTask(const AbstractTaskMgr& taskmgr, const
 
 QString RpmBuildAbstractTask::getAssetDir()
 {
-   return AbstractTask::getAssetDir() + DS+"upgrademgr_master";
+   return AbstractTask::getAssetDir() + DS+"upgrademgr_slave";
 }
 
 RpmBuildAbstractTask::~RpmBuildAbstractTask()
@@ -100,7 +100,7 @@ CopySourceFiles::CopySourceFiles(const AbstractTaskMgr &taskmgr, const TaskParam
 
 void CopySourceFiles::exec()
 {
-   writeBeginMsg("正在复制upgrademgrmaster项目源码 ... ");
+   writeBeginMsg("正在复制upgrademgrslave项目源码 ... ");
    QStringList filenames;
    Filesystem::traverseFs(m_projectDir, 0, [&filenames, this](QFileInfo& fileInfo, int)->void{
       QString ext = fileInfo.suffix();
@@ -135,7 +135,7 @@ void CopySourceFiles::processSpecFile()
       paths << temp;
    }
    specFileContent.replace(QByteArray("<sncorepaths>"), QByteArray((paths.join('\n')).toLocal8Bit()));
-   Filesystem::filePutContents(m_rpmSpecDir+DS+"upgrademgrmaster.spec", specFileContent);
+   Filesystem::filePutContents(m_rpmSpecDir+DS+"upgrademgrslave.spec", specFileContent);
    writeDoneMsg();
 }
 
@@ -153,7 +153,7 @@ void BuildRpm::exec()
    QString ldLibraryPath(env.value("LD_LIBRARY_PATH"));
    ldLibraryPath = "/usr/lib64:"+ldLibraryPath;
    ::setenv("LD_LIBRARY_PATH", ldLibraryPath.toLocal8Bit(), 1);
-   QString cmd = QString ("rpmbuild -bb --define=\"_topdir %1\" %2/upgrademgrmaster.spec").arg(m_buildDir, m_rpmSpecDir);
+   QString cmd = QString ("rpmbuild -bb --define=\"_topdir %1\" %2/upgrademgrslave.spec").arg(m_buildDir, m_rpmSpecDir);
    std::system(cmd.toLocal8Bit());
    Filesystem::traverseFs(m_rpmRpmDir, 0, [this](QFileInfo fileInfo, int){
       if(fileInfo.isFile() && fileInfo.suffix() == "rpm"){
@@ -171,6 +171,6 @@ BuildRpm::~BuildRpm()
 {}
 
 }//rpmbuild
-}//upgrademgrmaster
+}//upgrademgrslave
 }//task
 }//releasemgr
