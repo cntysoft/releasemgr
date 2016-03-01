@@ -146,19 +146,23 @@ ReleaseMgrApplication
       name : "rmmgr_task"
       prefix: "task/rmmgr/"
       files : [
-         "rpm/build_rpm.cpp",
-         "rpm/build_rpm.h",
-         "rpm/clear.cpp",
-         "rpm/clear.h",
-         "rpm/copy_source_files.cpp",
-         "rpm/copy_source_files.h",
-         "rpm/make_project_structure.cpp",
-         "rpm/make_project_structure.h",
-         "rpm/rpmbuild_abstract_task.cpp",
-         "rpm/rpmbuild_abstract_task.h",
-         "rpm/taskmgr.cpp",
-         "rpm/taskmgr.h",
-      ]
+//           "rpm/build_rpm.cpp",
+//           "rpm/build_rpm.h",
+//           "rpm/clear.cpp",
+//           "rpm/clear.h",
+//           "rpm/copy_source_files.cpp",
+//           "rpm/copy_source_files.h",
+//           "rpm/make_project_structure.cpp",
+//           "rpm/make_project_structure.h",
+//           "rpm/rpmbuild_abstract_task.cpp",
+//           "rpm/rpmbuild_abstract_task.h",
+//           "rpm/taskmgr.cpp",
+//           "rpm/taskmgr.h",
+           "rpm_build_task_mgr.cpp",
+           "rpm_build_task_mgr.h",
+           "rpm_build_tasks.cpp",
+           "rpm_build_tasks.h",
+       ]
    }
    
    Group {

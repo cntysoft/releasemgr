@@ -1,5 +1,5 @@
 #include "rmmgr_build_command.h"
-#include "task/rmmgr/rpm/taskmgr.h"
+#include "task/rmmgr/rpm_build_task_mgr.h"
 #include "command/command_meta.h"
 #include "command_runner.h"
 
