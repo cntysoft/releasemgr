@@ -16,7 +16,7 @@ GlobalVersionCommand::GlobalVersionCommand(CommandRunner& runner, const CommandM
 void GlobalVersionCommand::exec()
 {
    printConsoleMsg("releasemgr version ");
-   printConsoleMsg(QString("%1\n").arg(RMMGR_VERSION).toLocal8Bit(), TerminalColor::Cyan);
+   printConsoleMsg(QString("%1\n").arg(RMMGR_VERSION), TerminalColor::Cyan);
    exit(EXIT_SUCCESS);
 }
 
