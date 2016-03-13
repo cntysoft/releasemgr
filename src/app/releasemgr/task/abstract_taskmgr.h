@@ -5,10 +5,11 @@
 #include <QString>
 #include <QLatin1String>
 
-#include "global/global.h"
+#include "corelib/global/global.h"
+#include "corelib/io/terminal.h"
+#include "corelib/kernel/settings.h"
+
 #include "types.h"
-#include "io/terminal.h"
-#include "kernel/settings.h"
 
 namespace releasemgr 
 {

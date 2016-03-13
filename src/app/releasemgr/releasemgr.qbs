@@ -29,6 +29,8 @@ ReleaseMgrApplication
          "cloudcontroller_build_command.cpp",
          "cloudcontroller_build_command.h",
          "command_repo.h",
+         "deploysystem_build_command.cpp",
+         "deploysystem_build_command.h",
          "fhshop_build_command.cpp",
          "fhshop_build_command.h",
          "fhzc_build_command.cpp",
@@ -146,23 +148,11 @@ ReleaseMgrApplication
       name : "rmmgr_task"
       prefix: "task/rmmgr/"
       files : [
-//           "rpm/build_rpm.cpp",
-//           "rpm/build_rpm.h",
-//           "rpm/clear.cpp",
-//           "rpm/clear.h",
-//           "rpm/copy_source_files.cpp",
-//           "rpm/copy_source_files.h",
-//           "rpm/make_project_structure.cpp",
-//           "rpm/make_project_structure.h",
-//           "rpm/rpmbuild_abstract_task.cpp",
-//           "rpm/rpmbuild_abstract_task.h",
-//           "rpm/taskmgr.cpp",
-//           "rpm/taskmgr.h",
-           "rpm_build_task_mgr.cpp",
-           "rpm_build_task_mgr.h",
-           "rpm_build_tasks.cpp",
-           "rpm_build_tasks.h",
-       ]
+         "rpm_build_task_mgr.cpp",
+         "rpm_build_task_mgr.h",
+         "rpm_build_tasks.cpp",
+         "rpm_build_tasks.h",
+      ]
    }
    
    Group {
@@ -204,6 +194,17 @@ ReleaseMgrApplication
          "web/full_build_task_mgr.h",
          "web/full_build_tasks.cpp",
          "web/full_build_tasks.h",
+      ]
+   }
+   
+   Group {
+      name: "deploysystem_task"
+      prefix: "task/deploysystem/"
+      files:[
+         "luoxi/rpm_build_task_mgr.cpp",
+         "luoxi/rpm_build_task_mgr.h",
+         "metaserver/rpm_build_task_mgr.cpp",
+         "metaserver/rpm_build_task_mgr.h"
       ]
    }
    

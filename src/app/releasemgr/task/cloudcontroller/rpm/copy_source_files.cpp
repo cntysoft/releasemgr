@@ -5,9 +5,10 @@
 
 #include "copy_source_files.h"
 #include "task/abstract_taskmgr.h"
-#include "io/filesystem.h"
+#include "corelib/io/filesystem.h"
 #include "const.h"
-#include "global/global.h"
+#include "corelib/global/global.h"
+#include "corelib/global/common_funcs.h"
 
 namespace releasemgr{
 namespace task{

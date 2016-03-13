@@ -46,6 +46,8 @@ void CommandRunner::initUsageText()
    addUsageText("releasemgr cloudcontroller rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr cloudcontroller webfullbuild --version=<version> [--aliyun]\n");
    addUsageText("releasemgr cloudcontroller webdiffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
+   addUsageText("releasemgr deploysystem metaserver rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
+   addUsageText("releasemgr deploysystem luoxi rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
 }
 
 void CommandRunner::initCommandPool()

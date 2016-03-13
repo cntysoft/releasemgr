@@ -7,7 +7,7 @@
 #include "const.h"
 #include "corelib/kernel/errorinfo.h"
 #include "corelib/io/filesystem.h"
-
+#include "corelib/global/common_funcs.h"
 namespace releasemgr{
 namespace task{
 namespace upgrademgrslave{

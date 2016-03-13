@@ -4,7 +4,7 @@
 
 #include "rpm_build_task_mgr.h"
 #include "rpm_build_tasks.h"
-
+#include "corelib/io/terminal.h"
 #include "corelib/kernel/settings.h"
 
 namespace releasemgr{
@@ -12,6 +12,7 @@ namespace task{
 namespace upgrademgrmaster{
 namespace rpmbuild{
 
+using sn::corelib::TerminalColor;
 using sn::corelib::Settings;
 
 TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
