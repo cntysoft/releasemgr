@@ -21,6 +21,7 @@ using releasemgr::command::RmMgrBuildCommand;
 using releasemgr::command::FhshopBuildCommand;
 using releasemgr::command::UpgrademgrBuildCommand;
 using releasemgr::command::CloudControllerBuildCommand;
+using releasemgr::command::DeploySystemBuildCommand;
 
 CommandRunner::CommandRunner(Application &app)
    : BaseCommandRunner(app)
@@ -78,6 +79,10 @@ void CommandRunner::initCommandPool()
    });
    m_cmdRegisterPool.insert("CloudController_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       CloudControllerBuildCommand* cmd = new CloudControllerBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
+      return cmd;
+   });
+   m_cmdRegisterPool.insert("DeploySystem_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+      DeploySystemBuildCommand* cmd = new DeploySystemBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
       return cmd;
    });
 }
@@ -143,6 +148,16 @@ void CommandRunner::initRouteItems()
                   {"category", "CloudController"},
                   {"name", "Build"},
                   {"action", "webdiffbuild"}
+               });
+   addCmdRoute("deploysystemmetaserverbuild", "releasemgr deploysystem metaserver rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
+                  {"category", "DeploySystem"},
+                  {"name", "Build"},
+                  {"action", "metaserver"}
+               });
+   addCmdRoute("deploysystemluoxibuild", "releasemgr deploysystem luoxi rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
+                  {"category", "DeploySystem"},
+                  {"name", "Build"},
+                  {"action", "luoxi"}
                });
 }
 

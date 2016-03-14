@@ -14,6 +14,8 @@ extern const char* CFG_GROUP_RMMGR;
 extern const char* CFG_GROUP_UPGRADEMGR_MASTER;
 extern const char* CFG_GROUP_UPGRADEMGR_SLAVE;
 extern const char* CFG_GROUP_CLOUDCONTROLLER;
+extern const char* CFG_GROUP_METASERVER;
+extern const char* CFG_GROUP_LUOXI;
 
 const int DEPLOY_TYPE_PRODUCT = 4;
 const int DEPLOY_TYPE_DEBUG = 5;

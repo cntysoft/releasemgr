@@ -201,11 +201,15 @@ ReleaseMgrApplication
       name: "deploysystem_task"
       prefix: "task/deploysystem/"
       files:[
-         "luoxi/rpm_build_task_mgr.cpp",
-         "luoxi/rpm_build_task_mgr.h",
-         "metaserver/rpm_build_task_mgr.cpp",
-         "metaserver/rpm_build_task_mgr.h"
-      ]
+           "luoxi/rpm_build_task_mgr.cpp",
+           "luoxi/rpm_build_task_mgr.h",
+           "luoxi/rpm_build_tasks.cpp",
+           "luoxi/rpm_build_tasks.h",
+           "metaserver/rpm_build_task_mgr.cpp",
+           "metaserver/rpm_build_task_mgr.h",
+           "metaserver/rpm_build_tasks.cpp",
+           "metaserver/rpm_build_tasks.h",
+       ]
    }
    
    Group {

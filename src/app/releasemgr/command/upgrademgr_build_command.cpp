@@ -1,5 +1,3 @@
-#include <QDebug>
-
 #include "upgrademgr_build_command.h"
 #include "command/command_meta.h"
 #include "command_runner.h"

@@ -3,7 +3,7 @@
 #include <QString>
 
 #include "rpm_build_task_mgr.h"
-//#include "rpm_build_tasks.h"
+#include "rpm_build_tasks.h"
 
 #include "corelib/kernel/settings.h"
 #include "corelib/io/terminal.h"
@@ -20,18 +20,18 @@ using sn::corelib::Settings;
 TaskMgr::TaskMgr(const QLatin1String& moduleName, Settings& settings)
    :AbstractTaskMgr(moduleName, settings)
 {
-//   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
-//      return new Clear(taskmgr, args);
-//   });
-//   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
-//      return new MakeProjectStructure(taskmgr, args);
-//   });
-//   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
-//      return new CopySourceFiles(taskmgr, args);
-//   });
-//   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
-//      return new BuildRpm(taskmgr, args);
-//   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new Clear(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new MakeProjectStructure(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new CopySourceFiles(taskmgr, args);
+   });
+   m_taskInitializers.append([](const AbstractTaskMgr& taskmgr, const TaskParamsType& args)-> AbstractTask*{
+      return new BuildRpm(taskmgr, args);
+   });
 }
 
 void TaskMgr::beforeRun(const TaskParamsType& args)

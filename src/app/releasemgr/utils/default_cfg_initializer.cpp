@@ -17,6 +17,7 @@ static void init_fhshop_cfg(Settings &settings);
 static void init_rmmgr_cfg(Settings &settings);
 static void init_upgrademgr_cfg(Settings &settings);
 static void init_cloudcontroller_cfg(Settings &settings);
+static void init_deploysystem_cfg(Settings &settings);
 
 void init_defualt_cfg(Settings& settings)
 {
@@ -26,6 +27,7 @@ void init_defualt_cfg(Settings& settings)
    init_rmmgr_cfg(settings);
    init_upgrademgr_cfg(settings);
    init_cloudcontroller_cfg(settings);
+   init_deploysystem_cfg(settings);
    settings.sync();
 }
 
@@ -263,6 +265,14 @@ void init_cloudcontroller_cfg(Settings &settings)
       "PlatformJs/CloudController/index.html"
    };
    settings.setValue("senchaProjects/CloudController", senchaProjectsCloudController, CFG_GROUP_CLOUDCONTROLLER);
+}
+
+void init_deploysystem_cfg(Settings &settings)
+{
+   settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/meta_server", CFG_GROUP_METASERVER);
+   settings.setValue("buildDir", "/tmp/metaserver-build", CFG_GROUP_METASERVER);
+   settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/luoxi", CFG_GROUP_LUOXI);
+   settings.setValue("buildDir", "/tmp/luoxi-build", CFG_GROUP_LUOXI);
 }
 
 }//releasemgr

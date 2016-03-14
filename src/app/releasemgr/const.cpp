@@ -11,5 +11,6 @@ const char* CFG_GROUP_GLOBAL = "Global";
 const char* CFG_GROUP_UPGRADEMGR_MASTER = "UpgrademgrMaster";
 const char* CFG_GROUP_UPGRADEMGR_SLAVE = "UpgrademgrSlave";
 const char* CFG_GROUP_CLOUDCONTROLLER = "CloudController";
-
+const char* CFG_GROUP_METASERVER = "MetaServer";
+const char* CFG_GROUP_LUOXI = "LuoXi";
 }//releasemgr

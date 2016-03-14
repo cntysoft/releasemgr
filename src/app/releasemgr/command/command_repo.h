@@ -8,5 +8,6 @@
 #include "rmmgr_build_command.h"
 #include "upgrademgr_build_command.h"
 #include "cloudcontroller_build_command.h"
+#include "deploysystem_build_command.h"
 
 #endif // RELEASEMGR_COMMAND_COMMAND_REPO_H
