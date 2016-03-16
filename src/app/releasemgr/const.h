@@ -7,6 +7,7 @@ namespace releasemgr
 {
 
 extern const char* CFG_FILE_NAME;
+extern const char* CFG_GROUP_ZHUCHAO;
 extern const char* CFG_GROUP_FHZC;
 extern const char* CFG_GROUP_FHSHOP;
 extern const char* CFG_GROUP_GLOBAL;

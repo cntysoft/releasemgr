@@ -26,23 +26,15 @@ ReleaseMgrApplication
       name : "command"
       prefix : name + '/'
       files : [
-         "cloudcontroller_build_command.cpp",
-         "cloudcontroller_build_command.h",
+         "build_command.cpp",
+         "build_command.h",
          "command_repo.h",
-         "deploysystem_build_command.cpp",
-         "deploysystem_build_command.h",
          "fhshop_build_command.cpp",
          "fhshop_build_command.h",
          "fhzc_build_command.cpp",
          "fhzc_build_command.h",
-         "global_help_command.cpp",
-         "global_help_command.h",
-         "global_version_command.cpp",
-         "global_version_command.h",
-         "rmmgr_build_command.cpp",
-         "rmmgr_build_command.h",
-         "upgrademgr_build_command.cpp",
-         "upgrademgr_build_command.h",
+         "global_command.cpp",
+         "global_command.h",
       ]
    }
    Group {
@@ -55,6 +47,17 @@ ReleaseMgrApplication
          "abstract_taskmgr.h",
       ]
    }
+   Group {
+      name : "zhuchao_task"
+      prefix : "task/zhuchao/"
+      files : [
+           "web/full_build_task_mgr.cpp",
+           "web/full_build_task_mgr.h",
+           "web/full_build_tasks.cpp",
+           "web/full_build_tasks.h",
+       ]
+   }
+   
    Group {
       name : "fhshop_task"
       prefix:"task/fhshop/"
@@ -201,15 +204,15 @@ ReleaseMgrApplication
       name: "deploysystem_task"
       prefix: "task/deploysystem/"
       files:[
-           "luoxi/rpm_build_task_mgr.cpp",
-           "luoxi/rpm_build_task_mgr.h",
-           "luoxi/rpm_build_tasks.cpp",
-           "luoxi/rpm_build_tasks.h",
-           "metaserver/rpm_build_task_mgr.cpp",
-           "metaserver/rpm_build_task_mgr.h",
-           "metaserver/rpm_build_tasks.cpp",
-           "metaserver/rpm_build_tasks.h",
-       ]
+         "luoxi/rpm_build_task_mgr.cpp",
+         "luoxi/rpm_build_task_mgr.h",
+         "luoxi/rpm_build_tasks.cpp",
+         "luoxi/rpm_build_tasks.h",
+         "metaserver/rpm_build_task_mgr.cpp",
+         "metaserver/rpm_build_task_mgr.h",
+         "metaserver/rpm_build_tasks.cpp",
+         "metaserver/rpm_build_tasks.h",
+      ]
    }
    
    Group {

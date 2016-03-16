@@ -22,6 +22,7 @@ using releasemgr::command::FhshopBuildCommand;
 using releasemgr::command::UpgrademgrBuildCommand;
 using releasemgr::command::CloudControllerBuildCommand;
 using releasemgr::command::DeploySystemBuildCommand;
+using releasemgr::command::ZhuChaoBuildCommand;
 
 CommandRunner::CommandRunner(Application &app)
    : BaseCommandRunner(app)
@@ -37,10 +38,7 @@ void CommandRunner::initUsageText()
    addUsageText("usage: \n\n", TerminalColor::LightBlue);
    addUsageText("--version  print main system version number\n");
    addUsageText("--help     print help document\n\n");
-   addUsageText("releasemgr fhzc build --version=<version> [--aliyun]\n");
-   addUsageText("releasemgr fhzc diffbuild --from=<start version> --to=<stop version> [--aliyun]\n\n");
-   addUsageText("releasemgr fhshop build --version=<version> [--aliyun]\n");
-   addUsageText("releasemgr fhshop diffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
+   addUsageText("releasemgr zhuchao webfullbuild --version=<version> [--aliyun]\n");
    addUsageText("releasemgr rmmgr rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr upgrademgrmaster rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr upgrademgrslave rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
@@ -61,14 +59,14 @@ void CommandRunner::initCommandPool()
       GlobalHelpCommand* cmd = new GlobalHelpCommand(dynamic_cast<CommandRunner&>(runner), meta);
       return cmd;
    });
-   m_cmdRegisterPool.insert("Fhzc_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
-      FhzcBuildCommand* cmd = new FhzcBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
-      return cmd;
-   });
-   m_cmdRegisterPool.insert("Fhshop_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
-      FhshopBuildCommand* cmd = new FhshopBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
-      return cmd;
-   });
+//   m_cmdRegisterPool.insert("Fhzc_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+//      FhzcBuildCommand* cmd = new FhzcBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
+//      return cmd;
+//   });
+//   m_cmdRegisterPool.insert("Fhshop_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+//      FhshopBuildCommand* cmd = new FhshopBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
+//      return cmd;
+//   });
    m_cmdRegisterPool.insert("RmMgr_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       RmMgrBuildCommand* cmd = new RmMgrBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
       return cmd;
@@ -85,6 +83,10 @@ void CommandRunner::initCommandPool()
       DeploySystemBuildCommand* cmd = new DeploySystemBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
       return cmd;
    });
+   m_cmdRegisterPool.insert("ZhuChao_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+      ZhuChaoBuildCommand* cmd = new ZhuChaoBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
+      return cmd;
+   });
 }
 
 void CommandRunner::initRouteItems()
@@ -97,26 +99,26 @@ void CommandRunner::initRouteItems()
                   {"category", "Global"},
                   {"name", "Help"}
                });
-   addCmdRoute("fhzcfullbuild", "fhzc fullbuild --version= [--aliyun]", 1, {
-                  {"category", "Fhzc"},
-                  {"name", "Build"},
-                  {"action", "fullbuild"}
-               });
-   addCmdRoute("fhzcdiffbuild", "fhzc diffbuild --from= --to= [--aliyun]", 1, {
-                  {"category", "Fhzc"},
-                  {"name", "Build"},
-                  {"action", "diffbuild"}
-               });
-   addCmdRoute("fhshopfullbuild", "fhshop fullbuild --version= [--aliyun]", 1, {
-                  {"category", "Fhshop"},
-                  {"name", "Build"},
-                  {"action", "fullbuild"}
-               });
-   addCmdRoute("fhshopdiffbuild", "fhshop diffbuild --from= --to= [--aliyun]", 1, {
-                  {"category", "Fhshop"},
-                  {"name", "Build"},
-                  {"action", "diffbuild"}
-               });
+//   addCmdRoute("fhzcfullbuild", "fhzc fullbuild --version= [--aliyun]", 1, {
+//                  {"category", "Fhzc"},
+//                  {"name", "Build"},
+//                  {"action", "fullbuild"}
+//               });
+//   addCmdRoute("fhzcdiffbuild", "fhzc diffbuild --from= --to= [--aliyun]", 1, {
+//                  {"category", "Fhzc"},
+//                  {"name", "Build"},
+//                  {"action", "diffbuild"}
+//               });
+//   addCmdRoute("fhshopfullbuild", "fhshop fullbuild --version= [--aliyun]", 1, {
+//                  {"category", "Fhshop"},
+//                  {"name", "Build"},
+//                  {"action", "fullbuild"}
+//               });
+//   addCmdRoute("fhshopdiffbuild", "fhshop diffbuild --from= --to= [--aliyun]", 1, {
+//                  {"category", "Fhshop"},
+//                  {"name", "Build"},
+//                  {"action", "diffbuild"}
+//               });
    addCmdRoute("rmmgrrpmbuild", "rmmgr rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
                   {"category", "RmMgr"},
                   {"name", "Build"},
@@ -149,15 +151,20 @@ void CommandRunner::initRouteItems()
                   {"name", "Build"},
                   {"action", "webdiffbuild"}
                });
-   addCmdRoute("deploysystemmetaserverbuild", "releasemgr deploysystem metaserver rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
+   addCmdRoute("deploysystemmetaserverbuild", "deploysystem metaserver rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
                   {"category", "DeploySystem"},
                   {"name", "Build"},
                   {"action", "metaserver"}
                });
-   addCmdRoute("deploysystemluoxibuild", "releasemgr deploysystem luoxi rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
+   addCmdRoute("deploysystemluoxibuild", "deploysystem luoxi rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
                   {"category", "DeploySystem"},
                   {"name", "Build"},
                   {"action", "luoxi"}
+               });
+   addCmdRoute("zhuchaowebfullbuild", "zhuchao webfullbuild --version= [--aliyun]", 1, {
+                  {"category", "ZhuChao"},
+                  {"name", "Build"},
+                  {"action", "webfullbuild"}
                });
 }
 

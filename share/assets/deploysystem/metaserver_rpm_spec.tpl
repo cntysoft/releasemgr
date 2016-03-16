@@ -13,7 +13,7 @@ BuildArch:x86_64
 %build
 /usr/local/bin/qbs -f ../SOURCES/%{name}.qbs profile:Qt5 project.resourcesInstallDir:share/deploysystem project.msversion:%{version} qbs.installRoot:%{installRoot} release
 %files
-/usr/local/bin/metaserver
-/usr/local/lib/libms.so
+/usr/local/bin/meta_server
+/usr/local/lib/libmserver.so
 /usr/local/lib/libsncore.so
 /usr/local/lib/libmsservice.so

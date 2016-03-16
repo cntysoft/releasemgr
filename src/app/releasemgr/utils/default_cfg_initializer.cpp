@@ -12,6 +12,7 @@ namespace releasemgr
 using sn::corelib::Settings;
 
 static void init_global_cfg(Settings &settings);
+static void init_zhuchao_cfg(Settings &settings);
 static void init_fhzc_cfg(Settings &settings);
 static void init_fhshop_cfg(Settings &settings);
 static void init_rmmgr_cfg(Settings &settings);
@@ -22,6 +23,7 @@ static void init_deploysystem_cfg(Settings &settings);
 void init_defualt_cfg(Settings& settings)
 {
    init_global_cfg(settings);
+   init_zhuchao_cfg(settings);
    init_fhzc_cfg(settings);
    init_fhshop_cfg(settings);
    init_rmmgr_cfg(settings);
@@ -37,6 +39,82 @@ static void init_global_cfg(Settings& settings)
    settings.setValue("db.username", "root", CFG_GROUP_GLOBAL);
    settings.setValue("db.password", "cntysoft", CFG_GROUP_GLOBAL);
    settings.setValue("db.charset", "utf8", CFG_GROUP_GLOBAL);
+}
+
+static void init_zhuchao_cfg(Settings& settings)
+{
+   //项目相关文件夹
+   settings.setValue("projectDir", "/srv/www/zhuchaodevel", CFG_GROUP_ZHUCHAO);
+   settings.setValue("buildDir", "/srv/www/zhuchao-build", CFG_GROUP_ZHUCHAO);
+   settings.setValue("diffBuildDir", "/srv/www/zhuchao-diffbuild", CFG_GROUP_ZHUCHAO);
+   settings.setValue("docBuildDir", "/srv/www/zhuchao-apidoc-build", CFG_GROUP_ZHUCHAO);
+   settings.setValue("senchaBuildDir", "PlatformJs/build/production", CFG_GROUP_ZHUCHAO);
+   //源码文件夹
+   QStringList sourceDirs{
+      "Apps", "Data/Framework",
+      "Config", "JsLibrary",
+      "Library",
+      "Modules", "Statics",
+      "PlatformJs" , "SysApiHandler",
+      "TagLibrary", "index.php"
+   };
+   settings.setValue("sourceDirs", sourceDirs, CFG_GROUP_ZHUCHAO);
+   //源码文件夹
+   QStringList docSourceDirsPhp{
+      "Library/Cntysoft",
+      "Library/ZhuChao",
+      "Modules",
+      "Apps",
+      "SysApiHandler",
+      "index.php"
+   };
+   QStringList docSourceDirsJs{
+      //         "PlatformJs/ext/src",
+      //         "PlatformJs/ext/packages/sencha-core/src",
+      "PlatformJs/ext/packages/ext-ux/src",
+      "PlatformJs/ZhuChao/src",
+      "PlatformJs/ZhuChao/app.js",
+      "PlatformJs/packages/sencha-ext/src",
+      "PlatformJs/packages/cntysoft-core/src",
+      "PlatformJs/packages/cntysoft-comp/src",
+      "PlatformJs/packages/cntysoft-webos/src"
+   };
+   settings.setValue("docSourceDirs/php", docSourceDirsPhp, CFG_GROUP_ZHUCHAO);
+   settings.setValue("docSourceDirs/js", docSourceDirsJs, CFG_GROUP_ZHUCHAO);
+   //submodules 相关设置
+   QStringList submodulesPhp{
+      "Library/Cntysoft",
+      "Library/Zend",
+      "Library/Vender/VsImage"
+   };
+   QStringList submodulesSencha{
+      "PlatformJs/packages/cntysoft-comp",
+      "PlatformJs/packages/cntysoft-core",
+      "PlatformJs/packages/cntysoft-webos",
+      "PlatformJs/packages/sencha-ext"
+   };
+   QStringList submodulesJs{
+      "JsLibrary/CkEditor",
+      "JsLibrary/CodeMirror",
+      "JsLibrary/Jquery",
+      "JsLibrary/JsSha",
+      "JsLibrary/WebUploader"
+   };
+   settings.setValue("submodules/php", submodulesPhp, CFG_GROUP_ZHUCHAO);
+   settings.setValue("submodules/sencha", submodulesSencha, CFG_GROUP_ZHUCHAO);
+   settings.setValue("submodules/js", submodulesJs, CFG_GROUP_ZHUCHAO);
+   //设置sencha项目相关的
+   QStringList senchaProjectsZhuChao{
+      "PlatformJs/ZhuChao/resources",
+      "PlatformJs/ZhuChao/sass",
+      "PlatformJs/ZhuChao/src",
+      "PlatformJs/ZhuChao/app.js",
+      "PlatformJs/ZhuChao/app.json",
+      "PlatformJs/ZhuChao/bootstrap.css",
+      "PlatformJs/ZhuChao/bootstrap.js",
+      "PlatformJs/ZhuChao/index.html"
+   };
+   settings.setValue("senchaProjects/ZhuChao", senchaProjectsZhuChao, CFG_GROUP_ZHUCHAO);
 }
 
 static void init_fhshop_cfg(Settings& settings)
