@@ -46,7 +46,7 @@ static void init_zhuchao_cfg(Settings& settings)
    //项目相关文件夹
    settings.setValue("projectDir", "/srv/www/zhuchaodevel", CFG_GROUP_ZHUCHAO);
    settings.setValue("buildDir", "/srv/www/zhuchao-build", CFG_GROUP_ZHUCHAO);
-   settings.setValue("diffBuildDir", "/srv/www/zhuchao-diffbuild", CFG_GROUP_ZHUCHAO);
+   settings.setValue("diffBuildDir", "/srv/www/zhuchao-diff-build", CFG_GROUP_ZHUCHAO);
    settings.setValue("docBuildDir", "/srv/www/zhuchao-apidoc-build", CFG_GROUP_ZHUCHAO);
    settings.setValue("senchaBuildDir", "PlatformJs/build/production", CFG_GROUP_ZHUCHAO);
    //源码文件夹

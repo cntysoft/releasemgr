@@ -51,6 +51,10 @@ ReleaseMgrApplication
       name : "zhuchao_task"
       prefix : "task/zhuchao/"
       files : [
+           "web/diff_build_task_mgr.cpp",
+           "web/diff_build_task_mgr.h",
+           "web/diff_build_tasks.cpp",
+           "web/diff_build_tasks.h",
            "web/full_build_task_mgr.cpp",
            "web/full_build_task_mgr.h",
            "web/full_build_tasks.cpp",

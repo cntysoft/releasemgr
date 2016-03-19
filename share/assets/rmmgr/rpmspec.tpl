@@ -22,3 +22,10 @@ BuildArch:x86_64
 /usr/local/share/releasemgr/assets/rmmgr/rpmspec.tpl
 /usr/local/share/releasemgr/assets/upgrademgr_master/rpmspec.tpl
 /usr/local/share/releasemgr/assets/cloudcontroller/rpmspec.tpl
+/usr/local/share/releasemgr/assets/cloudcontroller/distconst/AliyunDeployment.php
+/usr/local/share/releasemgr/assets/cloudcontroller/distconst/NormalDeployment.php
+/usr/local/share/releasemgr/assets/deploysystem/luoxi_rpm_spec.tpl
+/usr/local/share/releasemgr/assets/deploysystem/metaserver_rpm_spec.tpl
+/usr/local/share/releasemgr/assets/upgrademgr_slave/rpmspec.tpl
+/usr/local/share/releasemgr/assets/zhuchao/distconst/AliyunDeployment.php
+/usr/local/share/releasemgr/assets/zhuchao/distconst/NormalDeployment.php

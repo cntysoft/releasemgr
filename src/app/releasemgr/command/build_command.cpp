@@ -8,6 +8,7 @@
 #include "task/upgrademgr/master/rpm_build_task_mgr.h"
 #include "task/upgrademgr/slave/rpm_build_task_mgr.h"
 #include "task/zhuchao/web/full_build_task_mgr.h"
+#include "task/zhuchao/web/diff_build_task_mgr.h"
 
 namespace releasemgr{
 namespace command{
@@ -112,6 +113,7 @@ UpgrademgrBuildCommand::~UpgrademgrBuildCommand()
 {}
 
 using ZhuChaoWebFullBuild = releasemgr::task::zhuchaoweb::fullbuild::TaskMgr;
+using ZhuChaoWebDiffBuild = releasemgr::task::zhuchaoweb::diffbuild::TaskMgr;
 
 ZhuChaoBuildCommand::ZhuChaoBuildCommand(CommandRunner& runner, const CommandMeta &invokeMeta)
    :AbstractCommand(runner, invokeMeta)
@@ -123,6 +125,9 @@ void ZhuChaoBuildCommand::exec()
    QString action = args["action"];
    if("webfullbuild" == action){
       ZhuChaoWebFullBuild taskmgr(QLatin1String("ZhuChao"), m_cmdRunner.getSysSettings());
+      taskmgr.run(m_invokeMeta.getCmdArgs());
+   }else if("webdiffbuild" == action){
+      ZhuChaoWebDiffBuild taskmgr(QLatin1String("ZhuChao"), m_cmdRunner.getSysSettings());
       taskmgr.run(m_invokeMeta.getCmdArgs());
    }
    exit(EXIT_SUCCESS);

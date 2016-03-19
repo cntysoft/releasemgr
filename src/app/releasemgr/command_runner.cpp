@@ -39,6 +39,7 @@ void CommandRunner::initUsageText()
    addUsageText("--version  print main system version number\n");
    addUsageText("--help     print help document\n\n");
    addUsageText("releasemgr zhuchao webfullbuild --version=<version> [--aliyun]\n");
+   addUsageText("releasemgr zhuchao webdiffbuild --from=<start version> --to=<to version> [--aliyun]\n");
    addUsageText("releasemgr rmmgr rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr upgrademgrmaster rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr upgrademgrslave rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
@@ -165,6 +166,11 @@ void CommandRunner::initRouteItems()
                   {"category", "ZhuChao"},
                   {"name", "Build"},
                   {"action", "webfullbuild"}
+               });
+   addCmdRoute("zhuchaowebdiffbuild", "zhuchao webdiffbuild --from= --to= [--aliyun]", 1, {
+                  {"category", "ZhuChao"},
+                  {"name", "Build"},
+                  {"action", "webdiffbuild"}
                });
 }
 

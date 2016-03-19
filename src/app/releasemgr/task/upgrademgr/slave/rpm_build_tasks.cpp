@@ -1,5 +1,6 @@
 #include <QFileInfo>
 #include <QProcessEnvironment>
+#include <cstdlib>
 
 #include "rpm_build_tasks.h"
 #include "task/abstract_taskmgr.h"
