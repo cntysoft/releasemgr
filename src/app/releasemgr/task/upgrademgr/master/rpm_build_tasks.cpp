@@ -122,6 +122,9 @@ void CopySourceFiles::processSpecFile()
 {
    writeBeginMsg("正在处理Spec文件 ... ");
    QByteArray specFileContent(Filesystem::fileGetContents(getAssetDir()+DS+"rpmspec.tpl"));
+   if(!Filesystem::getOperateStatus()){
+      throw ErrorInfo(Filesystem::getErrorString());
+   }
    specFileContent.replace(QByteArray("<version>"), QByteArray(m_invokeArgs["version"].toLocal8Bit()));
    QString corelibVersion = sn::corelib::get_corelib_version();
    QStringList versionParts = corelibVersion.split('.');

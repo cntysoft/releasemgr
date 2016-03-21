@@ -10,7 +10,8 @@ Project
    property string libDirName: "lib"
    property string appInstallDir: "bin"
    property string libInstallDir: libDirName
-   property string resourcesInstallDir: "share"
+   property string installRoot: "/usr/local"
+   property string resourcesInstallDir: "share/releasemgr"
    property string rmmgrVersion: "0.0.1"
    property stringList libRPaths: {
       if (!enableRPath){

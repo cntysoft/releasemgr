@@ -1,5 +1,6 @@
 %define version <version>
-%define installRoot ${RPM_BUILD_ROOT}/usr/local
+%define absoluteInstallRoot ${RPM_BUILD_ROOT}/usr/local
+%define installRoot /usr/local
 name: releasemgr
 Summary: 神恩信息发行打包系统
 Version: %{version}
@@ -11,7 +12,7 @@ BuildArch:x86_64
 %description
 神恩信息技术官方打包发行工具，暂时负责打包凤凰筑巢系统和凤凰筑巢商家版系统已经发行系统本身
 %build
-/usr/local/bin/qbs -f ../SOURCES/%{name}.qbs profile:Qt5 project.resourcesInstallDir:share/releasemgr project.rmmgrVersion:%{version} qbs.installRoot:%{installRoot} release
+/usr/local/bin/qbs -f ../SOURCES/%{name}.qbs profile:Qt5 project.resourcesInstallDir:share/releasemgr project.installRoot:%{installRoot} project.rmmgrVersion:%{version} qbs.installRoot:%{absoluteInstallRoot} release
 %files
 /usr/local/bin/releasemgr
 /usr/local/lib/libsncore.so
