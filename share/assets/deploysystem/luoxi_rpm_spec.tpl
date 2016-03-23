@@ -1,5 +1,6 @@
 %define version <version>
-%define installRoot ${RPM_BUILD_ROOT}/usr/local
+%define absoluteInstallRoot ${RPM_BUILD_ROOT}/usr/local
+%define installRoot /usr/local
 name: luoxi
 Summary: 神恩信息分布式部署系统slave分系统
 Version: %{version}
@@ -11,7 +12,7 @@ BuildArch:x86_64
 %description
 神恩信息分布式运维从系统，主要执行主系统发过来的请求
 %build
-/usr/local/bin/qbs -f ../SOURCES/%{name}.qbs profile:Qt5 project.resourcesInstallDir:share/deploysystem project.luoxiVersion:%{version} qbs.installRoot:%{installRoot} release
+/usr/local/bin/qbs -f ../SOURCES/%{name}.qbs profile:Qt5 project.resourcesInstallDir:share/deploysystem project.luoxiVersion:%{version} project.installRoot:%{installRoot} qbs.installRoot:%{absoluteInstallRoot} release
 %files
 /usr/local/bin/luoxi
 /usr/local/lib/liblx.so
