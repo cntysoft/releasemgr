@@ -8,9 +8,9 @@
  */
 namespace Cntysoft;
 /**
- * @var string 商家系统的域名
+ * @var string 筑巢主站点域名
  */
-const RT_MERCHANT_DOMAIN = MERCHANT_DOMAIN;
+const RT_ZHUCHAO_SITE_DOMAIN = ZHUCHAO_SITE_DOMAIN;
 /**
  * @var string 系统绑定的域名
  */
@@ -28,6 +28,10 @@ const RT_BUYER_SITE_NAME = BUYER_SITE_NAME;
  */
 const RT_PROVIDER_SITE_NAME = PROVIDER_SITE_NAME;
 /**
+ * @var string 子站点域名
+ */
+const RT_SITE_SUBDOMAIN = SITE_SUBDOMAIN; 
+/**
  * @var string
  */
 const RT_ALI_SEARCH_ENTRY = ALI_SEARCH_API_PUB_ENTRY;
@@ -38,7 +42,7 @@ const RT_OTS_API_ENTRY = OTS_PUB_API;
 /**
  * @var string OSS接口的入口地址
  */
-const RT_OSS_API_ENTRY = OSS_PUBLIC_ENTRY;
+const RT_OSS_API_ENTRY = OSS_PUB_ENTRY;
 /**
  * @var string 筑巢开放存储名称
  */
