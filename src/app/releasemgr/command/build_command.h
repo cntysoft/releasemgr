@@ -58,6 +58,15 @@ public:
    virtual ~ZhuChaoBuildCommand();
 };
 
+class UpgradeTesterBuildCommand : public AbstractCommand
+{
+public:
+   UpgradeTesterBuildCommand(CommandRunner& runner, const CommandMeta& invokeMeta);
+public:
+   virtual void exec();
+   virtual ~UpgradeTesterBuildCommand();
+};
+
 }//command
 }//releasemgr
 

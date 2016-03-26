@@ -14,4 +14,5 @@ const char* CFG_GROUP_UPGRADEMGR_SLAVE = "UpgrademgrSlave";
 const char* CFG_GROUP_CLOUDCONTROLLER = "CloudController";
 const char* CFG_GROUP_METASERVER = "MetaServer";
 const char* CFG_GROUP_LUOXI = "LuoXi";
+const char* CFG_GROUP_UPGRADE_TESTER = "UpgradeTester";
 }//releasemgr

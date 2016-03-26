@@ -23,7 +23,7 @@ using releasemgr::command::UpgrademgrBuildCommand;
 using releasemgr::command::CloudControllerBuildCommand;
 using releasemgr::command::DeploySystemBuildCommand;
 using releasemgr::command::ZhuChaoBuildCommand;
-
+using releasemgr::command::UpgradeTesterBuildCommand;
 CommandRunner::CommandRunner(Application &app)
    : BaseCommandRunner(app)
 {
@@ -48,6 +48,7 @@ void CommandRunner::initUsageText()
    addUsageText("releasemgr cloudcontroller webdiffbuild --from=<start version> --to=<stop version> [--aliyun]\n");
    addUsageText("releasemgr deploysystem metaserver rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
    addUsageText("releasemgr deploysystem luoxi rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
+   addUsageText("releasemgr upgradetester rpmbuild [--projectDir=<projectDir>] [--buildDir=<buildDir>] --version=<version to build>\n");
 }
 
 void CommandRunner::initCommandPool()
@@ -86,6 +87,10 @@ void CommandRunner::initCommandPool()
    });
    m_cmdRegisterPool.insert("ZhuChao_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
       ZhuChaoBuildCommand* cmd = new ZhuChaoBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
+      return cmd;
+   });
+   m_cmdRegisterPool.insert("UpgradeTester_Build", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+      UpgradeTesterBuildCommand* cmd = new UpgradeTesterBuildCommand(dynamic_cast<CommandRunner&>(runner), meta);
       return cmd;
    });
 }
@@ -171,6 +176,11 @@ void CommandRunner::initRouteItems()
                   {"category", "ZhuChao"},
                   {"name", "Build"},
                   {"action", "webdiffbuild"}
+               });
+   addCmdRoute("upgradetesterrpmbuild", "upgradetester rpmbuild [--projectDir=] [--buildDir=] --version=", 1, {
+                  {"category", "UpgradeTester"},
+                  {"name", "Build"},
+                  {"action", "rpmbuild"}
                });
 }
 

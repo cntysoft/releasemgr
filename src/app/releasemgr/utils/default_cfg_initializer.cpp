@@ -19,6 +19,7 @@ static void init_rmmgr_cfg(Settings &settings);
 static void init_upgrademgr_cfg(Settings &settings);
 static void init_cloudcontroller_cfg(Settings &settings);
 static void init_deploysystem_cfg(Settings &settings);
+static void init_upgradetester_cfg(Settings &settings);
 
 void init_defualt_cfg(Settings& settings)
 {
@@ -30,6 +31,7 @@ void init_defualt_cfg(Settings& settings)
    init_upgrademgr_cfg(settings);
    init_cloudcontroller_cfg(settings);
    init_deploysystem_cfg(settings);
+   init_upgradetester_cfg(settings);
    settings.sync();
 }
 
@@ -351,6 +353,12 @@ void init_deploysystem_cfg(Settings &settings)
    settings.setValue("buildDir", "/tmp/metaserver-build", CFG_GROUP_METASERVER);
    settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/luoxi", CFG_GROUP_LUOXI);
    settings.setValue("buildDir", "/tmp/luoxi-build", CFG_GROUP_LUOXI);
+}
+
+void init_upgradetester_cfg(Settings &settings)
+{
+   settings.setValue("projectDir", "/cntysoft/company/projects/cplusplus/upgrade_tester", CFG_GROUP_UPGRADE_TESTER);
+   settings.setValue("buildDir", "/tmp/upgrade_tester-build", CFG_GROUP_UPGRADE_TESTER);
 }
 
 }//releasemgr

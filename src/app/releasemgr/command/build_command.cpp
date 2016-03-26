@@ -9,6 +9,7 @@
 #include "task/upgrademgr/slave/rpm_build_task_mgr.h"
 #include "task/zhuchao/web/full_build_task_mgr.h"
 #include "task/zhuchao/web/diff_build_task_mgr.h"
+#include "task/upgradetester/rpm_build_task_mgr.h"
 
 namespace releasemgr{
 namespace command{
@@ -135,6 +136,24 @@ void ZhuChaoBuildCommand::exec()
 
 ZhuChaoBuildCommand::~ZhuChaoBuildCommand()
 {}
+
+using UpgradeTesterRPMTaskMgr = releasemgr::task::upgradetester::rpmbuild::TaskMgr;
+
+UpgradeTesterBuildCommand::UpgradeTesterBuildCommand(CommandRunner& runner, const CommandMeta &invokeMeta)
+   :AbstractCommand(runner, invokeMeta)
+{}
+
+void UpgradeTesterBuildCommand::exec()
+{
+   //暂时就一种打包方式
+   UpgradeTesterRPMTaskMgr rpmTaskMgr(QLatin1String("UpgradeTester"), m_cmdRunner.getSysSettings());
+   rpmTaskMgr.run(m_invokeMeta.getCmdArgs());
+   exit(EXIT_SUCCESS);
+}
+
+UpgradeTesterBuildCommand::~UpgradeTesterBuildCommand()
+{}
+
 
 }//command
 }//releasemgr

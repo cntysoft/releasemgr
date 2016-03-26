@@ -151,6 +151,18 @@ ReleaseMgrApplication
          "full/taskmgr.h",
       ]
    }
+   
+   Group {
+      name : "upgradetester_task"
+      prefix: "task/upgradetester/"
+      files : [
+           "rpm_build_task_mgr.cpp",
+           "rpm_build_task_mgr.h",
+           "rpm_build_tasks.cpp",
+           "rpm_build_tasks.h",
+       ]
+   }
+   
    Group {
       name : "rmmgr_task"
       prefix: "task/rmmgr/"

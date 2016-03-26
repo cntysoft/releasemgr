@@ -17,7 +17,7 @@ extern const char* CFG_GROUP_UPGRADEMGR_SLAVE;
 extern const char* CFG_GROUP_CLOUDCONTROLLER;
 extern const char* CFG_GROUP_METASERVER;
 extern const char* CFG_GROUP_LUOXI;
-
+extern const char* CFG_GROUP_UPGRADE_TESTER;
 const int DEPLOY_TYPE_PRODUCT = 4;
 const int DEPLOY_TYPE_DEBUG = 5;
 
