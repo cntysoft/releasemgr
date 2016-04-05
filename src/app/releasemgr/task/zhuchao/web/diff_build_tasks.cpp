@@ -461,8 +461,20 @@ AnalysisDatabase::AnalysisDatabase(const AbstractTaskMgr &taskmgr, const TaskPar
 
 void AnalysisDatabase::exec()
 {
-   writeBeginMsg("正在分析数据库结构 ... ");
-   openDatabases();
+   QByteArray metaJsonData;
+   doAnalisys("zhuchao", metaJsonData);
+   writeBeginMsg("正在保存筑巢主系统分析结果数据 ... \n");
+   Filesystem::filePutContents(m_buildDir+QDir::separator()+"zhuchao_dbmeta_"+m_from+"_"+m_to+".json", metaJsonData);
+   doAnalisys("zhuchao_site", metaJsonData);
+   writeBeginMsg("正在保存筑巢商家系统分析结果数据 ... ");
+   Filesystem::filePutContents(m_buildDir+QDir::separator()+"zhuchao_site_dbmeta_"+m_from+"_"+m_to+".json", metaJsonData);
+   writeDoneMsg();
+}
+
+void AnalysisDatabase::doAnalisys(const QString dbnamePrefix, QByteArray &metaJsonData)
+{
+   writeBeginMsg(QString("正在分析数据库%1结构 ... ").arg(dbnamePrefix).toLocal8Bit());
+   changeDatabases(dbnamePrefix);
    QJsonDocument metaJsonDoc;
    QJsonObject typeItemJsonObject;
    writeMsg("\n正在分析数据库表级别差异 ... ", TerminalColor::LightYellow);
@@ -585,36 +597,34 @@ void AnalysisDatabase::exec()
    typeItemJsonObject.insert("modify", modifyTableJsonObject);
    writeMsg("\n");
    metaJsonDoc.setObject(typeItemJsonObject);
-   writeBeginMsg("正在保存分析结果数据 ... ");
-   Filesystem::filePutContents(m_buildDir+QDir::separator()+"dbmeta_"+m_from+"_"+m_to+".json", metaJsonDoc.toJson());
-   writeDoneMsg();
+   metaJsonData = metaJsonDoc.toJson();
 }
 
-void AnalysisDatabase::openDatabases()
+void AnalysisDatabase::changeDatabases(const QString dbnamePrefix)
 {
    QString host = m_settings.getValue("db.host", CFG_GROUP_GLOBAL).toString();
    QString username = m_settings.getValue("db.username", CFG_GROUP_GLOBAL).toString();
    QString password = m_settings.getValue("db.password", CFG_GROUP_GLOBAL).toString();
-   QString baseDbName = "zhuchao_";
-   if(!m_toDb.isOpen()){
-      m_toDb.setHostName(host);
-      m_toDb.setUserName(username);
-      m_toDb.setPassword(password);
-      m_toDb.setDatabaseName(baseDbName+m_to);
-      if(!m_toDb.open()){
-         throw ErrorInfo(m_toDb.lastError().text());
-      }
+   if(m_toDb.isOpen()){
+      m_toDb.close();
    }
-   if(!m_fromDb.isOpen()){
-      m_fromDb.setHostName(host);
-      m_fromDb.setUserName(username);
-      m_fromDb.setPassword(password);
-      m_fromDb.setDatabaseName(baseDbName+m_from);
-      if(!m_fromDb.open()){
-         throw ErrorInfo(m_fromDb.lastError().text());
-      }
+   if(m_fromDb.isOpen()){
+      m_fromDb.close();
    }
-   
+   m_toDb.setHostName(host);
+   m_toDb.setUserName(username);
+   m_toDb.setPassword(password);
+   m_toDb.setDatabaseName(dbnamePrefix+'_'+m_to);
+   if(!m_toDb.open()){
+      throw ErrorInfo(m_toDb.lastError().text());
+   }
+   m_fromDb.setHostName(host);
+   m_fromDb.setUserName(username);
+   m_fromDb.setPassword(password);
+   m_fromDb.setDatabaseName(dbnamePrefix+'_'+m_from);
+   if(!m_fromDb.open()){
+      throw ErrorInfo(m_fromDb.lastError().text());
+   }
 }
 
 AnalysisDatabase::ColItemsType AnalysisDatabase::getTableColumns(const QString& schema, const QString& tableName)
@@ -665,14 +675,20 @@ CopyUpgradeScript::CopyUpgradeScript(const AbstractTaskMgr &taskmgr, const TaskP
 void CopyUpgradeScript::exec()
 {
    writeBeginMsg("正在复制升级脚本文件 ... ");
-   QString sourceFilename(m_projectDir+DS+"UpgradeEnv"+DS+"Scripts"+DS+"upgradescript_"+
-                          m_from+"_"+m_to+".js");
+   doCopyScript("upgradescript");
+   doCopyScript("shop_upgradescript");
+   writeDoneMsg();
+}
+
+void CopyUpgradeScript::doCopyScript(const QString filenamePrefix)
+{
+   QString sourceFilename(m_projectDir + DS + "UpgradeEnv" + DS + "Scripts" + DS+filenamePrefix + '_' + 
+                          m_from + "_" + m_to + ".js");
    QString destinationFilename(sourceFilename);
-   destinationFilename.replace(m_projectDir+DS+"UpgradeEnv"+DS+"Scripts", m_buildDir);
+   destinationFilename.replace(m_projectDir + DS + "UpgradeEnv" + DS + "Scripts", m_buildDir);
    if(QFileInfo(sourceFilename).exists()){
       Filesystem::copyFile(sourceFilename, destinationFilename);
    }
-   writeDoneMsg();
 }
 
 CopyUpgradeScript::~CopyUpgradeScript()

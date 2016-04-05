@@ -96,7 +96,8 @@ public:
    virtual void exec();
    virtual ~AnalysisDatabase();
 private:
-   void openDatabases();
+   void changeDatabases(const QString dbnamePrefix);
+   void doAnalisys(const QString dbnamePrefix, QByteArray &metaJsonData);
    ColItemsType getTableColumns(const QString& schema, const QString& tableName);
 private:
    QSqlDatabase m_fromDb;
@@ -110,6 +111,8 @@ public:
 public:
    virtual void exec();
    virtual ~CopyUpgradeScript();
+private:
+   void doCopyScript(const QString filenamePrefix);
 };
 
 class Compress : public DiffBuildAbstractTask

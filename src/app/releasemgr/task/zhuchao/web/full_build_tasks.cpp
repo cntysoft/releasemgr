@@ -228,12 +228,16 @@ void DumpMysql::exec()
    writeBeginMsg("开始导出项目数据库 ... ");
    QChar ds = QDir::separator();
    QString savedFilename = m_buildDir+ds+"zhuchaoweb_"+m_invokeArgs["version"]+".sql";
+   QString savedZhuChaoShopFilename = m_buildDir + ds + "zhuchaoshopweb_"+m_invokeArgs["version"]+".sql";
    QString dbname = "zhuchao_" + m_invokeArgs["version"];
+   QString zhuchaoShopDbName = "zhuchao_site_" + m_invokeArgs["version"];
    QString sql;
    QString username = m_settings.getValue("db.username", CFG_GROUP_GLOBAL).toString();
    QString password = m_settings.getValue("db.password", CFG_GROUP_GLOBAL).toString();
    execMysqlDumpCmd(username, password, dbname, sql, false);
    Filesystem::filePutContents(savedFilename, sql);
+   execMysqlDumpCmd(username, password, zhuchaoShopDbName, sql, false);
+   Filesystem::filePutContents(savedZhuChaoShopFilename, sql);
    writeDoneMsg();
 }
 
